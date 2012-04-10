@@ -3,6 +3,6 @@
 for i in *;
 do
   if [ "${i}" != "setup.sh" ]; then
-    ln -s $i ../.$i
+    ln -sf $i ../.$i
   fi
 done
