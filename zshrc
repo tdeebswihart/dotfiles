@@ -58,3 +58,5 @@ export PYTHONPATH="$PYTHONPATH:/usr/local/lib/python2.6/dist-packages"
 
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
+
+source $GOROOT/misc/zsh/go
