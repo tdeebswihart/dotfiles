@@ -1,0 +1,17 @@
+"color solarized
+set background=dark
+"##############################################################################
+"" Easier split navigation
+"##############################################################################
+"
+"" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+
+" kill all trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+call togglebg#map("<F6>")
+let g:solarized_termcolors=16
+set t_Co=16
