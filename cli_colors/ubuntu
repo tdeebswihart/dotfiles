@@ -1,0 +1,31 @@
+!! ubuntu
+*background:  #333333
+*foreground:  #AEA79F
+!*cursorColor: #ffc178
+!*fading:      60
+!*fadeColor:   #575757
+
+!black
+*color0:      #47172C
+*color8:      #6F4B52
+!red
+*color1:      #A65180
+*color9:      #B0658F
+!green
+*color2:      #A06092
+*color10:     #A9729D
+!yellow
+*color3:      #F47F31
+*color11:     #F37320
+!blue
+*color4:      #974C87
+*color12:     #8E387D
+!magenta
+*color5:      #BA799E
+*color13:     #BA8FB1
+!cyan
+*color6:      #AD8D9D
+*color14:     #774060
+!white
+*color7:      #BEB5AB
+*color15:     #CAC2BA
