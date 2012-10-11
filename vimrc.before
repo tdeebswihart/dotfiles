@@ -1,2 +1,5 @@
 let mapleader = ","
+map <leader>q :q<Enter>
+map <leader>w :w<Enter>
+
 set runtimepath+=~/.vim.local
