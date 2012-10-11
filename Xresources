@@ -1,0 +1,54 @@
+! Colors
+#include "/home/si-coop123-d01/.cli_colors/solarized"
+
+! Fonts
+!URxvt*font: -*-ohsnap-medium-r-normal-*-12-*-*-*-*-*-*-*
+!URxvt*boldFont: -*-ohsnap-medium-b-normal-*-12-*-*-*-*-*-*-*
+URxvt*font: xft:inconsolata:pixelsize=16
+URxvt*boldFont: xft:inconsolata:bold:pixelsize=16
+!URxvt*font: xft:open sans:pixelsize=12
+!URxvt*boldFont: xft:open sans:bold:pixelsize=12
+
+! font settings suggested by infinality
+!Xft.autohint: 1
+!Xft.lcdfilter: lcddefault
+!Xft.hintstyle: hintfull
+!Xft.hinting: 1
+!Xft.antialias: 1
+!Xft.dpi: 96
+!Xft.rgba: rgb
+
+! URxvt (scrollstyle: rxvt (default), plain, next, or xterm)
+URxvt*termName: rxvt-unicode
+URxvt*title: Terminal
+URxvt.saveLines: 1500
+URxvt*scrollBar: false
+URxvt*scrollColor: #2A2A2A
+URxvt*scrollstyle: plain
+URxvt*scrollBar_right: true
+URxvt.scrollKey: true
+URxvt.scrollWithBuffer: true
+URxvt.scrollBack: true
+URxvt.jumpScroll: true
+URxvt.skipScroll: true
+URxvt.urgentOnBell: true
+URxvt.trippleclickwords: true
+!URxvt.depth: 32
+URxvt.shading: 15
+URxvt.transparent: false
+URxvt.colorIT: #605D5D
+URxvt.colorBD: #F9F9F9
+URxvt.colorUL: #FFA905
+URxvt.colorRV: #16596A
+URxvt*chdir: /home/si-coop123-d01/
+URxvt*cursorBlink: false
+URxvt*cursorUnderline: false
+
+! Extensions (tabbed)
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: /usr/bin/chromium URxvt.matcher.button: 1
+URxvt.tabbed.tabbar-fg: 0
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: foreground
+URxvt.tabbed.tab-bg: background
+URxvt.pasteableTabs: false

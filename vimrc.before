@@ -1,5 +1,10 @@
 let mapleader = ","
-map <leader>q :q<Enter>
-map <leader>w :w<Enter>
+noremap <leader>w :w<CR>
+noremap <leader>W :w!sudo tee %
+noremap <leader>q :q<CR>
+"noremap <leader>b :b
+noremap <leader>n :bnext<CR>
+noremap <leader>N :bprevious<CR>
 
 set runtimepath+=~/.vim.local
+let $PAGER=''
