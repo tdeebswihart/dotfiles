@@ -9,6 +9,8 @@ Bundle 'gmarik/vundle'
 "" Plugins
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
+Bundle 'majutsushi/tagbar'
+
 Bundle 'tpope/vim-fugitive'
 
 Bundle 'Lokaltog/vim-easymotion'
@@ -38,13 +40,12 @@ Bundle 'tpope/vim-eunuch'
 " Vim personal wiki. hooked into trunknotes for me
 Bundle 'vim-scripts/vimwiki'
 
-Bundle 'rgarver/Kwbd.vim'
 
 " CVS (git,hg...) functionality
 Bundle 'vim-scripts/aurum'
 
 " Better status bar
-Bundle 'skwp/vim-powerline'
+" Bundle 'default/vim-powerline'
 
 " Escapes ANSI codes
 Bundle 'vim-scripts/AnsiEsc.vim'
@@ -103,12 +104,12 @@ Bundle 'altercation/vim-colors-solarized'
 syntax on        " turn on hilighting
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'filename'
-let g:Powerline_theme="skwp"
-let g:Powerline_colorscheme="skwp"
+"let g:Powerline_theme = 'skwp'
+"let g:Powerline_colorscheme = 'skwp'
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
-
+set t_Co=256
 set number
 set showmode
 set showcmd

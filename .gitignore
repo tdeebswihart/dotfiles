@@ -1,3 +1,5 @@
 irssi/config.autosave
 irssi/away.log
-
+irssi/config
+irssi/*.log
+.DS_Store
