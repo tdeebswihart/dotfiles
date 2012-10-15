@@ -138,8 +138,7 @@ nnoremap <Leader>G <Plug>(golden_ratio_resize)
 let g:golden_ratio_autocommand = 1
 nnoremap ` '
 nnoremap <Leader>S :%s//<left>
-
-
+inoremap jj <Esc>
 
 set backup
 set autowrite
