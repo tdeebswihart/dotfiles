@@ -7,6 +7,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 "" Plugins
+Bundle 'mileszs/ack.vim'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 Bundle 'majutsushi/tagbar'
@@ -104,8 +105,8 @@ Bundle 'altercation/vim-colors-solarized'
 syntax on        " turn on hilighting
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'filename'
-"let g:Powerline_theme = 'skwp'
-"let g:Powerline_colorscheme = 'skwp'
+let g:Powerline_theme = 'skwp'
+let g:Powerline_colorscheme = 'skwp'
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
@@ -123,6 +124,7 @@ set smartcase
 filetype indent on
 filetype plugin indent on
 let mapleader = ","
+let LocalLeader = ";"
 noremap <leader>w :w<CR>
 noremap <leader>W :w!sudo tee %
 noremap <leader>q :q<CR>
@@ -221,7 +223,7 @@ set wildignore+=*.spl
 set wildignore+=*~,#*#,*.sw?,%*,*=
 
 " Mac OS X.
-set wildignore+=*.DS_Store}
+set wildignore+=*.DS_Store
 
 "set runtimepath+=~/.vim.local
 "let $PAGER=''

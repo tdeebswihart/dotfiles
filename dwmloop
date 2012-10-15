@@ -1,0 +1,6 @@
+#!/bin/bash
+conky | while read -r; do xsetroot -name "$REPLY"; done &
+xmodmap /home/si-coop123-d01/.Xmodmap
+while true; do
+    dwm
+done
