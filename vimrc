@@ -2,6 +2,7 @@ set nocompatible               " be iMproved
 filetype off                   " required!
 
 set rtp+=~/.vim/bundle/vundle/
+set rtp +=~/.vim.local/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
@@ -83,7 +84,7 @@ Bundle 'vim-scripts/TaskList.vim'
 Bundle 'vim-scripts/matchit.zip'
 
 " Python stuff
-Bundle 'klen/python-mode'
+"Bundle 'klen/python-mode'
 
 "" Syntaxes
 Bundle 'vim-scripts/Arduino-syntax-file'
@@ -116,7 +117,7 @@ set showmode
 set showcmd
 set splitbelow
 set splitright
-set visualbell
+"set visualbell
 set hidden
 set ignorecase
 set smartcase

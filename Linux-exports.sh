@@ -2,6 +2,8 @@
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/metasploit-framework:/opt/metasploit-framework/tools:$HOME/dev/go/bin:$GOBIN:$HOME/.rbenv/shims:$HOME/.rbenv/bin:/home/si-coop123-d01/bin
 export PYTHONPATH="$PYTHONPATH:/usr/local/lib/python2.6/dist-packages"
 
+alias t='todo.sh'
+
 export TODOTXT_DEFAULT_ACTION=pv
 export REALLY_GEM_UPDATE_SYSTEM=true
 export GOROOT="$HOME/dev/go"
@@ -36,3 +38,4 @@ alias kn='keepnote 1>/dev/null 2>&1'
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 export TERM=rxvt-unicode-256color
 eval $(dircolors ~/dotfiles/dircolors-solarized/dircolors.ansi-dark)
+eval 'keychain --eval id_rsa id_ecdsa'
