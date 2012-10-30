@@ -3,3 +3,5 @@ irssi/away.log
 irssi/config
 irssi/*.log
 .DS_Store
+*.o
+*.a

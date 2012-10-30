@@ -44,7 +44,7 @@ Bundle 'vim-scripts/vimwiki'
 
 
 " CVS (git,hg...) functionality
-Bundle 'vim-scripts/aurum'
+"Bundle 'vim-scripts/aurum'
 
 " Better status bar
 " Bundle 'default/vim-powerline'
