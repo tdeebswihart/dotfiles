@@ -9,6 +9,9 @@ fi
 # time that oh-my-zsh is loaded.
 ZSH_THEME="gallois"
 export EDITOR=vim
+HISTFILE=$HOME/.zshistory
+SAVEHIST=1000
+HISTSIZE=5000
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -38,7 +41,7 @@ plugins=(git)
 # Customize to your needs...
 
 source ~/.funcs
-source ~/.secret/vars.sh #secrets!
+source ~/.secret/*.sh #secrets!
 source ~/.exports
 eval "$(rbenv init -)"
 

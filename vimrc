@@ -18,7 +18,7 @@ Bundle 'Lokaltog/vim-easymotion'
 
 Bundle 'vim-scripts/ZoomWin'
 
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
 
 " Tab smart completion
 Bundle 'ervandew/supertab'
@@ -236,7 +236,7 @@ nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
 " kill all trailing whitespace
-autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre * :%s/\s\+$//e
 call togglebg#map("<F6>")
 let g:solarized_termcolors=16
 set t_Co=16

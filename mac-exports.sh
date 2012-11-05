@@ -1,13 +1,14 @@
 #Linux shell exports
-export PATH=$PATH:$GOBIN:$HOME/bin:$HOME/.rbenv/shims
 export TODOTXT_DEFAULT_ACTION=pv
 export REALLY_GEM_UPDATE_SYSTEM=true
-export GOROOT="$HOME/dev/go"
+export DEV=$HOME/Development
 
-export GOROOT="$HOME/Development/go"
-export GOPATH=$HOME/Development/mygo
-export MYGO=$HOME/Development/mygo
+export GOROOT=$DEV/go
+export GOPATH=$DEV/mygo
+export MYGO=$DEV/mygo
 export GOBIN=$MYGO/bin
+
+export PATH=$PATH:$GOBIN:$HOME/bin
 
 #export CC=/usr/bin/clang
 #export CXX=/usr/bin/clang++
