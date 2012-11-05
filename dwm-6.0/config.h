@@ -17,13 +17,13 @@ static const char *tags[] = { "1", "2", "3", "4"};
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Pidgin",   NULL,       NULL,       1,            False,         1 },
+	{ "Pidgin",   NULL,       NULL,       (~0)-1,            False,         1 },
 	{ "Thunderbird",    NULL,       NULL,       (1 << 0),     False,        1 },
-	{ "Firefox",  NULL,       NULL,       (1 << 1),     False,        0 },
+	{ "Firefox",  NULL,       NULL,       (1 << 1),     False,        1 },
 	{ "vmware",   NULL,       NULL,       (1 << 2),     False,        0 },
 	{ "urxvt",    NULL,       NULL,       (1 << 0),     False,        0 },
-  { "uzbl",     NULL,       NULL,       (1 << 1),     False,        0 },
-  { "uzbl-browser",   NULL,       NULL,       (1 << 1),     False,        0 },
+	{ "uzbl",     NULL,       NULL,       (1 << 1),     False,        0 },
+	{ "uzbl-browser",   NULL,       NULL,       (1 << 1),     False,        0 },
 	{ "uzbl-tabbed",    NULL,       NULL,       (1 << 1),     False,        0 },
 };
 
@@ -40,7 +40,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \

@@ -35,6 +35,7 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'prompt' \
   'git' \
+  'fasd'\
   'osx'
 
 zstyle ':prezto:module:syntax-highlighting' highlighters \
@@ -49,10 +50,10 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
 #
 
 # Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':prezto:module:editor' keymap 'emacs'
+zstyle ':prezto:module:editor' keymap 'vi'
 
 # Auto convert .... to ../..
-# zstyle ':prezto:module:editor' dot-expansion 'yes'
+zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 #
 # Git

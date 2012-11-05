@@ -9,9 +9,7 @@ fi
 # time that oh-my-zsh is loaded.
 ZSH_THEME="gallois"
 export EDITOR=vim
-HISTFILE=$HOME/.zshistory
-SAVEHIST=1000
-HISTSIZE=5000
+export SUDO_EDITOR=vim
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -39,9 +37,8 @@ plugins=(git)
 
 
 # Customize to your needs...
-
 source ~/.funcs
 source ~/.secret/*.sh #secrets!
 source ~/.exports
 eval "$(rbenv init -)"
-
+if [ "$TMUX" != "" ]; then export TERM="screen-256color"; fi
