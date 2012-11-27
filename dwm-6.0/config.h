@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 /* appearance */
+#include "bstack.c"
+#include "bstackhoriz.c"
 static const char font[]            = "Inconsolata 12"; //"-*-tamsyn-*-*-*-*-14-*-*-*-*-*-*-*";
 static const char normbordercolor[] = "#073642"; //"#444444";
 static const char normbgcolor[]     = "#002b36"; //"#222222";
@@ -37,6 +39,8 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "TTT",      bstack },
+	{ "===",      bstackhoriz },
 };
 
 /* key definitions */
@@ -71,6 +75,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_s,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },

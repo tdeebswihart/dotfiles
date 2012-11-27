@@ -5,3 +5,5 @@ irssi/*.log
 .DS_Store
 *.o
 *.a
+.hg
+*.deb
