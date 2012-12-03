@@ -38,7 +38,9 @@ plugins=(git)
 
 # Customize to your needs...
 source ~/.funcs
+source ~/.aliases
 source ~/.secret/*.sh #secrets!
 source ~/.exports
 eval "$(rbenv init -)"
 if [ "$TMUX" != "" ]; then export TERM="screen-256color"; fi
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
