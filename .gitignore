@@ -5,3 +5,6 @@ irssi/*.log
 .DS_Store
 *.o
 *.a
+.hg
+*.deb
+bin/nodejs/node_modules

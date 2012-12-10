@@ -9,6 +9,7 @@ export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
 
 export EDITOR=gvim
+export SUDO_EDITOR=vim
 
 source $GOROOT/misc/zsh/go
 

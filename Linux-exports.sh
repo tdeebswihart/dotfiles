@@ -21,11 +21,6 @@ export EDITOR=vim
 source $GOROOT/misc/zsh/go
 
 #sets PAGER to be vim
-export vless='/usr/share/vim/vimcurrent/macros/less.sh'
-export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
-      vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
-      -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
-      -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 alias ai="sudo apt-get install"
 alias adu="sudo apt-get dist-upgrade"
 alias ar="sudo apt-get remove"
@@ -38,7 +33,7 @@ alias kn='keepnote 1>/dev/null 2>&1'
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 export TERM=rxvt-unicode-256color
 eval $(dircolors ~/dotfiles/dircolors-solarized/dircolors.ansi-dark)
-eval 'keychain --eval id_rsa id_ecdsa'
+eval 'keychain --eval id_rsa'
 alias a='fasd -a'        # any
 alias s='fasd -si'       # show / search / select
 alias d='fasd -d'        # directory
