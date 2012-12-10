@@ -7,3 +7,4 @@ irssi/*.log
 *.a
 .hg
 *.deb
+bin/nodejs/node_modules
