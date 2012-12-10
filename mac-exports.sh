@@ -7,9 +7,8 @@ export GOROOT=$DEV/go
 export GOPATH=$DEV/mygo
 export MYGO=$DEV/mygo
 export GOBIN=$MYGO/bin
-
-export PATH=$PATH:$GOBIN:$HOME/bin
-
+export DEFPATH=/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
+export PATH=/usr/local/bin:/usr/local/sbin:$DEFPATH:$GOBIN:$HOME/bin:/Users/chronon/.rbenv/shims
 #export CC=/usr/bin/clang
 #export CXX=/usr/bin/clang++
 
@@ -22,8 +21,8 @@ source $GOROOT/misc/zsh/go
 # Tmuxinator
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad \
-  Clicking -bool true
+#defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+#defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+#defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad \
+#  Clicking -bool true
 
