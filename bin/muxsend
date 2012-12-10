@@ -1,0 +1,6 @@
+#!/bin/zsh
+if test $# -lt 2; then
+  echo "usage: muxsend session command"
+  exit
+fi
+tmux list-windows -t $1 | cut -d: -f1|xargs -I{} tmux send-keys -t $1:{} $2 Enter

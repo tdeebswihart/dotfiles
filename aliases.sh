@@ -1,1 +1,1 @@
-alias serve="python -m SimpleHTTPServer 9494"
+alias serve="python3 -m http.server 9494"
