@@ -8,8 +8,8 @@ fi
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="gallois"
-export EDITOR=vim
-export SUDO_EDITOR=vim
+export EDITOR=subl
+export SUDO_EDITOR=subl
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -37,10 +37,9 @@ plugins=(git)
 
 
 # Customize to your needs...
-source ~/.funcs
-source ~/.aliases
-source ~/.secret/*.sh #secrets!
-source ~/.exports
-eval "$(rbenv init -)"
+#source ~/.funcs.sh
+source ~/.aliases.sh
+#source ~/.secret/*.sh #secrets!
+source ~/.exports.sh
 if [ "$TMUX" != "" ]; then export TERM="screen-256color"; fi
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
