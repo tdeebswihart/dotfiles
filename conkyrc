@@ -1,0 +1,5 @@
+out_to_console yes
+out_to_x no
+update_interval 1
+TEXT
+mpd: ${exec mpc current | awk '{split($0,ar,": "); print ar[1]}'} | cpu: ${cpu cpu0}%:${cpu cpu1}%:${cpu cpu2}%:${cpu cpu3}% | ${if_running openvpn}MALNET${else}GTRI${endif} | time: ${time %F %T %Z}
