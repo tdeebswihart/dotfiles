@@ -9,7 +9,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 "" Plugins
-Bundle 'mileszs/ack.vim'
+Bundle 'rking/ag.vim'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 Bundle 'majutsushi/tagbar'
@@ -51,6 +51,7 @@ Bundle 'vim-scripts/vimwiki'
 
 " Better status bar
 " Bundle 'default/vim-powerline'
+Bundle 'Lokaltog/powerline'
 
 " Escapes ANSI codes
 Bundle 'vim-scripts/AnsiEsc.vim'

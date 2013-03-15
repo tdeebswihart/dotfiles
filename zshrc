@@ -39,7 +39,7 @@ plugins=(git)
 # Customize to your needs...
 #source ~/.funcs.sh
 source ~/.aliases.sh
-#source ~/.secret/*.sh #secrets!
+source ~/.secrets #secrets!
 source ~/.exports.sh
 if [ "$TMUX" != "" ]; then export TERM="screen-256color"; fi
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
