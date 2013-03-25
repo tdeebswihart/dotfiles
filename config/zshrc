@@ -33,4 +33,4 @@ plugins=(git)
 # Customize to your needs...
 source ~/.secrets #secrets!
 
-#source ~/.fresh/build/shell.sh
+source ~/.fresh/build/shell.sh
