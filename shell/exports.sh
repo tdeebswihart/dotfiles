@@ -43,7 +43,7 @@ Darwin)
         source "$(brew --prefix)/Library/Contributions/brew_zsh_completion.sh"
     fi
 
-    alias rm=trash
+    #alias rm=trash
     alias make430="PATH=`brew --prefix llvm-msp430`/bin:$PATH make"
     alias mspmake="PATH=`brew --prefix llvm-msp430`/bin:$PATH make"
 
