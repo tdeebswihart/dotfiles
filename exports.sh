@@ -26,6 +26,10 @@ Darwin)
     #export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-5.0/lib:$DYLD_LIBRARY_PATH
     export CCACHE_COMPRESS=""
 
+    alias rm=trash
+    alias make430="PATH=`brew --prefix llvm-msp430`/bin:$PATH make"
+    alias mspmake="PATH=`brew --prefix llvm-msp430`/bin:$PATH make"
+
     export EDITOR=subl
     export SUDO_EDITOR=subl
     ;;
