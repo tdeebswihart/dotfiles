@@ -48,7 +48,6 @@ Darwin)
     then
         source "$(brew --prefix)/Library/Contributions/brew_zsh_completion.sh"
     fi
-    fi
 
     alias rm=trash
     alias make430="PATH=`brew --prefix llvm-msp430`/bin:$PATH make"
@@ -72,6 +71,9 @@ export MAKEFLAGS-'-j 4'
 
 #Setting path
 export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATHPREFIX:$GOBIN:${GOPATH//://bin:}/bin:$PATH
+
+# set up nock
+test -d $DEV/tools/nock && eval "$($DEV/tools/nock/bin/nock init -)"
 
 hash rbenv && eval "$(rbenv init - --no-rehash)"
 test "$TMUX" && export TERM="screen-256color" # rxvt-unicode-256color
