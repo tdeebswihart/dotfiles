@@ -1,11 +1,11 @@
-case `uname` in
+case `uname -s` in
 Linux)
     export DEV=$HOME/dev
     export PATHPREFIX="/usr/lib/lightdm/lightdm:/opt/metasploit-framework:/opt/metasploit-framework/tools"
     export PYTHONPATH="$PYTHONPATH:/usr/local/lib/python2.6/dist-packages"
 
-    export CC=/usr/bin/clang
-    export CXX=/usr/bin/clang++
+    hash clang && export CC=/usr/bin/clang
+    hash clang++ && export CXX=/usr/bin/clang++
     alias kn='keepnote 1>/dev/null 2>&1'
 
     export EDITOR=vim
@@ -19,12 +19,36 @@ Darwin)
     #defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
     #defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad \
     #  Clicking -bool true
-    export ANDPATH="$HOME/Applications/adt-bundle-mac-x86_64/sdk/tools"
-    export PATHPREFIX="$ANDPATH:/usr/local/heroku/bin:$PATH:/usr/local/share/npm/bin:/opt/theos/bin"
+
+    # set JAVA_HOME if on Mac OS
+    if [ -z "$JAVA_HOME" -a -d /System/Library/Frameworks/JavaVM.framework/Home ]
+    then
+        export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
+    fi
+
+    # Setting up path prefix
+    export PATHPREFIX=""
+    if [[ -d "$HOME/Applications/adt-bundle-mac-x86_64" ]]; then
+        export PATHPREFIX=$PATHPREFIX:"$HOME/Applications/adt-bundle-mac-x86_64/sdk/tools"
+    fi
+    if [[ -d "/usr/local/share/npm/bin" ]]; then
+        export PATHPREFIX="/usr/local/share/npm/bin"
+    fi
+    if [[ -d "/usr/local/heroku/bin" ]]; then
+        export PATHPREFIX=$PATHPREFIX:/usr/local/heroku/bin
+    fi
+
     #CUDA
-    export PATH=/Developer/NVIDIA/CUDA-5.0/bin:$PATH
+    export PATHPREFIX=/Developer/NVIDIA/CUDA-5.0/bin:$PATHPREFIX
     #export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-5.0/lib:$DYLD_LIBRARY_PATH
     export CCACHE_COMPRESS=""
+
+    # load Homebrew's shell completion
+    if which brew &> /dev/null && [ -f "$(brew --prefix)/Library/Contributions/brew_zsh_completion.sh" ]
+    then
+        source "$(brew --prefix)/Library/Contributions/brew_zsh_completion.sh"
+    fi
+    fi
 
     alias rm=trash
     alias make430="PATH=`brew --prefix llvm-msp430`/bin:$PATH make"
@@ -44,10 +68,11 @@ export GOROOT="$DEV/go"
 export GOBIN="$GOROOT/bin"
 export GOPATH="$DEV/mygo"
 #source $GOROOT/misc/zsh/go
+export MAKEFLAGS-'-j 4'
 
 #Setting path
 export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATHPREFIX:$GOBIN:${GOPATH//://bin:}/bin:$PATH
 
-hash rbenv && eval "$(rbenv init -)"
+hash rbenv && eval "$(rbenv init - --no-rehash)"
 test "$TMUX" && export TERM="screen-256color" # rxvt-unicode-256color
 test -s $HOME/.tmuxinator/scripts/tmuxinator && source $HOME/.tmuxinator/scripts/tmuxinator

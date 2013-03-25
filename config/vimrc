@@ -3,7 +3,7 @@ filetype off                   " required!
 
 set rtp+=~/.vim/bundle/vundle/
 set rtp +=~/.vim.local/
-set rtp +=~/dotfiles/vim/bundles/smyck/
+set rtp +=~/.fresh/source/chronoslynx/dotfiles/vim/bundles/smyck/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'

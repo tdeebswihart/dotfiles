@@ -1,0 +1,36 @@
+#!/bin/bash -e
+
+#- psg 1.0
+#- 
+
+## Usage: psg PROCESS_NAME...
+##
+##       -h     Show help options.
+##       -v     Print version info.
+
+help=$(grep "^## " "${BASH_SOURCE[0]}" | cut -c 4-)
+version=$(grep "^#- "  "${BASH_SOURCE[0]}" | cut -c 4-)
+
+opt_h() {
+  echo "$help"
+}
+
+opt_v() {
+    echo "$version"
+}
+
+while getopts "hv" opt; do
+    eval "opt_$opt"
+done
+
+# show usage if no args supplied
+if [[ $# -lt 1 ]]; then
+    opt_h
+    exit
+fi
+
+# See what's running
+ps aux |
+grep -v grep |
+grep -v psg |
+grep -i $1
