@@ -8,12 +8,6 @@ fi
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="gallois"
-export EDITOR=subl
-export SUDO_EDITOR=subl
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -37,10 +31,6 @@ plugins=(git)
 
 
 # Customize to your needs...
-#source ~/.funcs.sh
-source ~/.aliases.sh
 source ~/.secrets #secrets!
-source ~/.exports.sh
-if [ "$TMUX" != "" ]; then export TERM="screen-256color"; fi
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+
 source ~/.fresh/build/shell.sh
