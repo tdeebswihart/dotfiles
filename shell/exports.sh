@@ -67,7 +67,7 @@ export GOROOT="$DEV/go"
 export GOBIN="$GOROOT/bin"
 export GOPATH="$DEV/mygo"
 #source $GOROOT/misc/zsh/go
-export MAKEFLAGS-'-j 4'
+export MAKEFLAGS='-j 4'
 
 #Setting path
 export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATHPREFIX:$GOBIN:${GOPATH//://bin:}/bin:$PATH
