@@ -1,6 +1,7 @@
+export DEV=$HOME/Development
+
 case `uname -s` in
 Linux)
-    export DEV=$HOME/dev
     export PATHPREFIX="/usr/lib/lightdm/lightdm:/opt/metasploit-framework:/opt/metasploit-framework/tools"
     export PYTHONPATH="$PYTHONPATH:/usr/local/lib/python2.6/dist-packages"
 
@@ -10,16 +11,9 @@ Linux)
 
     export EDITOR=vim
     export SUDOEDITOR=vim
-    #eval $(dircolors ~/dotfiles/dircolors-solarized/dircolors.ansi-dark)
     hash keychain && eval 'keychain --eval id_rsa'
     ;;
 Darwin)
-    export DEV=$HOME/Development
-    #defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-    #defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
-    #defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad \
-    #  Clicking -bool true
-
     # set JAVA_HOME if on Mac OS
     if [ -z "$JAVA_HOME" -a -d /System/Library/Frameworks/JavaVM.framework/Home ]
     then
@@ -73,7 +67,8 @@ export MAKEFLAGS='-j 4'
 export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATHPREFIX:$GOBIN:${GOPATH//://bin:}/bin:$PATH
 
 # set up nock
-test -d $DEV/tools/nock && eval "$($DEV/tools/nock/bin/nock init -)"
+export QUIVER="$HOME/.quiver"
+test -d $QUIVER && eval "$($QUIVER/bin/nock init -)"
 
 hash rbenv && eval "$(rbenv init - --no-rehash)"
 test "$TMUX" && export TERM="screen-256color" # rxvt-unicode-256color
