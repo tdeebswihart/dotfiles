@@ -7,11 +7,11 @@ Linux)
     export CC=/usr/bin/clang
     export CXX=/usr/bin/clang++
     alias kn='keepnote 1>/dev/null 2>&1'
-    
+
     export EDITOR=vim
     export SUDOEDITOR=vim
     #eval $(dircolors ~/dotfiles/dircolors-solarized/dircolors.ansi-dark)
-    eval 'keychain --eval id_rsa'
+    hash keychain && eval 'keychain --eval id_rsa'
     ;;
 Darwin)
     export DEV=$HOME/Development
@@ -39,11 +39,11 @@ export MYGO=$DEV/mygo
 export GOROOT="$DEV/go"
 export GOBIN="$GOROOT/bin"
 export GOPATH="$DEV/mygo"
+#source $GOROOT/misc/zsh/go
 
-#Setting the path
+#Setting path
 export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATHPREFIX:$GOBIN:${GOPATH//://bin:}/bin:$PATH
 
-source $GOROOT/misc/zsh/go
 hash rbenv && eval "$(rbenv init -)"
 test "$TMUX" && export TERM="screen-256color" # rxvt-unicode-256color
 test -s $HOME/.tmuxinator/scripts/tmuxinator && source $HOME/.tmuxinator/scripts/tmuxinator
