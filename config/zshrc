@@ -43,3 +43,4 @@ source ~/.secrets #secrets!
 source ~/.exports.sh
 if [ "$TMUX" != "" ]; then export TERM="screen-256color"; fi
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+source ~/.fresh/build/shell.sh

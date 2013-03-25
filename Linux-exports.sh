@@ -6,7 +6,6 @@ alias t='todo.sh'
 
 export TODOTXT_DEFAULT_ACTION=pv
 export REALLY_GEM_UPDATE_SYSTEM=true
-export GOROOT="$HOME/dev/go"
 
 export GOROOT="$HOME/dev/go"
 export GOPATH=$HOME/dev/mygo
@@ -17,6 +16,7 @@ export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
 
 export EDITOR=vim
+export SUDOEDITOR=vim
 
 source $GOROOT/misc/zsh/go
 
