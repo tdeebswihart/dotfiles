@@ -64,11 +64,11 @@ export GOPATH="$DEV/mygo"
 export MAKEFLAGS='-j 4'
 
 #Setting path
-export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATHPREFIX:$GOBIN:${GOPATH//://bin:}/bin:$PATH
+export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATHPREFIX:$GOBIN:${GOPATH//://bin:}/bin:$PATH"
 
 # set up nock
-#export QUIVER="$HOME/.quiver"
-#test -d $QUIVER && eval "$($QUIVER/bin/nock init -)"
+export QUIVER="$HOME/.quiver"
+test -d "$QUIVER" && eval "$($QUIVER/bin/nock init -)"
 
 hash rbenv && eval "$(rbenv init - --no-rehash)"
 test "$TMUX" && export TERM="screen-256color" # rxvt-unicode-256color
