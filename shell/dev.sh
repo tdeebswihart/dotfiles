@@ -10,7 +10,3 @@ export GOPATH="$DEV/mygo"
 export MAKEFLAGS='-j 4'
 # ccache settings
 export CCACHE_COMPRESS=""
-
-# set up nock
-export QUIVER="$DEV/quiver"
-test -d "$QUIVER" && eval "$($QUIVER/bin/nock init -)"
