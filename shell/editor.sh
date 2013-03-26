@@ -1,7 +1,7 @@
-if [[ hash subl ]]; then
+if [ "$(hash subl)" ]; then
     export EDITOR=subl
     export SUDOEDITOR=subl
-elif [[ hash vim ]]; then
+elif [ -n "$(hash vim)" ]; then
     export EDITOR=vim
     export SUDOEDITOR=vim
 else
