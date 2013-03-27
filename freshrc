@@ -1,22 +1,19 @@
 fresh freshshell/fresh bin/fresh --bin
 
-# my dotfiles
-fresh chronoslynx/dotfiles config/\* --file
-fresh chronoslynx/dotfiles shell/\*
-fresh chronoslynx/dotfiles bin/\* --bin
+# dotfiles
+fresh chronoslynx/dotfiles 'config/*' --file
+fresh chronoslynx/dotfiles 'shell/*'
+fresh chronoslynx/dotfiles 'aliases/*'
 
-#other binfiles
-fresh twe4ked/dotfiles bin/psg --bin
+## binfiles
+fresh chronoslynx/dotfiles 'bin/*' --bin
 fresh jasoncodes/dotfiles bin/pidof --bin
 fresh pengwynn/dotfiles bin/e --bin
 fresh pengwynn/dotfiles bin/gibo --bin
-fresh pengwynn/dotfiles bin/notes --bin
 fresh holman/spark spark --bin
 fresh defunkt/repl bin/repl --bin
 
-# moreutils
-fresh git://git.kitenet.net/moreutils vipe --bin
-fresh git://git.kitenet.net/moreutils chronic --bin
-fresh git://git.kitenet.net/moreutils sponge --bin
-
-fresh sorin-ionescu/prezto '*' --file=~/zprezto/
+# Set up directories
+# This doesn't seem to work at all...
+#
+#fresh sorin-ionescu/prezto '*'  --file=~/.zprezto/
