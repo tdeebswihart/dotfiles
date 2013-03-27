@@ -1,0 +1,43 @@
+#!/bin/sh
+#!/usr/bin/env bash
+
+#- newscript 1.0
+#- All Rights Reversed 2013 Tim Swihart
+#- Help/version ideas via <http://blog.saunter.org/blog/2013/03/23/include-usage-information-with-scripts/>
+
+## Usage: newscript script_name...
+##
+## -h Show help options.
+## -v Print version info.
+
+help=$(grep "^## " "${BASH_SOURCE[0]}" | cut -c 4-)
+version=$(grep "^#- " "${BASH_SOURCE[0]}" | cut -c 4-)
+PATTERN='TODO|HACK|FIXME|OPTIMIZE'
+
+opt_p() {
+  if [[ -z $PATTERN ]]; then
+    PATTERN='TODO|HACK|FIXME|OPTIMIZE'
+  fi
+}
+
+while getopts "hvp:" opt; do
+  case $opt in
+    h)
+      echo "$help"
+      ;;
+    v)
+      echo "$version"
+      ;;
+    p)
+      PATTERN=$OPTARG
+      ;;
+  esac
+done
+shift $(($OPTIND - 1))
+
+if [[ $# -lt 1 ]]; then
+  ag $PATTERN .
+else
+  ag $PATTERN $@
+fi
+
