@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# open the specified file in Mou.app
+
+if [[ -n "$1" && ! -f $1 ]]; then
+    touch $1;
+fi
+
+osascript <<EOF
+tell application "Mou"
+    open "$(pwd)/$1"
+end tell
+EOF
