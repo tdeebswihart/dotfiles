@@ -108,7 +108,7 @@ Bundle 'othree/html5.vim'
 Bundle 'altercation/vim-colors-solarized'
 
 " Configuration
-set guifont=Inconsolata\ 14
+set guifont=Inconsolata\ for\ Powerline\ 14
 syntax on        " turn on hilighting
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'filename'
