@@ -4,6 +4,7 @@ filetype off                   " required!
 set rtp+=~/.vim/bundle/vundle/
 set rtp +=~/.vim.local/
 set rtp +=~/.fresh/source/chronoslynx/dotfiles/vim/bundles/smyck/
+set rtp+=~/Development/tools/powerline/bindings/vim
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
@@ -113,7 +114,7 @@ let g:Powerline_stl_path_style = 'filename'
 let g:Powerline_theme = 'skwp'
 let g:Powerline_colorscheme = 'skwp'
 set encoding=utf-8
-set fillchars+=stl:\ ,stlnc:\
+" set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
 set t_Co=256
 set number
@@ -240,6 +241,8 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
+
+set clipboard=unnamed
 " Yank text to the OS X clipboard
 noremap <leader>y "*y
 noremap <leader>yy "*Y
