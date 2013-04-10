@@ -15,7 +15,7 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 Bundle 'majutsushi/tagbar'
 
-Bundle 'tpope/vim-fugitive'
+" Bundle 'tpope/vim-fugitive'
 
 Bundle 'Lokaltog/vim-easymotion'
 
@@ -44,7 +44,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-eunuch'
 
 " Vim personal wiki. hooked into trunknotes for me
-Bundle 'vim-scripts/vimwiki'
+" Bundle 'vim-scripts/vimwiki'
 
 
 " CVS (git,hg...) functionality
@@ -52,12 +52,12 @@ Bundle 'vim-scripts/vimwiki'
 
 " Better status bar
 " Bundle 'default/vim-powerline'
-Bundle 'Lokaltog/powerline'
+" Bundle 'Lokaltog/powerline'
 
 " Escapes ANSI codes
 Bundle 'vim-scripts/AnsiEsc.vim'
 
-" Resizes panes to a nicer ration
+" Resizes panes to a nicer ratio
 Bundle 'roman/golden-ratio'
 
 Bundle 'vim-scripts/ShowMarks7'
@@ -101,7 +101,7 @@ Bundle 'mmalecki/vim-node.js'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'https://github.com/ChrisYip/Better-CSS-Syntax-for-Vim.git'
 Bundle 'othree/html5.vim'
-
+Bundle 'nblock/vim-dokuwiki'
 
 
 " Colors
@@ -149,7 +149,7 @@ inoremap jj <Esc>
 
 set backup
 set autowrite
-set backupdir=~/.vim-tmp~/.tmp,~/tmp,/var/tmp,/tmp
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backspace=indent,eol,start
 
