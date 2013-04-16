@@ -45,14 +45,9 @@ Bundle 'tpope/vim-eunuch'
 
 " Vim personal wiki. hooked into trunknotes for me
 " Bundle 'vim-scripts/vimwiki'
+" Multiple-cursors (sublimetext-like)
+Bundle 'terryma/vim-multiple-cursors'
 
-
-" CVS (git,hg...) functionality
-"Bundle 'vim-scripts/aurum'
-
-" Better status bar
-" Bundle 'default/vim-powerline'
-" Bundle 'Lokaltog/powerline'
 
 " Escapes ANSI codes
 Bundle 'vim-scripts/AnsiEsc.vim'
