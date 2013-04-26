@@ -161,6 +161,8 @@ set tabstop=4
 set softtabstop=4
 " Set auto indent spacing.
 set shiftwidth=4
+" automatically change directories when opening files
+" set autochdir
 " " Shift to the next round tab stop.
 set shiftround
 set smartindent

@@ -12,13 +12,13 @@ Linux)
     hash keychain && eval 'keychain --eval id_rsa'
     ;;
 Darwin)
-    # set JAVA_HOME if on Mac OS
+    ## set JAVA_HOME if on Mac OS
     if [ -z "$JAVA_HOME" -a -d /System/Library/Frameworks/JavaVM.framework/Home ]
     then
         export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
     fi
 
-    # Setting up path prefix
+    ## Setting up path prefix
     export PATHPREFIX=""
     if [[ -d "$HOME/Applications/adt-bundle-mac-x86_64" ]]; then
         export PATHPREFIX=$PATHPREFIX:"$HOME/Applications/adt-bundle-mac-x86_64/sdk/tools"
@@ -29,8 +29,11 @@ Darwin)
     if [[ -d "/usr/local/heroku/bin" ]]; then
         export PATHPREFIX=$PATHPREFIX:/usr/local/heroku/bin
     fi
+    if [[ -d '/usr/local/share/python' ]]; then
+        export PATHPREFIX=$PATHPREFIX:/usr/local/share/python
+    fi
 
-    #CUDA
+    ## CUDA
     export PATHPREFIX=/Developer/NVIDIA/CUDA-5.0/bin:$PATHPREFIX
     #export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-5.0/lib:$DYLD_LIBRARY_PATH
 
