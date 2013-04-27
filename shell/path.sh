@@ -29,8 +29,11 @@ Darwin)
     if [[ -d "/usr/local/heroku/bin" ]]; then
         export PATHPREFIX=$PATHPREFIX:/usr/local/heroku/bin
     fi
-    if [[ -d '/usr/local/share/python' ]]; then
+    if [[ -d "/usr/local/share/python" ]]; then
         export PATHPREFIX=$PATHPREFIX:/usr/local/share/python
+    fi
+    if [[ -d "/Users/chronon/Library/Haskell/bin" ]]; then
+        export PATHPREFIX=$PATHPREFIX:/Users/chronon/Library/Haskell/bin
     fi
 
     ## CUDA

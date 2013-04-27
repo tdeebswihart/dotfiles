@@ -20,14 +20,15 @@ opt_v() {
     echo "$version"
 }
 
+while getopts "hv" opt; do
+    eval "opt_$opt"
+done
+
 if [[ -z $1 ]]; then
     opt_h
     exit 1
 fi
 
-while getopts "hv" opt; do
-    eval "opt_$opt"
-done
 
 if [[ -n "$1" && ! -f $1 ]]; then
     touch $1;
