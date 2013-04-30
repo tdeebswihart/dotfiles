@@ -35,16 +35,14 @@ Darwin)
     if [[ -d "/Users/chronon/Library/Haskell/bin" ]]; then
         export PATHPREFIX=$PATHPREFIX:/Users/chronon/Library/Haskell/bin
     fi
+    if [[ -d "/Users/chronon/.cabal/bin" ]]; then
+        export PATHPREFIX=$PATHPREFIX:/Users/chronon/.cabal/bin
+    fi
 
     ## CUDA
     export PATHPREFIX=/Developer/NVIDIA/CUDA-5.0/bin:$PATHPREFIX
     #export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-5.0/lib:$DYLD_LIBRARY_PATH
 
-    # load Homebrew's shell completion
-    if which brew &> /dev/null && [ -f "$(brew --prefix)/Library/Contributions/brew_zsh_completion.sh" ]
-    then
-        source "$(brew --prefix)/Library/Contributions/brew_zsh_completion.sh"
-    fi
 
     ;;
 esac
