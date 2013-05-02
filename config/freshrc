@@ -1,0 +1,20 @@
+fresh freshshell/fresh bin/fresh --bin
+
+# dotfiles
+fresh chronoslynx/dotfiles 'config/*' --file
+fresh chronoslynx/dotfiles 'shell/*'
+fresh chronoslynx/dotfiles 'aliases/*'
+
+## binfiles
+fresh chronoslynx/dotfiles 'bin/*' --bin
+fresh jasoncodes/dotfiles bin/pidof --bin
+fresh pengwynn/dotfiles bin/e --bin
+fresh pengwynn/dotfiles bin/gibo --bin
+# fresh holman/spark spark --bin
+# fresh defunkt/repl bin/repl --bin
+fresh nodiscc/scriptz dev/convert-markdown-to-dokuwiki.py --bin='~/bin/md2wiki'
+
+# Set up directories
+# This doesn't seem to work at all...
+#
+#fresh sorin-ionescu/prezto '*'  --file=~/.zprezto/
