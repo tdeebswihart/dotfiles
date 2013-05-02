@@ -11,7 +11,8 @@ fresh jasoncodes/dotfiles bin/pidof --bin
 fresh pengwynn/dotfiles bin/e --bin
 fresh pengwynn/dotfiles bin/gibo --bin
 # fresh holman/spark spark --bin
-fresh defunkt/repl bin/repl --bin
+# fresh defunkt/repl bin/repl --bin
+fresh nodiscc/scriptz dev/convert-markdown-to-dokuwiki.py --bin='~/bin/md2wiki'
 
 # Set up directories
 # This doesn't seem to work at all...
