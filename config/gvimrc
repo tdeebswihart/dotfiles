@@ -2,5 +2,6 @@ set guioptions-=m
 set guioptions-=M
 set guioptions-=T
 set guioptions-=r
+set guifont=Inconsolata\ for\ Powerline:14
 source ~/.vimrc
 set nocompatible
