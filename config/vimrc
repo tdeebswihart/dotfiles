@@ -107,8 +107,8 @@ set guifont=Inconsolata\ for\ Powerline:14
 syntax on        " turn on hilighting
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'filename'
-let g:Powerline_theme = 'skwp'
-let g:Powerline_colorscheme = 'skwp'
+let g:Powerline_theme = 'solarized'
+let g:Powerline_colorscheme = 'solarized'
 set encoding=utf-8
 " set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
@@ -232,7 +232,7 @@ set wildignore+=*.DS_Store
 
 "set runtimepath+=~/.vim.local
 "let $PAGER=''
-color smyck "solarized
+color solarized
 set background=dark
 
 "" Use ctrl-[hjkl] to select the active split!
