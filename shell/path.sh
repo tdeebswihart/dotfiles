@@ -2,6 +2,9 @@ case `uname -s` in
 Linux)
     export PATHPREFIX="/usr/lib/lightdm/lightdm:/opt/metasploit-framework:/opt/metasploit-framework/tools"
     export PYTHONPATH="$PYTHONPATH:/usr/local/lib/python2.6/dist-packages"
+    if [[ -d "$HOME/.rbenv" ]]; then
+        export PATHPREFIX="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATHPREFIX"
+    fi
 
     hash clang && export CC=/usr/bin/clang
     hash clang++ && export CXX=/usr/bin/clang++
@@ -32,10 +35,10 @@ Darwin)
     if [[ -d "/usr/local/share/python" ]]; then
         export PATHPREFIX=$PATHPREFIX:/usr/local/share/python
     fi
-    if [[ -d "/Users/chronon/Library/Haskell/bin" ]]; then
+    if [[ -d "$HOME/Library/Haskell/bin" ]]; then
         export PATHPREFIX=$PATHPREFIX:/Users/chronon/Library/Haskell/bin
     fi
-    if [[ -d "/Users/chronon/.cabal/bin" ]]; then
+    if [[ -d "$HOME/.cabal/bin" ]]; then
         export PATHPREFIX=$PATHPREFIX:/Users/chronon/.cabal/bin
     fi
 
