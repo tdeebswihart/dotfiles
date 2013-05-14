@@ -7,9 +7,9 @@ xmodmap /home/si-coop123-d01/.Xmodmap
 #xscreensaver &
 #xbindkeys &
 sh /home/si-coop123-d01/.screenlayout/default.sh
-urxvt &
+urxvtd -q -f -o &
 feh --bg-scale /home/si-coop123-d01/Pictures/ssep.png
-conky | while read -r; do xsetroot -name "$REPLY"; done &
+#conky | while read -r; do xsetroot -name "$REPLY"; done &
 pidgin &
 firefox &
 thunderbird &

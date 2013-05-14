@@ -46,7 +46,8 @@ URxvt*cursorUnderline: false
 
 ! Extensions (tabbed)
 URxvt.perl-ext-common: default,matcher
-URxvt.urlLauncher: /usr/bin/chromium URxvt.matcher.button: 1
+URxvt.urlLauncher: /usr/bin/firefox
+URxvt.matcher.button: 1
 URxvt.tabbed.tabbar-fg: 0
 URxvt.tabbed.tabbar-bg: 0
 URxvt.tabbed.tab-fg: foreground

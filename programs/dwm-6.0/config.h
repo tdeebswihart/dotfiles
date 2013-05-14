@@ -24,6 +24,7 @@ static const Rule rules[] = {
 	{ "Firefox",  NULL,       NULL,       (1 << 1),     False,        1 },
 	{ "vmware",   NULL,       NULL,       (1 << 2),     False,        0 },
 	{ "urxvt",    NULL,       NULL,       (1 << 0),     False,        0 },
+	{ "urxvtc",    NULL,       NULL,       (1 << 0),     False,        0 },
 };
 
 /* layout(s) */
@@ -53,7 +54,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "urxvt", NULL };
+static const char *termcmd[]  = { "urxvtc", NULL };
 static const char *webcmd[] = { "firefox", NULL };
 
 static Key keys[] = {
