@@ -24,9 +24,6 @@ static const Rule rules[] = {
 	{ "Firefox",  NULL,       NULL,       (1 << 1),     False,        1 },
 	{ "vmware",   NULL,       NULL,       (1 << 2),     False,        0 },
 	{ "urxvt",    NULL,       NULL,       (1 << 0),     False,        0 },
-	{ "uzbl",     NULL,       NULL,       (1 << 1),     False,        0 },
-	{ "uzbl-browser",   NULL,       NULL,       (1 << 1),     False,        0 },
-	{ "uzbl-tabbed",    NULL,       NULL,       (1 << 1),     False,        0 },
 };
 
 /* layout(s) */
@@ -57,11 +54,13 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
+static const char *webcmd[] = { "firefox", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,				XK_w,      spawn,          {.v = webcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
