@@ -2,12 +2,8 @@
 #include "/home/si-coop123-d01/.cli_colors/solarized"
 
 ! Fonts
-!URxvt*font: -*-ohsnap-medium-r-normal-*-12-*-*-*-*-*-*-*
-!URxvt*boldFont: -*-ohsnap-medium-b-normal-*-12-*-*-*-*-*-*-*
 URxvt*font: xft:Inconsolata for Powerline:pixelsize=16
 URxvt*boldFont: xft:Inconsolata for Powerline:bold:pixelsize=16
-!URxvt*font: xft:open sans:pixelsize=12
-!URxvt*boldFont: xft:open sans:bold:pixelsize=12
 
 ! font settings suggested by infinality
 !Xft.autohint: 1
