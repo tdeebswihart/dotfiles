@@ -11,7 +11,7 @@ bstack(Monitor *m) {
 		mh = m->nmaster ? m->mfact * m->wh : 0;
 		tw = m->ww / (n - m->nmaster);
 		ty = m->wy + mh;
-	} 
+	}
 	else {
 		mh = m->wh;
 		tw = m->ww;
@@ -21,13 +21,13 @@ bstack(Monitor *m) {
 		if(i < m->nmaster) {
 			w = (m->ww - mx) / (MIN(n, m->nmaster) - i);
 			resize(c, m->wx + mx, m->wy, w - (2 * c->bw), mh - (2 * c->bw), False);
-			mx += WIDTH(c);
-		} 
+			mx += WIDTH(c) + 2 * globalborder;	//uselessgaps modified
+		}
 		else {
 			h = m->wh - mh;
 			resize(c, tx, ty, tw - (2 * c->bw), h - (2 * c->bw), False);
 			if(tw != m->ww)
-				tx += WIDTH(c);
+				tx += WIDTH(c) + 2 * globalborder;	//uselessgaps modified
 		}
 	}
 }
