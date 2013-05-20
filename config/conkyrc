@@ -5,4 +5,4 @@ update_interval 1
 use_spacer none
 
 TEXT
-cpu :: ${lua_parse pad3 ${cpu cpu0}}%:${lua_parse pad3 ${cpu cpu1}}%:${lua_parse pad3 ${cpu cpu2}}%:${lua_parse pad3 ${cpu cpu3}}% | mem :: ${lua_parse pad3 ${memperc}} | ${if_running openvpn}VPN${else}GTRI${endif} | time :: ${time %F %T %Z}
+cpu :: ${lua_parse pad3 ${cpu cpu0}}%:${lua_parse pad3 ${cpu cpu1}}%:${lua_parse pad3 ${cpu cpu2}}%:${lua_parse pad3 ${cpu cpu3}}% | mem :: ${lua_parse pad3 ${memperc}}% | ${if_running openvpn}${color green}VPN${color default}${else}GTRI${endif} | time :: ${time %F %T %Z}
