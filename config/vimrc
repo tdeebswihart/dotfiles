@@ -311,3 +311,5 @@ aug cursorline
     au InsertLeave * set cursorline
 aug end
 
+" Stop putting python comments at the beginning of a line
+au! FileType python setl nosmartindent

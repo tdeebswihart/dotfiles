@@ -1,5 +1,8 @@
+lua_load ~/.conky_lua_scripts.lua
 out_to_console yes
 out_to_x no
 update_interval 1
+use_spacer none
+
 TEXT
-net: ${downspeed eth0}, ${upspeed eth0} | cpu: ${cpu cpu0}%:${cpu cpu1}%:${cpu cpu2}%:${cpu cpu3}% | mem: $mem/$memmax | ${if_running openvpn}VPN${else}GTRI${endif} | time: ${time %F %T %Z}
+cpu :: ${cpu cpu0}%:${lua_parse pad3 ${cpu cpu1}}%:${cpu cpu2}%:${cpu cpu3}% | mem :: $mem/$memmax | ${if_running openvpn}VPN${else}GTRI${endif} | time :: ${time %F %T %Z}
