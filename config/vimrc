@@ -303,6 +303,49 @@ let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
 let g:EasyMotion_leader_key = ';'
 
+""" Python-Mode setup
+let g:pymode = 1
+" disable pylint on every save
+let g:pymode_lint_write = 0
+" press <leader>r to run python code
+let g:pymode_run_key = '<leader>r'
+" Press <leader>h to show docs
+let g:pymode_doc_key = '<leader>h'
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_space_errors = g:pymode_syntax_all
+" Highlight string formatting
+let g:pymode_syntax_string_formatting = g:pymode_syntax_all
+
+" Highlight str.format syntax
+let g:pymode_syntax_string_format = g:pymode_syntax_all
+
+" Highlight string.Template syntax
+let g:pymode_syntax_string_templates = g:pymode_syntax_all
+
+" Highlight doc-tests
+let g:pymode_syntax_doctests = g:pymode_syntax_all
+
+" Highlight builtin objects (__doc__, self, etc)
+let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
+
+" Highlight builtin functions
+let g:pymode_syntax_builtin_funcs = g:pymode_syntax_all
+
+" Highlight exceptions
+let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
+
+" Highlight equal operator
+let g:pymode_syntax_highlight_equal_operator = g:pymode_syntax_all
+
+" Highlight stars operator
+let g:pymode_syntax_highlight_stars_operator = g:pymode_syntax_all
+
+" Highlight `self`
+let g:pymode_syntax_highlight_self = g:pymode_syntax_all
+
+
 
 
 "" AUTOCOMMANDS
