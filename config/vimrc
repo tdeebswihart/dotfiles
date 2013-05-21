@@ -306,7 +306,7 @@ let g:EasyMotion_leader_key = ';'
 """ Python-Mode setup
 "let g:pymode = 1
 "" disable pylint on every save
-"let g:pymode_lint_write = 0
+let g:pymode_lint_write = 0
 "" press <leader>r to run python code
 "let g:pymode_run_key = '<leader>r'
 "" Press <leader>h to show docs
