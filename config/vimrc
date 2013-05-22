@@ -240,6 +240,10 @@ noremap <leader>yy "*Y
 " Preserve indentation while pasting text from the OS X clipboard
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
+" Map :cnext and :cprevious to make quickfix jumping easy
+noremap <leader>h :cprevious
+noremap <leader>l :cnext
+
 " kill all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 call togglebg#map("<F6>")
@@ -306,8 +310,8 @@ let g:EasyMotion_leader_key = ';'
 "" Python-Mode setup
 " disable pylint on every save
 "let g:pymode_lint_write = 0
-" Press <leader>h to show docs
-let g:pymode_doc_key = '<leader>h'
+" Press <leader>d to show docs
+let g:pymode_doc_key = '<leader>d'
 " Use PyFlakes first
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
 
