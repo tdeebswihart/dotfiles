@@ -241,8 +241,8 @@ noremap <leader>yy "*Y
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 " Map :cnext and :cprevious to make quickfix jumping easy
-noremap <leader>h :cprevious
-noremap <leader>l :cnext
+noremap <leader>h :cprevious<CR>
+noremap <leader>l :cnext<CR>
 
 " kill all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
