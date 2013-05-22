@@ -305,7 +305,7 @@ let g:EasyMotion_leader_key = ';'
 
 "" Python-Mode setup
 " disable pylint on every save
-let g:pymode_lint_write = 0
+"let g:pymode_lint_write = 0
 " Press <leader>h to show docs
 let g:pymode_doc_key = '<leader>h'
 " Use PyFlakes first
