@@ -1,5 +1,10 @@
-export TODOTXT_DEFAULT_ACTION=pv
-export BLOGROOT="$DEV/chronoslynx.github.io"
+TODOTXT_DEFAULT_ACTION=pv
+BLOGROOT="$DEV/chronoslynx.github.io"
+
+HISTFILE="$HOME/.zhistory"
+SAVEHIST=1000
+
+export HISTFILE SAVEHIST BLOGROOT TODOTXT_DEFAULT_ACTION
 # export LANG=en_US.utf8
 # export LC_CTYPE=en_US.utf8
 #case $(uname -s) in
