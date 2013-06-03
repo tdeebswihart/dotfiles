@@ -46,7 +46,7 @@ Bundle 'vim-scripts/vimwiki'
 Bundle 'vim-scripts/AnsiEsc.vim'
 
 " Resizes panes to a nicer ratio
-Bundle 'roman/golden-ratio'
+" Bundle 'roman/golden-ratio'
 
 Bundle 'vim-scripts/ShowMarks7'
 
