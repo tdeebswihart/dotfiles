@@ -9,3 +9,5 @@ irssi/*.log
 .hg
 *.deb
 bin/nodejs/node_modules
+weechat/weeget/*
+weechat/logs/*
