@@ -1,0 +1,24 @@
+[color]
+	ui = auto # covers diff = true, status = auto, branch = auto
+	interactive = auto
+[core]
+	pager = less -r
+[alias]
+	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+	a = add
+	ap = add -p
+	au = add -u
+	br = branch
+	c = commit
+	cm = commit -m
+	co = checkout
+	d = diff --color-words
+	dh = diff --color-words head
+	f = fetch
+	l = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+	ll = log --stat --abbrev-commit
+	m = merge
+	pick = cherry-pick
+	ps = push
+	s = status
+	sh = stash
