@@ -7,6 +7,6 @@ ZSH_THEME="gallois"
 
 plugins=(git)
 
-test -f ~/secrets && source ~/.secrets #secrets!
+test -d ~/secrets && source ~/.secrets/*.sh #secrets!
 
 source ~/.fresh/build/shell.sh
