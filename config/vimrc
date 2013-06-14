@@ -76,6 +76,9 @@ Bundle 'vim-scripts/TaskList.vim'
 " Matching if/endif, not just {} [] ()
 Bundle 'vim-scripts/matchit.zip'
 
+" Syntastic for syntax checking
+Bundle 'scrooloose/syntastic'
+
 "" Syntaxes
 Bundle 'vim-scripts/Arduino-syntax-file'
 Bundle 'tpope/vim-git'
@@ -87,6 +90,7 @@ Bundle 'https://github.com/ChrisYip/Better-CSS-Syntax-for-Vim.git'
 Bundle 'othree/html5.vim'
 Bundle 'nblock/vim-dokuwiki'
 Bundle 'klen/python-mode'
+Bundle 'rodjek/vim-puppet'
 
 
 " Colors
@@ -304,6 +308,7 @@ let g:syntastic_disabled_filetypes = ['html', 'python']
 "
 " Set the display format.
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+let g:syntastic_always_populate_loc_list=1
 
 let g:EasyMotion_leader_key = ';'
 
@@ -313,7 +318,7 @@ let g:EasyMotion_leader_key = ';'
 " Press <leader>d to show docs
 let g:pymode_doc_key = '<leader>d'
 " Use PyFlakes first
-let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
+"let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
 
 
 
