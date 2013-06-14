@@ -10,8 +10,6 @@ sh /home/si-coop123-d01/.screenlayout/default.sh
 urxvtd -q -f -o &
 feh --bg-scale /home/si-coop123-d01/Pictures/ssep.png
 eval $(gnome-keyring-daemon --start) &
-#conky | while read -r; do xsetroot -name "$REPLY"; done &
-pidgin &
 firefox &
 thunderbird &
 exec dwmloop
