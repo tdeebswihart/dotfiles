@@ -7,6 +7,11 @@ ZSH_THEME="gallois"
 
 plugins=(git)
 
-test -d ~/secrets && source ~/.secrets/*.sh #secrets!
-
 source ~/.fresh/build/shell.sh
+
+if test -d ~/secrets; then
+  for i in $HOME/.secrets/*.sh; do
+    source $i
+  done
+fi
+
