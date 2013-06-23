@@ -39,6 +39,9 @@ Darwin)
         PATHPREFIX=$PATHPREFIX:/Users/chronon/.cabal/bin
     fi
 
+    # Fix for homebrew pkg-config
+    export PKG_CONFIG_PATH="/usr/local/Library/ENV/pkgconfig/10.8"
+
     ## CUDA
     PATHPREFIX=/Developer/NVIDIA/CUDA-5.0/bin:$PATHPREFIX
     #export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-5.0/lib:$DYLD_LIBRARY_PATH
