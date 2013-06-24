@@ -179,7 +179,7 @@ set printoptions+=number:y
 set cf
 set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable
+" set nofoldenable
 
 set wildmenu
 
@@ -228,13 +228,25 @@ set wildignore+=*.DS_Store
 "let $PAGER=''
 color solarized
 set background=dark
+call togglebg#map("<F6>")
+let g:solarized_termcolors=16
+set t_Co=16
+
+if has ('mouse')
+    set mouse=a
+    set mousemodel=popup_setpos
+    " Hide mouse while typing.
+    set mousehide"
+    if &term =~ "xterm" || &term =~ "screen"
+        set ttymouse=xterm2
+    endif
+endif
 
 "" Use ctrl-[hjkl] to select the active split!
 " nmap <silent> <c-k> :wincmd k<CR>
 " nmap <silent> <c-j> :wincmd j<CR>
 " nmap <silent> <c-h> :wincmd h<CR>
 " nmap <silent> <c-l> :wincmd l<CR>
-
 
 set clipboard=unnamed
 "
@@ -251,19 +263,6 @@ noremap <leader>l :cnext<CR>
 
 " kill all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
-call togglebg#map("<F6>")
-let g:solarized_termcolors=16
-set t_Co=16
-
-if has ('mouse')
-    set mouse=a
-    set mousemodel=popup_setpos
-    " Hide mouse while typing.
-    set mousehide"
-    if &term =~ "xterm" || &term =~ "screen"
-        set ttymouse=xterm2
-    endif
-endif
 
 let g:html_indent_inctags = "html,body,head,tbody,div"
 let g:html_indent_script1 = "inc"
@@ -281,26 +280,6 @@ let g:ctrlp_max_height = 10
 let g:ctrlp_persistent_input = 0
 let g:ctrlp_lazy_update = 1
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir']
-let g:splice_prefix = "<LocalLeader>-"
-
-let g:splice_initial_mode = "grid"
-
-let g:splice_initial_layout_grid = 1
-let g:splice_initial_layout_loupe = 0
-let g:splice_initial_layout_compare = 0
-let g:splice_initial_layout_path = 0
-
-let g:splice_initial_diff_grid = 1
-let g:splice_initial_diff_loupe = 0
-let g:splice_initial_diff_compare = 0
-let g:splice_initial_diff_path = 0
-
-let g:splice_initial_scrollbind_grid = 0
-let g:splice_initial_scrollbind_loupe = 0
-let g:splice_initial_scrollbind_compare = 0
-let g:splice_initial_scrollbind_path = 0
-
-let g:splice_wrap = "nowrap"
 
 let g:syntastic_quiet_warnings = 0
 
@@ -309,7 +288,7 @@ let g:syntastic_disabled_filetypes = ['html', 'python']
 "
 " Set the display format.
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-let g:syntastic_always_populate_loc_list=1
+let g:syntastic_always_populate_loc_list=0
 
 let g:EasyMotion_leader_key = ';'
 
@@ -318,10 +297,6 @@ let g:EasyMotion_leader_key = ';'
 "let g:pymode_lint_write = 0
 " Press <leader>d to show docs
 let g:pymode_doc_key = '<leader>d'
-" Use PyFlakes first
-"let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
-
-
 
 
 "" AUTOCOMMANDS
@@ -336,3 +311,7 @@ aug end
 
 " Stop putting python comments at the beginning of a line
 au! FileType python setl nosmartindent
+
+" Save and load fold states
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
