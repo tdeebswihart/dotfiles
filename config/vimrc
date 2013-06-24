@@ -131,7 +131,7 @@ noremap <leader>eh :vsplit ./
 nnoremap ' `
 nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>G <Plug>(golden_ratio_resize)
-let g:golden_ratio_autocommand = 1
+
 nnoremap ` '
 nnoremap <Leader>S :%s//<left>
 inoremap jj <Esc>
@@ -247,6 +247,13 @@ endif
 " nmap <silent> <c-j> :wincmd j<CR>
 " nmap <silent> <c-h> :wincmd h<CR>
 " nmap <silent> <c-l> :wincmd l<CR>
+
+" Fold opening and closing
+nmap <silent> <c-,> zc
+map <silent> <c-,> zc
+
+nmap <silent> <c-.> zO
+map <silent> <c-.> zO
 
 set clipboard=unnamed
 "
