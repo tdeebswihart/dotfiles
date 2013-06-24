@@ -249,11 +249,8 @@ endif
 " nmap <silent> <c-l> :wincmd l<CR>
 
 " Fold opening and closing
-nmap <c-,> zc
-map <c-,> zc
-
-nmap <c-.> zO
-map <c-.> zO
+nmap . za
+map . za
 
 set clipboard=unnamed
 "
