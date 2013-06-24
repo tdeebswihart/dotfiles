@@ -3,8 +3,9 @@ filetype off                   " required!
 
 set rtp+=~/.vim/bundle/vundle/
 set rtp +=~/.vim.local/
-set rtp +=~/.fresh/source/chronoslynx/dotfiles/vim/bundles/smyck/
-source ~/Development/tools/powerline/powerline/bindings/vim/plugin/powerline.vim
+"set rtp +=~/.fresh/source/chronoslynx/dotfiles/vim/bundles/smyck/
+set rtp+=~/Development/tools/powerline/powerline/bindings/vim
+"source ~/Development/tools/powerline/powerline/bindings/vim/plugin/powerline.vim
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
@@ -38,9 +39,6 @@ Bundle 'tpope/vim-eunuch'
 
 " Vim personal wiki. hooked into trunknotes for me
 Bundle 'vim-scripts/vimwiki'
-
-" Multiple-cursors (sublimetext-like)
-" Bundle 'terryma/vim-multiple-cursors'
 
 " Escapes ANSI codes
 Bundle 'vim-scripts/AnsiEsc.vim'
@@ -79,14 +77,17 @@ Bundle 'vim-scripts/matchit.zip'
 " Syntastic for syntax checking
 Bundle 'scrooloose/syntastic'
 
+" Window Management
+Bundle 'spolu/dwm.vim'
+
 "" Syntaxes
-Bundle 'vim-scripts/Arduino-syntax-file'
+" Bundle 'vim-scripts/Arduino-syntax-file'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-haml'
 Bundle 'pangloss/vim-javascript'
 Bundle 'mmalecki/vim-node.js'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'https://github.com/ChrisYip/Better-CSS-Syntax-for-Vim.git'
+Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
 Bundle 'othree/html5.vim'
 Bundle 'nblock/vim-dokuwiki'
 Bundle 'klen/python-mode'
@@ -229,10 +230,10 @@ color solarized
 set background=dark
 
 "" Use ctrl-[hjkl] to select the active split!
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
+" nmap <silent> <c-k> :wincmd k<CR>
+" nmap <silent> <c-j> :wincmd j<CR>
+" nmap <silent> <c-h> :wincmd h<CR>
+" nmap <silent> <c-l> :wincmd l<CR>
 
 
 set clipboard=unnamed
