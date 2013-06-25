@@ -127,8 +127,6 @@ let mapleader = ","
 noremap <leader>w :w<CR>
 noremap <leader>W :w!sudo tee %
 noremap <leader>q :q<CR>
-noremap <leader>n :bnext<CR>
-noremap <leader>N :bprevious<CR>
 noremap <leader>ev :vsplit ./
 noremap <leader>eh :vsplit ./
 nnoremap ' `
@@ -264,9 +262,10 @@ noremap <leader>yy "*Y
 " Preserve indentation while pasting text from the OS X clipboard
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
-" Map :cnext and :cprevious to make tab hopping easy
+" Map :tabnext and :tabprevious to make tab hopping easy
 nnoremap <C-h> :tabp<CR>
 nnoremap <C-l> :tabn<CR>
+nnoremap <leader>nt :tabnew ./
 
 " kill all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
