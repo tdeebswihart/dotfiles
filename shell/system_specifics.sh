@@ -1,7 +1,7 @@
 case `uname -s` in
 Linux)
     PATHPREFIX="/usr/lib/lightdm/lightdm:/opt/metasploit-framework:/opt/metasploit-framework/tools"
-    export PYTHONPATH="$PYTHONPATH:/usr/local/lib/python2.6/dist-packages"
+    #export PYTHONPATH="$PYTHONPATH:/usr/local/lib/python2.6/dist-packages"
     if [[ -d "$HOME/.rbenv" ]]; then
         PATHPREFIX="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATHPREFIX"
     fi

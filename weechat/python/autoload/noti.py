@@ -24,7 +24,7 @@ for option, defval in settings.items():
         weechat.config_set_plugin(option, defval)
 
 hook = weechat.hook_print("", "", "", 1, "notify", "") #all messages, all buffers
-pynotify.init("weechat-notipy")
+pynotify.init("weechat")
 
 def notify(data, bufp, date, tags, displayed, highlight, prefix, message):
     chan = (weechat.buffer_get_string(bufp, "short_name") or

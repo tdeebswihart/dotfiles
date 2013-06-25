@@ -97,6 +97,9 @@ Bundle 'rodjek/vim-puppet'
 " Colors
 Bundle 'altercation/vim-colors-solarized'
 
+" Tab management
+Bundle 'kien/tabman.vim'
+
 " Configuration
 syntax on        " turn on hilighting
 let g:Powerline_symbols = 'fancy'
@@ -249,8 +252,8 @@ endif
 " nmap <silent> <c-l> :wincmd l<CR>
 
 " Fold opening and closing
-nmap . za
-map . za
+nmap <leader>. za
+map <leader>. za
 
 set clipboard=unnamed
 "
@@ -261,9 +264,9 @@ noremap <leader>yy "*Y
 " Preserve indentation while pasting text from the OS X clipboard
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
-" Map :cnext and :cprevious to make quickfix jumping easy
-noremap <leader>h :cprevious<CR>
-noremap <leader>l :cnext<CR>
+" Map :cnext and :cprevious to make tab hopping easy
+noremap <leader>h :tabp<CR>
+noremap <leader>l :tabn<CR>
 
 " kill all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
@@ -272,9 +275,9 @@ let g:html_indent_inctags = "html,body,head,tbody,div"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
-" let g:vimwiki_list = [
-"             \ {'path': '~/Dropbox/trunksync/notes/ ', 'index': 'HomePage', 'path_html': '~/trunknotes_html', 'ext': '.markdown', 'auto_export': 0}
-"             \ ]
+let g:vimwiki_list = [
+            \ {'path': '~/Dropbox/trunksync/notes/ ', 'index': 'HomePage', 'path_html': '~/trunknotes_html', 'ext': '.markdown', 'auto_export': 0}
+            \ ]
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 let g:extradite_showhash = 1
