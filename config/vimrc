@@ -265,8 +265,8 @@ noremap <leader>yy "*Y
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 " Map :cnext and :cprevious to make tab hopping easy
-nnoremap <silent> <C-h> :tabp<CR>
-nnoremap <silent> <C-l> :tabn<CR>
+nnoremap <C-h> :tabp<CR>
+nnoremap <C-l> :tabn<CR>
 
 " kill all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
