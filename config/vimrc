@@ -17,7 +17,7 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'Lokaltog/vim-easymotion'
 
 " Tab smart completion
-Bundle 'ervandew/supertab'
+"Bundle 'ervandew/supertab'
 
 " Git setup
 Bundle 'tpope/vim-fugitive'
