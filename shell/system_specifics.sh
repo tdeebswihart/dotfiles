@@ -22,6 +22,7 @@ Darwin)
     PATHPREFIX=""
     if [[ -d "$HOME/Applications/adt-bundle-mac-x86_64" ]]; then
         PATHPREFIX=$PATHPREFIX:"$HOME/Applications/adt-bundle-mac-x86_64/sdk/tools"
+        PATHPREFIX=$PATHPREFIX:"$HOME/Applications/adt-bundle-mac-x86_64/sdk/platform-tools"
     fi
     if [[ -d "/usr/local/share/npm/bin" ]]; then
         PATHPREFIX="/usr/local/share/npm/bin"
