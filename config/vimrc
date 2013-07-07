@@ -18,7 +18,6 @@ NeoBundle 'shougo/vimproc'"
 
 
 "" Plugins
-NeoBundle 'rking/ag.vim'
 NeoBundle "shougo/unite.vim"
 
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
