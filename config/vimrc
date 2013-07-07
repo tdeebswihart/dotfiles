@@ -1,7 +1,7 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-" set rtp +=~/.vim.local/
+set rtp +=~/.vim.local/
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
@@ -129,6 +129,7 @@ noremap <leader>q :q<CR>
 noremap <leader>ev :vsplit ./
 noremap <leader>eh :vsplit ./
 nnoremap ' `
+nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>G <Plug>(golden_ratio_resize)
 
 nnoremap ` '
@@ -389,8 +390,10 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html,markdown setlocal
+omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal
+omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
@@ -405,11 +408,3 @@ let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:]*\t]\%(\.\|->\)
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl ='\h\w*->\h\w*\|\h\w*::'
-
-"" Unite.vim
-" Act like ctrlp.vim
-nnoremap <C-p> :Unite file_rec/async<cr>
-nnoremap <space>/ :Unite ag:.<cr>
-
-" Buffer swapping like lustyjuggler
-nnoremap <space>s :Unite -quick-match buffer<cr>
