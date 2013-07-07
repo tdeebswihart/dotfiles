@@ -26,7 +26,7 @@ NeoBundle 'Shougo/vimproc', {
 
 "" Plugins
 NeoBundle 'rking/ag.vim'
-NeoBundle "shougo/unite.vim"
+NeoBundle "Shougo/unite.vim"
 
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
