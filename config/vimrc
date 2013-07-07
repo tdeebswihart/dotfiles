@@ -9,16 +9,16 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
-NeoBundleFetch 'shougo/neobundle.vim'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Recommended to install
 " After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f
 " your_machines_makefile
-NeoBundle 'shougo/vimproc'"
+NeoBundle 'Shougo/vimproc'"
 
 
 "" Plugins
-NeoBundle "shougo/unite.vim"
+NeoBundle "Shougo/unite.vim"
 
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
@@ -26,7 +26,7 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'bling/vim-airline'
 
 " Completion interface
-NeoBundle "shougo/neocomplete.vim"
+NeoBundle "Shougo/neocomplete.vim"
 
 " Git setup
 NeoBundle 'tpope/vim-fugitive'
