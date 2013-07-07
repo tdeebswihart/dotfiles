@@ -1,109 +1,103 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
 set rtp +=~/.vim.local/
-"set rtp +=~/.fresh/source/chronoslynx/dotfiles/vim/bundles/smyck/
-"set rtp+=~/Development/tools/powerline/powerline/bindings/vim
-"source ~/Development/tools/powerline/powerline/bindings/vim/plugin/powerline.vim
-call vundle#rc()
+if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-Bundle 'gmarik/vundle'
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Recommended to install
+" After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f
+" your_machines_makefile
+NeoBundle 'Shougo/vimproc'"
+
 
 "" Plugins
-Bundle 'rking/ag.vim'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+NeoBundle "Shougo/unite.vim"
 
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'bling/vim-airline'
+NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'bling/vim-airline'
 
 " Completion interface
-Bundle "Shougo/neocomplete.vim"
-
-" Tab smart completion
-"Bundle 'ervandew/supertab'
+NeoBundle "Shougo/neocomplete.vim"
 
 " Git setup
-Bundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-fugitive'
 
 " Colors hex values in CSS files
-Bundle 'ap/vim-css-color'
+NeoBundle 'ap/vim-css-color'
 
 " Autocloses if->endif, etc...
-Bundle 'tpope/vim-endwise'
+NeoBundle 'tpope/vim-endwise'
 
 " Allows changing surrounding delimeters
-Bundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-surround'
 
 " Allows more things to be '.'ed
-Bundle 'tpope/vim-repeat'
-
-" Helps with unix neckbeardy stuff
-Bundle 'tpope/vim-eunuch'
+NeoBundle 'tpope/vim-repeat'
 
 " Vim personal wiki. hooked into trunknotes for me
-Bundle 'vim-scripts/vimwiki'
+NeoBundle 'vim-scripts/vimwiki'
 
-" Escapes ANSI codes
-Bundle 'vim-scripts/AnsiEsc.vim'
-
-" Resizes panes to a nicer ratio
-" Bundle 'roman/golden-ratio'
-
-Bundle 'vim-scripts/ShowMarks7'
-
-" Fuzzy file finding
-Bundle 'kien/ctrlp.vim'
+NeoBundle 'vim-scripts/ShowMarks7'
 
 " Better pasting
-Bundle 'sickill/vim-pasta'
+NeoBundle 'sickill/vim-pasta'
 
 " Colors parens
-Bundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'kien/rainbow_parentheses.vim'
 
 " Automatically closes quotes, parenthesis, brackets, etc.
-Bundle 'Raimondi/delimitMate'
+NeoBundle 'Raimondi/delimitMate'
 
-Bundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
 " 3-way merge manager
-Bundle 'sjl/splice.vim'
+NeoBundle 'sjl/splice.vim'
 
 " Indent finder
-Bundle 'Raimondi/YAIFA'
+NeoBundle 'Raimondi/YAIFA'
 
 " looks for todos
-Bundle 'vim-scripts/TaskList.vim'
+NeoBundle 'vim-scripts/TaskList.vim'
 
 " Matching if/endif, not just {} [] ()
-Bundle 'vim-scripts/matchit.zip'
+NeoBundle 'vim-scripts/matchit.zip'
 
 " Syntastic for syntax checking
-Bundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/syntastic'
 
 " Window Management
-Bundle 'spolu/dwm.vim'
+NeoBundle 'spolu/dwm.vim'
 
 "" Syntaxes
-" Bundle 'vim-scripts/Arduino-syntax-file'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-haml'
-Bundle 'pangloss/vim-javascript'
-Bundle 'mmalecki/vim-node.js'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
-Bundle 'othree/html5.vim'
-Bundle 'nblock/vim-dokuwiki'
-Bundle 'klen/python-mode'
-Bundle 'rodjek/vim-puppet'
+" NeoBundle 'vim-scripts/Arduino-syntax-file'
+NeoBundle 'tpope/vim-git'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mmalecki/vim-node.js'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'nblock/vim-dokuwiki'
+NeoBundle 'klen/python-mode'
+NeoBundle 'rodjek/vim-puppet'
 
 
 " Colors
-Bundle 'altercation/vim-colors-solarized'
+NeoBundle 'altercation/vim-colors-solarized'
 
 " Tab management
-Bundle 'kien/tabman.vim'
+NeoBundle 'kien/tabman.vim'
+
+NeoBundleCheck
 
 " Configuration
 syntax on        " turn on hilighting
