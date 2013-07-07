@@ -26,7 +26,7 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'bling/vim-airline'
 
 " Completion interface
-"NeoBundle "shougo/neocomplete.vim"
+NeoBundle "shougo/neocomplete.vim"
 
 " Git setup
 NeoBundle 'tpope/vim-fugitive'
