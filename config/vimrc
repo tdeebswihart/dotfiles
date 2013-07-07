@@ -23,6 +23,9 @@ NeoBundle 'Shougo/vimproc', {
       \    },
       \ }
 
+"" Colors
+NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'altercation/vim-colors-solarized'
 
 "" Plugins
 NeoBundle 'rking/ag.vim'
@@ -81,9 +84,6 @@ NeoBundle 'nblock/vim-dokuwiki'
 NeoBundle 'klen/python-mode'
 NeoBundle 'rodjek/vim-puppet'
 
-
-" Colors
-NeoBundle 'altercation/vim-colors-solarized'
 
 " Tab management
 NeoBundle 'kien/tabman.vim'
@@ -216,7 +216,7 @@ set wildignore+=*.DS_Store
 
 "set runtimepath+=~/.vim.local
 "let $PAGER=''
-color solarized
+colorscheme base16-default
 set background=dark
 call togglebg#map("<F6>")
 let g:solarized_termcolors=16
