@@ -10,12 +10,12 @@ https://www.github.com/nixmeal
 #define NUMCOLORS 6
 static const char colors[NUMCOLORS][ColLast][20] = {
     // border     fg         bg
-    { "#076342", "#839496", "#002b36" },  // 01 - normal
-    { "#2aa198", "#eee8d5", "#2aa198" },  // 02 - selected
-    { "#cb4b16", "#eee8d5", "#cb4b16" },  // 03 - urgent
-    { "#cb4b16", "#eee8d5", "#002b36" },  // 04 - orange (Occupied Color)
-    { "#839496", "#839496", "#002b36" },  // 05 - Light Blue
-    { "#859900", "#859900", "#002b36" },  // 06 - green
+    { "#b0b0b0", "#d0d0d0", "#151515" },  // 01 - normal
+    { "#e0e0e0", "#151515", "#e0e0e0" },  // 02 - selected
+    { "#ac4142", "#151515", "#ac4142" },  // 03 - urgent
+    { "#ac4142", "#d0d0d0", "#151515" },  // 04 - orange (Occupied Color)
+    { "#b0b0b0", "#b0b0b0", "#151515" },  // 05 - Light Blue
+    { "#90a959", "#90a959", "#151515" },  // 06 - green
 //    { "#877C43", "#877C43", "#020202" },  // 07 - yellow
 //    { "#1C678C", "#1C678C", "#020202" },  // 08 - blue
 //    { "#E300FF", "#E300FF", "#020202" },  // 09 - magenta
