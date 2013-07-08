@@ -10,11 +10,11 @@ https://www.github.com/nixmeal
 #define NUMCOLORS 6
 static const char colors[NUMCOLORS][ColLast][20] = {
     // border     fg         bg
-    { "#b0b0b0", "#d0d0d0", "#151515" },  // 01 - normal
-    { "#e0e0e0", "#151515", "#e0e0e0" },  // 02 - selected
+    { "#505050", "#b0b0b0", "#151515" },  // 01 - normal
+    { "#aa759f", "#151515", "#aa759f" },  // 02 - selected
     { "#ac4142", "#151515", "#ac4142" },  // 03 - urgent
-    { "#ac4142", "#d0d0d0", "#151515" },  // 04 - orange (Occupied Color)
-    { "#b0b0b0", "#b0b0b0", "#151515" },  // 05 - Light Blue
+    { "#ac4142", "#b0b0b0", "#151515" },  // 04 - orange (Occupied Color)
+    { "#6a9fb5", "#b0b0b0", "#151515" },  // 05 - Light Blue
     { "#90a959", "#90a959", "#151515" },  // 06 - green
 //    { "#877C43", "#877C43", "#020202" },  // 07 - yellow
 //    { "#1C678C", "#1C678C", "#020202" },  // 08 - blue
@@ -34,7 +34,7 @@ static const char colors[NUMCOLORS][ColLast][20] = {
 };
 
 static const char font[]					= "Inconsolata 12";
-static const unsigned int borderpx  		= 2;        	// border pixel of windows
+static const unsigned int borderpx  		= 1;        	// border pixel of windows
 static const unsigned int snap         		= 2;     	// snap pixel
 static const unsigned int gappx				= 0;		// gap pixel between windows (uselessgaps patch)
 static const Bool showbar               	= True;  	// False means no bar
