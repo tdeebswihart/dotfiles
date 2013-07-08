@@ -1,5 +1,5 @@
 ! Colors
-#include "/home/si-coop123-d01/.cli_colors/solarized"
+#include "/home/si-coop123-d01/.colors/base16-dark"
 
 ! Fonts
 URxvt*font: xft:Inconsolata for Powerline:pixelsize=16
