@@ -39,5 +39,11 @@
 *.color15:      base07
 
 !URxvt*fading: 40
-URxvt*pointerColorBackground:base01
+URxvt*pointerColorBackground:base03
 URxvt*pointerColorForeground:base0F
+
+URxvt*scrollColor: base07
+URxvt.colorIT: #605D5D
+URxvt.colorBD: #F9F9F9
+URxvt.colorUL: #FFA905
+URxvt.colorRV: #16596A
