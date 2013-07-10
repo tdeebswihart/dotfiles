@@ -7,7 +7,7 @@ https://www.github.com/nixmeal
 #include "push.c"
 #include "moveresize.c"
 #include "bstack.c"
-#define NUMCOLORS 6
+#define NUMCOLORS 7
 static const char colors[NUMCOLORS][ColLast][20] = {
     // border     fg         bg
     { "#505050", "#b0b0b0", "#151515" },  // 01 - normal
@@ -16,6 +16,7 @@ static const char colors[NUMCOLORS][ColLast][20] = {
     { "#ac4142", "#b0b0b0", "#151515" },  // 04 - orange (Occupied Color)
     { "#6a9fb5", "#b0b0b0", "#151515" },  // 05 - Light Blue
     { "#90a959", "#90a959", "#151515" },  // 06 - green
+    { "#aa759f", "#aa759f", "#151515" },  // 07 - bar title selected
 //    { "#877C43", "#877C43", "#020202" },  // 07 - yellow
 //    { "#1C678C", "#1C678C", "#020202" },  // 08 - blue
 //    { "#E300FF", "#E300FF", "#020202" },  // 09 - magenta
