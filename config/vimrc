@@ -92,12 +92,6 @@ NeoBundleCheck
 
 " Configuration
 syntax on        " turn on hilighting
-"let g:Powerline_symbols = 'fancy'
-"let g:Powerline_stl_path_style = 'filename'
-"let g:Powerline_theme = 'solarized'
-"let g:Powerline_colorscheme = 'solarized'
-"set encoding=utf-8
-" set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
 set t_Co=256
 set number

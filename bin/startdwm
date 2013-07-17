@@ -2,6 +2,7 @@
 xrdb -merge /home/si-coop123-d01/.Xresources
 xset +fp /usr/share/fonts/local
 xset fp rehash
+xscreensaver &
 xmodmap /home/si-coop123-d01/.Xmodmap
 sh /home/si-coop123-d01/.screenlayout/default.sh
 urxvtd -q -f -o &
