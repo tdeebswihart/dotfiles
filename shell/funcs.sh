@@ -9,3 +9,5 @@ hasteit() {
         ;;
     esac
 }
+
+test -f ~/.local.sh && source ~/.local.sh
