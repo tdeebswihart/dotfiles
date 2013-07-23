@@ -79,6 +79,7 @@ static const char *webcmd[] = { "firefox", NULL };
 static const char *killdwm[]		=	{ "killall", "dwm", NULL };
 static const char *fileman[] 		= 	{ "pcmanfm", NULL };
 static const char *terminal[]  		= 	{ "urxvtc", NULL };
+static const char *slockcmd[]  		= 	{ "xscreensaver-command", "-lock", NULL };
 //static const char *thunarterm[]		=	{ "/home/garry/.scripts/thunarterm", NULL };
 //static const char *composite[]		=	{ "/home/garry/.scripts/composite", NULL };
 
@@ -97,6 +98,7 @@ static Key keys[] = {
 	{ Modkey|ShiftMask,             XK_Return, spawn,          {.v = terminal } },
 	{ Modkey|ShiftMask,				XK_w,      spawn,          {.v = webcmd } },
 	{ Modkey,						XK_e,      spawn,          {.v = fileman } },
+	{ Modkey|ShiftMask,             XK_l,      spawn,          {.v = slockcmd } },
 	{ Modkey,                       XK_b,      togglebar,      {0} },
 	{ Modkey,                       XK_j,      focusstack,     {.i = +1 } },
 	{ Modkey,                       XK_k,      focusstack,     {.i = -1 } },
