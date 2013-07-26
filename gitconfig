@@ -3,6 +3,8 @@
 	interactive = auto
 [core]
 	pager = less -r
+[push]
+    default = upstream
 [alias]
 	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 	a = add
