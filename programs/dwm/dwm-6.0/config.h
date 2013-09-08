@@ -7,15 +7,16 @@ https://www.github.com/nixmeal
 #include "push.c"
 #include "moveresize.c"
 #include "bstack.c"
-#define NUMCOLORS 6
+#define NUMCOLORS 7
 static const char colors[NUMCOLORS][ColLast][20] = {
     // border     fg         bg
-    { "#076342", "#839496", "#002b36" },  // 01 - normal
-    { "#2aa198", "#eee8d5", "#2aa198" },  // 02 - selected
-    { "#cb4b16", "#eee8d5", "#cb4b16" },  // 03 - urgent
-    { "#cb4b16", "#eee8d5", "#002b36" },  // 04 - orange (Occupied Color)
-    { "#839496", "#839496", "#002b36" },  // 05 - Light Blue
-    { "#859900", "#859900", "#002b36" },  // 06 - green
+    { "#505050", "#b0b0b0", "#151515" },  // 01 - normal
+    { "#aa759f", "#151515", "#aa759f" },  // 02 - selected
+    { "#ac4142", "#151515", "#ac4142" },  // 03 - urgent
+    { "#ac4142", "#b0b0b0", "#151515" },  // 04 - orange (Occupied Color)
+    { "#6a9fb5", "#b0b0b0", "#151515" },  // 05 - Light Blue
+    { "#90a959", "#90a959", "#151515" },  // 06 - green
+    { "#505050", "#b0b0b0", "#151515" },  // 07 - bar title (selected)
 //    { "#877C43", "#877C43", "#020202" },  // 07 - yellow
 //    { "#1C678C", "#1C678C", "#020202" },  // 08 - blue
 //    { "#E300FF", "#E300FF", "#020202" },  // 09 - magenta
@@ -34,7 +35,7 @@ static const char colors[NUMCOLORS][ColLast][20] = {
 };
 
 static const char font[]					= "Inconsolata 12";
-static const unsigned int borderpx  		= 2;        	// border pixel of windows
+static const unsigned int borderpx  		= 1;        	// border pixel of windows
 static const unsigned int snap         		= 2;     	// snap pixel
 static const unsigned int gappx				= 0;		// gap pixel between windows (uselessgaps patch)
 static const Bool showbar               	= True;  	// False means no bar
@@ -78,6 +79,7 @@ static const char *webcmd[] = { "firefox", NULL };
 static const char *killdwm[]		=	{ "killall", "dwm", NULL };
 static const char *fileman[] 		= 	{ "pcmanfm", NULL };
 static const char *terminal[]  		= 	{ "urxvtc", NULL };
+static const char *slockcmd[]  		= 	{ "xscreensaver-command", "-lock", NULL };
 //static const char *thunarterm[]		=	{ "/home/garry/.scripts/thunarterm", NULL };
 //static const char *composite[]		=	{ "/home/garry/.scripts/composite", NULL };
 
@@ -96,6 +98,7 @@ static Key keys[] = {
 	{ Modkey|ShiftMask,             XK_Return, spawn,          {.v = terminal } },
 	{ Modkey|ShiftMask,				XK_w,      spawn,          {.v = webcmd } },
 	{ Modkey,						XK_e,      spawn,          {.v = fileman } },
+	{ Modkey|ShiftMask,             XK_l,      spawn,          {.v = slockcmd } },
 	{ Modkey,                       XK_b,      togglebar,      {0} },
 	{ Modkey,                       XK_j,      focusstack,     {.i = +1 } },
 	{ Modkey,                       XK_k,      focusstack,     {.i = -1 } },

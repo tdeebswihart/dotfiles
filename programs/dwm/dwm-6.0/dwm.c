@@ -895,7 +895,8 @@ drawbar(Monitor *m) {
 	if((dc.w = dc.x - x) > bh) {
 		dc.x = x;
 		if(m->sel) {
-			col = dc.colors[ m == selmon ? 1 : 0 ];
+			//col = dc.colors[ m == selmon ? 1 : 0 ];
+			col = dc.colors[6];
 			drawtext(m->sel->name, col, True);
 		}
 		else
