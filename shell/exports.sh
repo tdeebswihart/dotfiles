@@ -4,7 +4,7 @@ export HISTFILE="$HOME/.zshistory"
 export HISTSIZE=10000
 export HASTE_SERVER="http://hastebin.com"
 
-for i in ls ~/.secret/*.sh; do
+for i in `ls ~/.secret/*.sh`; do
     source $i
 done
 
