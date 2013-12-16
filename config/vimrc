@@ -259,8 +259,9 @@ let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
 let g:vimwiki_list = [
-            \ {'path': '~/Dropbox/trunksync/notes/ ', 'index': 'HomePage', 'path_html': '~/trunknotes_html', 'ext': '.markdown', 'auto_export': 0}
+            \ {'path': '~/Dropbox/trunksync/notes/', 'index': 'HomePage', 'path_html': '~/trunknotes_html', 'ext': '.markdown', 'auto_export': 0}
             \ ]
+
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 let g:extradite_showhash = 1
