@@ -17,6 +17,7 @@ Darwin)
     then
         export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
     fi
+    export SCALA_HOME="/usr/local/opt/scala/idea"
 
     ## Setting up path prefix
     PATHPREFIX=""
@@ -25,14 +26,14 @@ Darwin)
         PATHPREFIX=$PATHPREFIX:"$HOME/Applications/adt-bundle-mac-x86_64/sdk/platform-tools"
     fi
     if [[ -d "/usr/local/share/npm/bin" ]]; then
-        PATHPREFIX="/usr/local/share/npm/bin"
+        PATHPREFIX=$PATHPREFIX:"/usr/local/share/npm/bin"
     fi
     if [[ -d "/usr/local/heroku/bin" ]]; then
         PATHPREFIX=$PATHPREFIX:/usr/local/heroku/bin
     fi
-    if [[ -d "/usr/local/share/python" ]]; then
-        PATHPREFIX=$PATHPREFIX:/usr/local/share/python
-    fi
+#    if [[ -d "/usr/local/share/python" ]]; then
+#        PATHPREFIX=$PATHPREFIX:/usr/local/share/python
+#    fi
     if [[ -d "$HOME/Library/Haskell/bin" ]]; then
         PATHPREFIX=$PATHPREFIX:/Users/chronon/Library/Haskell/bin
     fi
