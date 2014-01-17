@@ -17,7 +17,9 @@ Darwin)
     then
         export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
     fi
-    export SCALA_HOME="/usr/local/opt/scala/idea"
+    if [[ -d "$HOME/Library/Applcation Support/MATLAB/rvctools" ]]; then
+        setenv MATLABPATH "$HOME/Library/Applcation Support/MATLAB/rvctools"
+    fi
 
     ## Setting up path prefix
     PATHPREFIX=""
