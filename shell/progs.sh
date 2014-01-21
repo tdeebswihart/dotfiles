@@ -1,0 +1,2 @@
+eval "$(fasd --init auto)"
+
