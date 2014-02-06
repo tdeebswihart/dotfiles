@@ -43,7 +43,7 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-fugitive'
 
 " Colors hex values in CSS files
-NeoBundle 'ap/vim-css-color'
+"NeoBundle 'ap/vim-css-color'
 
 " Autocloses if->endif, etc...
 NeoBundle 'tpope/vim-endwise'
