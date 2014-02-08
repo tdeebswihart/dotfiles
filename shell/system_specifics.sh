@@ -52,5 +52,5 @@ Darwin)
 esac
 
 #Setting path
-PATH="$HOME/bin:$PATHPREFIX:/usr/local/sbin:/usr/local/bin:$GOBIN:${GOPATH//://bin:}/bin:$PATH"
+PATH="$HOME/bin$PATHPREFIX:/usr/local/sbin:/usr/local/bin:$GOBIN:${GOPATH//://bin:}/bin:$PATH"
 export PATH
