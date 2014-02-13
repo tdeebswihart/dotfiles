@@ -36,7 +36,9 @@ zstyle ':prezto:load' pmodule \
   'prompt' \
   'git' \
   'python' \
-  'tmux'
+  'tmux' \
+  'battery' \
+  'osx'
 
 zstyle ':prezto:module:syntax-highlighting' highlighters \
   'main' \

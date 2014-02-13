@@ -1,4 +1,4 @@
-export EDITOR=vim
-export SUDOEDITOR=vim
+export EDITOR=subl
+export SUDOEDITOR=subl
 export VISUAL=subl
-export GIT_EDITOR=vim
+export GIT_EDITOR=subl
