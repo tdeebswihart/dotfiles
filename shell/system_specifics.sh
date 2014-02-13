@@ -43,8 +43,8 @@ Darwin)
     if [[ -d "$HOME/.cabal/bin" ]]; then
         PATHPREFIX=$PATHPREFIX:$HOME/.cabal/bin
     fi
-    
-    if [[ -d "$HOME/.pyenv/shims:" ]]; then
+
+    if [[ -d "$HOME/.pyenv/shims" ]]; then
         PATHPREFIX=$PATHPREFIX:$HOME/.pyenv/shims:
     fi
     # Fix for homebrew pkg-config
