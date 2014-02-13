@@ -27,22 +27,26 @@ Darwin)
         PATHPREFIX=$PATHPREFIX:"$HOME/Applications/adt-bundle-mac-x86_64/sdk/tools"
         PATHPREFIX=$PATHPREFIX:"$HOME/Applications/adt-bundle-mac-x86_64/sdk/platform-tools"
     fi
+
     if [[ -d "/usr/local/share/npm/bin" ]]; then
         PATHPREFIX=$PATHPREFIX:"/usr/local/share/npm/bin"
     fi
+
     if [[ -d "/usr/local/heroku/bin" ]]; then
         PATHPREFIX=$PATHPREFIX:/usr/local/heroku/bin
     fi
-#    if [[ -d "/usr/local/share/python" ]]; then
-#        PATHPREFIX=$PATHPREFIX:/usr/local/share/python
-#    fi
+
     if [[ -d "$HOME/Library/Haskell/bin" ]]; then
-        PATHPREFIX=$PATHPREFIX:/Users/chronon/Library/Haskell/bin
-    fi
-    if [[ -d "$HOME/.cabal/bin" ]]; then
-        PATHPREFIX=$PATHPREFIX:/Users/chronon/.cabal/bin
+        PATHPREFIX=$PATHPREFIX:$HOME/Library/Haskell/bin
     fi
 
+    if [[ -d "$HOME/.cabal/bin" ]]; then
+        PATHPREFIX=$PATHPREFIX:$HOME/.cabal/bin
+    fi
+    
+    if [[ -d "$HOME/.pyenv/shims:" ]]; then
+        PATHPREFIX=$PATHPREFIX:$HOME/.pyenv/shims:
+    fi
     # Fix for homebrew pkg-config
     export PKG_CONFIG_PATH="/usr/local/Library/ENV/pkgconfig/10.9"
 
