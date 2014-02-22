@@ -1,15 +1,3 @@
-newest () { ls -ltr | tail -$1 ; }
-hasteit() {
-    case $(uname -s) in
-    Darwin)
-        cat $1 | haste | pbcopy
-        ;;
-    Linux)
-        cat $1 | haste | xsel
-        ;;
-    esac
-}
-
 ## VIM
 # Set the name of vim session the terminal is tied up to
 eset(){

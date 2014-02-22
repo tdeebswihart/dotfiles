@@ -6,13 +6,12 @@ Linux)
         PATHPREFIX="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATHPREFIX"
     fi
 
-    hash clang && export CC=/usr/bin/clang
-    hash clang++ && export CXX=/usr/bin/clang++
+    hash clang && export CC=$(which clang)
+    hash clang++ && export CXX=$(which clang++)
 
     hash keychain && eval 'keychain --eval id_rsa'
     ;;
 Darwin)
-    ## set JAVA_HOME if on Mac OS
     if [ -z "$JAVA_HOME" -a -d /System/Library/Frameworks/JavaVM.framework/Home ]
     then
         export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
@@ -22,39 +21,32 @@ Darwin)
     fi
 
     ## Setting up path prefix
-    PATHPREFIX=""
-    if [[ -d "$HOME/Applications/adt-bundle-mac-x86_64" ]]; then
-        PATHPREFIX=$PATHPREFIX:"$HOME/Applications/adt-bundle-mac-x86_64/sdk/tools"
-        PATHPREFIX=$PATHPREFIX:"$HOME/Applications/adt-bundle-mac-x86_64/sdk/platform-tools"
-    fi
-
+    PATHPREFIX="$HOME/bin"
     if [[ -d "/usr/local/share/npm/bin" ]]; then
         PATHPREFIX=$PATHPREFIX:"/usr/local/share/npm/bin"
     fi
 
-    if [[ -d "/usr/local/heroku/bin" ]]; then
-        PATHPREFIX=$PATHPREFIX:/usr/local/heroku/bin
-    fi
-
-    if [[ -d "$HOME/Library/Haskell/bin" ]]; then
-        PATHPREFIX=$PATHPREFIX:$HOME/Library/Haskell/bin
-    fi
-
+    # Cabal binfiles
     if [[ -d "$HOME/.cabal/bin" ]]; then
         PATHPREFIX=$PATHPREFIX:$HOME/.cabal/bin
     fi
 
+    # Python binfiles
     if [[ -d "$HOME/.pyenv/shims" ]]; then
-        PATHPREFIX=$PATHPREFIX:$HOME/.pyenv/shims:
+        PATHPREFIX=$PATHPREFIX:$HOME/.pyenv/shims
+    fi
+
+    # ccache symlinks for compilers
+    if [[ -d "/usr/local/opt/ccache/libexec" ]]; then
+        PATHPREFIX=$PATHPREFIX:/usr/local/opt/ccache/libexec
     fi
     # Fix for homebrew pkg-config
     export PKG_CONFIG_PATH="/usr/local/Library/ENV/pkgconfig/10.9"
 
     alias dutil="diskutil"
-
     ;;
 esac
 
 #Setting path
-PATH="$HOME/bin$PATHPREFIX:/usr/local/sbin:/usr/local/bin:$GOBIN:${GOPATH//://bin:}/bin:$PATH"
+PATH="$PATHPREFIX:/usr/local/sbin:/usr/local/bin:$PATH"
 export PATH
