@@ -1,0 +1,13 @@
+[ui]
+username = Tim Swihart <chronoslynx@gmail.com>
+
+[defaults]
+qnew = -Ue
+
+[extensions]
+mq =
+
+[diff]
+git = 1
+showfunc = 1
+unified = 8 
