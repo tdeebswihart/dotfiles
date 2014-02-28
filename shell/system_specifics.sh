@@ -37,8 +37,9 @@ Darwin)
     fi
 
     # ccache symlinks for compilers
-    if [[ -d "/usr/local/opt/ccache/libexec" ]]; then
-        PATHPREFIX=$PATHPREFIX:/usr/local/opt/ccache/libexec
+
+    if [[ -d "$(brew --prefix ccache)/libexec" ]]; then
+        PATHPREFIX=$PATHPREFIX:$(brew --prefix ccache)/libexec
     fi
     # Fix for homebrew pkg-config
     export PKG_CONFIG_PATH="/usr/local/Library/ENV/pkgconfig/10.9"
