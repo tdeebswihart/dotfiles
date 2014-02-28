@@ -64,7 +64,7 @@ NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'vim-scripts/TaskList.vim'
 
 " Matching if/endif, not just {} [] ()
-NeoBundle 'vim-scripts/matchit.zip'
+"NeoBundle 'vim-scripts/matchit.zip'
 
 " Syntastic for syntax checking
 NeoBundle 'scrooloose/syntastic'
@@ -72,19 +72,29 @@ NeoBundle 'scrooloose/syntastic'
 " Window Management
 NeoBundle 'spolu/dwm.vim'
 
+" Allow quick commenting/uncommenting of lines
+NeoBundle 'scrooloose/nerdcommenter'
+
+" Completion
+NeoBundle 'Shougo/neocomplete.vim'
+
 "" Syntaxes
 NeoBundle 'tpope/vim-git'
-NeoBundle 'tpope/vim-haml'
+"NeoBundle 'tpope/vim-haml'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mmalecki/vim-node.js'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
 NeoBundle 'othree/html5.vim'
-NeoBundle 'nblock/vim-dokuwiki'
+"NeoBundle 'nblock/vim-dokuwiki'
 NeoBundle 'klen/python-mode'
 NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'sophacles/vim-processing'
 
+" Haskell
+NeoBundle 'dag/vim2hs'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'eagletmt/neco-ghc'
 
 " Tab management
 NeoBundle 'kien/tabman.vim'
@@ -107,13 +117,18 @@ set smartcase
 "filetype plugin on
 filetype indent on
 filetype plugin indent on
+
 let mapleader = ","
 "let LocalLeader = ";"
 noremap <leader>w :w<CR>
 noremap <leader>W :w!sudo tee %
 noremap <leader>q :q<CR>
 noremap <leader>ev :vsplit ./
-noremap <leader>eh :vsplit ./
+noremap <leader>eh :split ./
+
+noremap <leader>uf :Unite file<CR>
+noremap <leader>ub :Unite buffer<>
+
 nnoremap ' `
 nnoremap <Leader>G <Plug>(golden_ratio_resize)
 
@@ -211,10 +226,10 @@ set wildignore+=*.DS_Store
 
 "set runtimepath+=~/.vim.local
 "let $PAGER=''
-colorscheme base16-default
+colorscheme base16-ocean
 set background=dark
 call togglebg#map("<F6>")
-let g:solarized_termcolors=16
+"let g:solarized_termcolors=16
 set t_Co=16
 
 if has ('mouse')
@@ -237,6 +252,11 @@ endif
 nmap <leader>. za
 map <leader>. za
 
+" Airline setup for statusbar
+let g:airline#extensions#tabline#enabled = 1
+
+setlocal omnifunc=necoghc#omnifunc
+
 set clipboard=unnamed
 "
 " Yank text to the OS X clipboard
@@ -253,6 +273,9 @@ nnoremap <leader>nt :tabnew ./
 
 " kill all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Auto-lint haskell sources with GhcMod
+autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 
 let g:html_indent_inctags = "html,body,head,tbody,div"
 let g:html_indent_script1 = "inc"
