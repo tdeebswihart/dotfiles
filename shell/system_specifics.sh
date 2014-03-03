@@ -36,6 +36,11 @@ Darwin)
         PATHPREFIX=$PATHPREFIX:$HOME/.pyenv/shims
     fi
 
+    # Anaconda setup (for ipython)
+    if [[ -d "$HOME/anaconda/bin" ]]; then
+        PATHPREFIX=$PATHPREFIX:$HOME/anaconda/bin
+    fi
+
     # ccache symlinks for compilers
 
     if [[ -d "$(brew --prefix ccache)/libexec" ]]; then
