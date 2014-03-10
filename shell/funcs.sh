@@ -15,6 +15,12 @@ es(){
     vim --servername $VI_SERVER --remote-silent $*
 }
 
+gpx2json() {
+    while [ "$1" != "" ]; do
+        ogr2ogr -f GeoJSON "${1}.json" "${1}" routes && shift
+    done
+}
+
 # Reuse Vim ZSH completions for vim completions
 compdef _vim es
 
