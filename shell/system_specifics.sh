@@ -49,6 +49,9 @@ Darwin)
     # Fix for homebrew pkg-config
     export PKG_CONFIG_PATH="/usr/local/Library/ENV/pkgconfig/10.9"
 
+    # GDAL data file locations
+    export GDAL_DATA="$(brew --prefix gdal)/share/gdal"
+
     alias dutil="diskutil"
     ;;
 esac
