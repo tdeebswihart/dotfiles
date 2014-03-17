@@ -31,15 +31,10 @@ Darwin)
         PATHPREFIX=$PATHPREFIX:$HOME/.cabal/bin
     fi
 
-    # Python binfiles
-    if [[ -d "$HOME/.pyenv/shims" ]]; then
-        PATHPREFIX=$PATHPREFIX:$HOME/.pyenv/shims
-    fi
-
-    # Anaconda setup (for ipython)
-    if [[ -d "$HOME/anaconda/bin" ]]; then
-        PATHPREFIX=$PATHPREFIX:$HOME/anaconda/bin
-    fi
+    # # Anaconda setup (for ipython)
+    # if [[ -d "$HOME/anaconda/bin" ]]; then
+    #     PATHPREFIX=$PATHPREFIX:$HOME/anaconda/bin
+    # fi
 
     # ccache symlinks for compilers
 
