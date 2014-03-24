@@ -10,3 +10,6 @@ alias asshole='echo You dont have to be rude, you know. && sleep 0.2 && sudo $(h
 alias sorry='sudo $(history -n -1) '
 alias vimp='vim -p'
 alias v='f -t -e vim -b viminfo'
+alias ijulia='ipython notebook --profile julia'
+alias ijl='ipython notebook --profile julia'
+alias ipy='ipython notebook'
