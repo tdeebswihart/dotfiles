@@ -13,3 +13,4 @@ alias v='f -t -e vim -b viminfo'
 alias ijulia='ipython notebook --profile julia'
 alias ijl='ipython notebook --profile julia'
 alias ipy='ipython notebook'
+alias mklatex="latexmk -e \"\\\$pdflatex = 'pdflatex %O -file-line-error --max-print-line=200 -synctex=1 %S'\" -pdf"
