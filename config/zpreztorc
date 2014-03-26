@@ -35,7 +35,6 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'prompt' \
   'git' \
-  'python' \
   'tmux' \
   'osx'
 
