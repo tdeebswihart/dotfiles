@@ -4,6 +4,7 @@ fresh freshshell/fresh bin/fresh --bin
 fresh chronoslynx/dotfiles 'config/*' --file
 fresh chronoslynx/dotfiles 'shell/*'
 fresh chronoslynx/dotfiles 'aliases/*'
+fresh gdbinit/Gdbinit 'gdbinit' --file=~/.gdbinit
 
 ## binfiles
 fresh chronoslynx/dotfiles 'bin/*' --bin
