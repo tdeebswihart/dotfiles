@@ -46,6 +46,10 @@ if [[ -d "$HOME/.cabal/bin" ]]; then
     BASEPATH="$HOME/.cabal/bin:$BASEPATH"
 fi
 
+if [[ -d "$HOME/Development/mygo/bin" ]]; then
+    BASEPATH="$HOME/Development/mygo/bin:$BASEPATH"
+fi
+
 #Setting path
 PATH=$BASEPATH
 export PATH
