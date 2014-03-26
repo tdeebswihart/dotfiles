@@ -13,3 +13,5 @@ alias v='f -t -e vim -b viminfo'
 alias ijulia='ipython notebook --profile julia'
 alias ijl='ipython notebook --profile julia'
 alias ipy='ipython notebook'
+alias py=python
+alias rb=ruby
