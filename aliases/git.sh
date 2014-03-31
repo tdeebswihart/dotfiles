@@ -4,4 +4,6 @@ alias gcm='git commit -m'
 alias gr='git remove'
 alias gs='git stash'
 
-alias git=gh
+eval "$(gh alias -s)"
+
+# alias git=gh
