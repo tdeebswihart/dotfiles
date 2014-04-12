@@ -9,12 +9,11 @@ fresh gdbinit/Gdbinit 'gdbinit' --file=~/.gdbinit
 ## binfiles
 fresh chronoslynx/dotfiles 'bin/*' --bin
 fresh jasoncodes/dotfiles bin/pidof --bin
-fresh pengwynn/dotfiles bin/e --bin
-fresh pengwynn/dotfiles bin/gibo --bin
+fresh avatsaev/Mavericksey mavericksey --bin
+#fresh pengwynn/dotfiles bin/e --bin
+#fresh pengwynn/dotfiles bin/gibo --bin
 # fresh holman/spark spark --bin
 # fresh defunkt/repl bin/repl --bin
 
 ## terminal colors
 fresh chronoslynx/dotfiles 'colors' --file=~/.colors/
-
-fresh nodiscc/scriptz dev/convert-markdown-to-dokuwiki.py --bin='~/bin/md2wiki'
