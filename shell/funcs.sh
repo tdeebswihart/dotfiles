@@ -9,10 +9,10 @@ hilight() {
   if [ -z "$1" ]
     then src="pbpaste"
   else
-    src="$1"
+    src="cat $1"
   fi
   # $src | highlight -O rtf --syntax $1 --font Inconsolata --style solarized-dark --font-size 24 | pbcopy
-  pygmentize -f rtf -O 'fontface=Inconsolata,style=tango' < $src | sed 's;\\f0;\\f0\\fs60;g' | tr -d '\n' | sed 's;\\par}$;};' | pbcopy
+  $src | pygmentize -f rtf -O 'fontface=Inconsolata,style=tango'| sed 's;\\f0;\\f0\\fs60;g' | tr -d '\n' | sed 's;\\par}$;};' | pbcopy
 }
 
 # Fire up a new server according to the argument supplied
