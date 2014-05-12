@@ -25,7 +25,9 @@ gpx2json () {
 }
 
 # Reuse Vim ZSH completions for vim completions
-which compdef && compdef _vim es
+if [[ "$SHELL" == *zsh ]]; then
+    compdef _vim es
+    eset zshsession
+fi
 
-which eset && eset zshsession
 test -f ~/.local.sh && source ~/.local.sh
