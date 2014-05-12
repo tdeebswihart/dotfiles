@@ -10,5 +10,4 @@ export BASH_IT_THEME='minimal'
 # Load Bash It
 source $BASH_IT/bash_it.sh
 
-bindkey -v
 source ~/.fresh/build/shell.sh
