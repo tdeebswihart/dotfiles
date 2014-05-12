@@ -34,7 +34,7 @@ static const char colors[NUMCOLORS][ColLast][20] = {
 //    { "#0300ff", "#0300ff", "#802635" },  // 15 - warning
 };
 
-static const char font[]					= "Inconsolata 12";
+static const char font[]					= "Source Code Pro 11";
 static const unsigned int borderpx  		= 1;        	// border pixel of windows
 static const unsigned int snap         		= 2;     	// snap pixel
 static const unsigned int gappx				= 0;		// gap pixel between windows (uselessgaps patch)
