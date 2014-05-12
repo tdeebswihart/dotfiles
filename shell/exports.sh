@@ -1,12 +1,13 @@
 export TODOTXT_DEFAULT_ACTION=pv
-export BLOGROOT="$DEV/chronoslynx.github.io"
-export HISTFILE="$HOME/.zshitory"
+
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+
+export HISTFILE="$HOME/.zshistory"
 export HISTSIZE=10000
-export HASTE_SERVER="http://hastebin.com"
-# export LANG=en_US.utf8
-# export LC_CTYPE=en_US.utf8
-#case $(uname -s) in
-#Linux)
-#    export LC_ALL=en_US.UTF-8
-#    ;;
-#esac
+export SAVEHIST=10000
+
+for i in `ls ~/.secret/*.sh`; do
+    source $i
+done
