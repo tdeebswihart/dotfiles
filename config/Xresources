@@ -2,8 +2,8 @@
 #include "/users/tswihart3/.colors/base16-dark"
 
 ! Fonts
-URxvt*font: xft:Source Code Pro:pixelsize=14
-URxvt*boldFont: xft:Source Code Pro:bold:pixelsize=12
+URxvt*font: xft:Inconsolata:pixelsize=14
+URxvt*boldFont: xft:Inconsolata:bold:pixelsize=12
 
 ! font settings suggested by infinality
 Xft.autohint: 1
