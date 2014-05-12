@@ -38,7 +38,7 @@ esac
 
 # Python via pyenv
 if [[ -d "$HOME/.pyenv" ]]; then
-    BASEPATH="$HOME/.pyenv/bin"
+    BASEPATH="$HOME/.pyenv/bin:$BASEPATH"
     BASEPATH="$HOME/.pyenv/shims:$BASEPATH"
 fi
 
