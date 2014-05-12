@@ -1,7 +1,7 @@
 case $(uname -s) in
 Linux)
     BASEPATH="/usr/lib/lightdm/lightdm:/opt/metasploit-framework:/opt/metasploit-framework/tools:$PATH"
-    export PYTHONPATH="$PYTHONPATH:/usr/local/lib/python2.6/dist-packages"
+    #export PYTHONPATH="$PYTHONPATH:/usr/local/lib/python2.6/dist-packages"
     #hash clang && export CC=$(which clang)
     #hash clang++ && export CXX=$(which clang++)
     hash keychain && eval 'keychain --eval id_rsa'
@@ -38,6 +38,7 @@ esac
 
 # Python via pyenv
 if [[ -d "$HOME/.pyenv" ]]; then
+    BASEPATH="$HOME/.pyenv/bin:$BASEPATH"
     BASEPATH="$HOME/.pyenv/shims:$BASEPATH"
 fi
 

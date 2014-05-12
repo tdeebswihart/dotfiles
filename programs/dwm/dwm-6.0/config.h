@@ -10,13 +10,13 @@ https://www.github.com/nixmeal
 #define NUMCOLORS 7
 static const char colors[NUMCOLORS][ColLast][20] = {
     // border     fg         bg
-    { "#505050", "#b0b0b0", "#151515" },  // 01 - normal
-    { "#aa759f", "#151515", "#aa759f" },  // 02 - selected
-    { "#ac4142", "#151515", "#ac4142" },  // 03 - urgent
-    { "#ac4142", "#b0b0b0", "#151515" },  // 04 - orange (Occupied Color)
-    { "#6a9fb5", "#b0b0b0", "#151515" },  // 05 - Light Blue
-    { "#90a959", "#90a959", "#151515" },  // 06 - green
-    { "#505050", "#b0b0b0", "#151515" },  // 07 - bar title (selected)
+    { "#505050", "#dfe1e8", "#2b303b" },  // 01 - normal
+    { "#a3be8c", "#2b303b", "#a3be8c" },  // 02 - selected
+    { "#bf616a", "#2b303b", "#bf616a" },  // 03 - urgent
+    { "#2b303b", "#a3be8c", "#2b303b" },  // 04 - orange (Occupied Color)
+    { "#6a9fb5", "#dfe1e8", "#2b303b" },  // 05 - Light Blue
+    { "#90a959", "#90a959", "#2b303b" },  // 06 - green
+    { "#505050", "#dfe1e8", "#2b303b" },  // 07 - bar title (selected)
 //    { "#877C43", "#877C43", "#020202" },  // 07 - yellow
 //    { "#1C678C", "#1C678C", "#020202" },  // 08 - blue
 //    { "#E300FF", "#E300FF", "#020202" },  // 09 - magenta

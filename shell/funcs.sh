@@ -1,11 +1,11 @@
 ## VIM
 # Set the name of vim session the terminal is tied up to
-eset(){
+eset (){
     export VI_SERVER=$1
 }
 
 # Highlight code for use w/ keynote, etc
-hilight() {
+hilight () {
   if [ -z "$1" ]
     then src="pbpaste"
   else
@@ -15,6 +15,7 @@ hilight() {
   $src | pygmentize -f rtf -O 'fontface=Inconsolata,style=tango'| sed 's;\\f0;\\f0\\fs60;g' | tr -d '\n' | sed 's;\\par}$;};' | pbcopy
 }
 
+<<<<<<< HEAD
 prettymd(){
     pandoc -t markdown --atx-headers --no-wrap $*
 }
@@ -31,13 +32,16 @@ es(){
 }
 
 gpx2json() {
+=======
+gpx2json () {
+>>>>>>> 7f0ff044a9a841cc6e197165898b047ad0ffefa9
     while [ "$1" != "" ]; do
         ogr2ogr -f GeoJSON "${1}.json" "${1}" routes && shift
     done
 }
 
 # Reuse Vim ZSH completions for vim completions
-compdef _vim es
+which compdef && compdef _vim es
 
-eset zshsession
+which eset && eset zshsession
 test -f ~/.local.sh && source ~/.local.sh
