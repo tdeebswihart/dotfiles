@@ -3,7 +3,7 @@
 
 ! Fonts
 URxvt*font: xft:Inconsolata:pixelsize=14
-URxvt*boldFont: xft:Inconsolata:bold:pixelsize=12
+URxvt*boldFont: xft:Inconsolata:bold:pixelsize=14
 
 ! font settings suggested by infinality
 Xft.autohint: 1
