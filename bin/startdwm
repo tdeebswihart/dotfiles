@@ -1,12 +1,12 @@
 #!/bin/sh
-xrdb -merge /home/si-coop123-d01/.Xresources
+xrdb -merge /users/tswihart3/.Xresources
 xset +fp /usr/share/fonts/local
 xset fp rehash
 xscreensaver &
-xmodmap /home/si-coop123-d01/.Xmodmap
-sh /home/si-coop123-d01/.screenlayout/default.sh
+xmodmap /users/tswihart3/.Xmodmap
+sh /users/tswihart3/.screenlayout/default.sh
 urxvtd -q -f -o &
-feh --bg-scale /home/si-coop123-d01/Pictures/ssep.png
+feh --bg-scale /users/tswihart3/Pictures/ssep.png
 eval $(gnome-keyring-daemon --start) &
 firefox &
 thunderbird &
