@@ -1,5 +1,5 @@
 ! Colors
-#include "/users/tswihart3/.colors/base16-dark"
+#include "/users/tswihart3/.colors/base16-ocean.dark"
 
 ! Fonts
 URxvt*font: xft:Inconsolata:pixelsize=14
