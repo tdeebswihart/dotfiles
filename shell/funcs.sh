@@ -15,6 +15,10 @@ hilight() {
   $src | pygmentize -f rtf -O 'fontface=Inconsolata,style=tango'| sed 's;\\f0;\\f0\\fs60;g' | tr -d '\n' | sed 's;\\par}$;};' | pbcopy
 }
 
+prettymd(){
+    pandoc -t markdown --atx-headers --no-wrap $*
+}
+
 # Fire up a new server according to the argument supplied
 vs(){
     eset $1
