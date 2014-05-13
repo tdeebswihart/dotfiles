@@ -1,8 +1,10 @@
 export TODOTXT_DEFAULT_ACTION=pv
 
-which setopt && setopt APPEND_HISTORY
-which setopt && setopt SHARE_HISTORY
-which setopt && setopt HIST_IGNORE_DUPS
+if [[ "$SHELL" == *zsh ]]; then
+    setopt APPEND_HISTORY
+    setopt SHARE_HISTORY
+    setopt HIST_IGNORE_DUPS
+fi
 
 export HISTFILE="$HOME/.zshistory"
 export HISTSIZE=10000
