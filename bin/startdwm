@@ -10,4 +10,5 @@ feh --bg-scale /users/tswihart3/Pictures/ssep.png
 eval $(gnome-keyring-daemon --start) &
 firefox &
 thunderbird &
+pidgin &
 exec dwmloop
