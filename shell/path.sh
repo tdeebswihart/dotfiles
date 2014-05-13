@@ -37,7 +37,7 @@ esac
 # Python via pyenv
 if [[ -d "$HOME/.pyenv" ]]; then
     BASEPATH="$BASEPATH:$HOME/.pyenv/bin"
-    BASEPATH="$BASEPATH:$HOME/.pyenv/shims"
+    BASEPATH="$HOME/.pyenv/shims:$BASEPATH"
 fi
 
 # Cabal binfiles
