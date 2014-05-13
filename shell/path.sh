@@ -1,7 +1,7 @@
 case $(uname -s) in
 Linux)
     # /usr/lib/lightdm/lightdm:
-    BASEPATH="/opt/metasploit-framework:/opt/metasploit-framework/tools:$PATH"
+    BASEPATH="~/dev/tools/metasploit-framework:/dev/tools/metasploit-framework/tools:$PATH"
     hash keychain && eval 'keychain --eval id_rsa'
     ;;
 Darwin)
