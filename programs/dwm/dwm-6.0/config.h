@@ -62,12 +62,13 @@ static const char *tags[] = { "1", "2", "3", "4", "BG"};
 
 static const Rule rules[] = {
 	/* class      		instance	title		tags mask	isfloating 	iscenterd	monitor */
-	{ "Pidgin",   		NULL,       NULL,       (~0)-1,       False,    False, 		1 },
+	{ "Pidgin",   		NULL,       NULL,       (1 << 3),     False,    False, 		1 },
 	{ "Thunderbird",    NULL,       NULL,       (1 << 0),     False,    False, 		1 },
 	{ "Firefox",  		NULL,       NULL,       (1 << 1),     False,    False, 		1 },
 	{ "vmware",   		NULL,       NULL,       (1 << 2),     False,    False, 		0 },
 	{ "urxvt",    		NULL,       NULL,       (1 << 0),     False,    False, 		0 },
 	{ "urxvtc",    		NULL,       NULL,       (1 << 0),     False,    False, 		0 },
+	{ "pcmanfm",   		NULL,       NULL,       (1 << 3),     False,    False, 		0 },
 };
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
