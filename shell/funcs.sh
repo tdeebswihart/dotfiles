@@ -24,6 +24,14 @@ gpx2json () {
     done
 }
 
+urlencode () {
+    python -c "import sys, urllib as ul; print ul.quote_plus('$1')"
+}
+
+urldecode () {
+    python -c "import sys, urllib as ul; print ul.unquote_plus('$1')"
+}
+
 # Reuse Vim ZSH completions for vim completions
 if [[ "$SHELL" == *zsh ]]; then
     compdef _vim es
