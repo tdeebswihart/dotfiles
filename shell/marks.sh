@@ -20,13 +20,18 @@ function _marks {
     reply=($(ls $MARKPATH))
 }
 
+function _jump {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "$( ls $MARKPATH )" -- $cur) )
+}
+
 case $SHELL in
 *zsh)
     compctl -K _marks jump
     compctl -K _marks unmark
     ;;
 *bash)
-    complete -F _marks -o default jump
-    complete -F _marks -o default unmark
+    complete -F _jump jump
+    complete -F _jump unmark
     ;;
 esac
