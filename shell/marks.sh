@@ -20,5 +20,13 @@ function _marks {
     reply=($(ls $MARKPATH))
 }
 
-compctl -K _marks jump
-compctl -K _marks unmark
+case $SHELL in
+*zsh)
+    compctl -K _marks jump
+    compctl -K _marks unmark
+    ;;
+*bash)
+    complete -F _marks -o default jump
+    complete -F _marks -o default unmark
+    ;;
+esac
