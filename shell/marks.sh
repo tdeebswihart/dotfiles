@@ -35,3 +35,4 @@ case $SHELL in
     complete -F _jump unmark
     ;;
 esac
+# http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
