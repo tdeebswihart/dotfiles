@@ -34,7 +34,7 @@ urldecode () {
 
 function dict () {
     if [[ $1 == (d|m) ]]; then
-        curl dict://dict.org/$1:$2 | $PAGER
+        curl dict://dict.org/$1:$2 | less
     else
         echo 'Unknown command. Use (d)efine or (m)atch.'
     fi
