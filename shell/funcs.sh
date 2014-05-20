@@ -32,6 +32,14 @@ urldecode () {
     python -c "import sys, urllib as ul; print ul.unquote_plus('$1')"
 }
 
+function dict () {
+    if [[ $1 == (d|m) ]]; then
+        curl dict://dict.org/$1:$2 | $PAGER
+    else
+        echo 'Unknown command. Use (d)efine or (m)atch.'
+    fi
+}
+
 # Reuse Vim ZSH completions for vim completions
 if [[ "$SHELL" == *zsh ]]; then
     compdef _vim es
