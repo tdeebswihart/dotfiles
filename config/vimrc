@@ -28,7 +28,6 @@ NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'altercation/vim-colors-solarized'
 
 "" Plugins
-NeoBundle 'rking/ag.vim'
 NeoBundle "Shougo/unite.vim"
 
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -58,10 +57,10 @@ NeoBundle 'vim-scripts/vimwiki'
 NeoBundle 'kien/rainbow_parentheses.vim'
 
 " Automatically closes quotes, parenthesis, brackets, etc.
-NeoBundle 'Raimondi/delimitMate'
+"NeoBundle 'Raimondi/delimitMate'
 
 " looks for todos
-NeoBundle 'vim-scripts/TaskList.vim'
+"NeoBundle 'vim-scripts/TaskList.vim'
 
 " Matching if/endif, not just {} [] ()
 "NeoBundle 'vim-scripts/matchit.zip'
@@ -83,7 +82,6 @@ NeoBundle 'mmalecki/vim-node.js'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
 NeoBundle 'othree/html5.vim'
-"NeoBundle 'nblock/vim-dokuwiki'
 NeoBundle 'klen/python-mode'
 NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'sophacles/vim-processing'
@@ -92,6 +90,9 @@ NeoBundle 'sophacles/vim-processing'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
+
+" Javascript
+NeoBundle 'Shutnik/jshint2.vim'
 
 " Tab management
 NeoBundle 'kien/tabman.vim'
@@ -279,18 +280,12 @@ let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
 let g:vimwiki_list = [
-            \ {'path': '~/Dropbox/trunksync/notes/', 'index': 'HomePage', 'path_html': '~/trunknotes_html', 'ext': '.markdown', 'auto_export': 0}
-            \ ]
+    \ {'path': '~/Dropbox/trunksync/notes/', 'index': 'HomePage', 'path_html': '~/trunknotes_html', 'ext': '.markdown', 'auto_export': 0}
+    \ ]
 
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 let g:extradite_showhash = 1
-let g:ctrlp_working_path_mode = 2
-let g:ctrlp_root_markers = ['.git']
-let g:ctrlp_max_height = 10
-let g:ctrlp_persistent_input = 0
-let g:ctrlp_lazy_update = 1
-let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir']
 
 let g:syntastic_quiet_messages = {'level': 'warnings'}
 
@@ -308,6 +303,19 @@ let g:EasyMotion_leader_key = ';'
 "let g:pymode_lint_write = 0
 " Press <leader>d to show docs
 let g:pymode_doc_key = '<leader>d'
+
+
+"" JSHint
+let jshint2_save = 1
+" show next jshint error
+nnoremap <silent><F2> :lnext<CR>
+inoremap <silent><F2> <C-O>:lnext<CR>
+vnoremap <silent><F2> :lnext<CR>
+
+" show previous jshint error
+nnoremap <silent><F3> :lprevious<CR>
+inoremap <silent><F3> <C-O>:lprevious<CR>
+vnoremap <silent><F3> :lprevious<CR>
 
 
 "" AUTOCOMMANDS
