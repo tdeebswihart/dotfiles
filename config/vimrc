@@ -32,7 +32,7 @@ NeoBundle "Shougo/unite.vim"
 
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
-NeoBundle 'Lokaltog/vim-easymotion'
+" NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'bling/vim-airline'
 
 " Completion interface
@@ -57,7 +57,7 @@ NeoBundle 'vim-scripts/vimwiki'
 NeoBundle 'kien/rainbow_parentheses.vim'
 
 " Automatically closes quotes, parenthesis, brackets, etc.
-"NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'Raimondi/delimitMate'
 
 " looks for todos
 "NeoBundle 'vim-scripts/TaskList.vim'
@@ -76,7 +76,6 @@ NeoBundle 'scrooloose/nerdcommenter'
 
 "" Syntaxes
 NeoBundle 'tpope/vim-git'
-"NeoBundle 'tpope/vim-haml'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mmalecki/vim-node.js'
 NeoBundle 'vim-ruby/vim-ruby'
@@ -136,8 +135,8 @@ inoremap jj <Esc>
 
 set backup
 set autowrite
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupdir=~/.vim-tmp,~/.tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,/tmp
 set backspace=indent,eol,start
 
 " Highlight search terms...
@@ -240,7 +239,7 @@ if has ('mouse')
     endif
 endif
 
-"" Use ctrl-[hjkl] to select the active split!
+"" Use ctrl-[hjkl] to select the active split
 " nmap <silent> <c-k> :wincmd k<CR>
 " nmap <silent> <c-j> :wincmd j<CR>
 " nmap <silent> <c-h> :wincmd h<CR>
@@ -379,11 +378,11 @@ nnoremap <space>/ :Unite grep:.<cr>
 nnoremap <space>s :Unite -quick-match buffer<cr>
 
 " Use ag for search
-"if executable('ag')
-"    let g:unite_source_grep_command = 'ag'
-"    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-"    let g:unite_source_grep_recursive_opt = ''
-"endif
+if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    let g:unite_source_grep_recursive_opt = ''
+endif
 
 nnoremap <silent> <leader>g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 if executable('pt')
