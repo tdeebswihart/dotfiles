@@ -84,6 +84,7 @@ NeoBundle 'othree/html5.vim'
 NeoBundle 'klen/python-mode'
 NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'sophacles/vim-processing'
+NeoBundle 'tpope/vim-markdown'
 
 " Haskell
 NeoBundle 'dag/vim2hs'
