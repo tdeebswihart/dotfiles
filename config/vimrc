@@ -125,7 +125,7 @@ noremap <leader>ev :vsplit ./
 noremap <leader>eh :split ./
 
 noremap <leader>uf :Unite file<CR>
-noremap <leader>ub :Unite buffer<>
+noremap <leader>ub :Unite buffer<CR>
 
 nnoremap ' `
 nnoremap <Leader>G <Plug>(golden_ratio_resize)
