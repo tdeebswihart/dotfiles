@@ -34,7 +34,7 @@ static const char colors[NUMCOLORS][ColLast][20] = {
 //    { "#0300ff", "#0300ff", "#802635" },  // 15 - warning
 };
 
-static const char font[]					= "Inconsolata 12";
+static const char font[]					= "Source Code Pro Regular 14";
 static const unsigned int borderpx  		= 1;        	// border pixel of windows
 static const unsigned int snap         		= 2;     	// snap pixel
 static const unsigned int gappx				= 0;		// gap pixel between windows (uselessgaps patch)
@@ -75,14 +75,12 @@ static const Rule rules[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG], "-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
-static const char *webcmd[] = { "firefox", NULL };
+static const char *dmenucmd[]       =   { "dmenu_run", "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG], "-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
+static const char *webcmd[]         =   { "chromium-browser", NULL };
 static const char *killdwm[]		=	{ "killall", "dwm", NULL };
 static const char *fileman[] 		= 	{ "pcmanfm", NULL };
 static const char *terminal[]  		= 	{ "urxvtc", NULL };
-static const char *slockcmd[]  		= 	{ "xscreensaver-command", "-lock", NULL };
-//static const char *thunarterm[]		=	{ "/home/garry/.scripts/thunarterm", NULL };
-//static const char *composite[]		=	{ "/home/garry/.scripts/composite", NULL };
+static const char *slockcmd[]  		= 	{ "gnome-screensaver-command", "--lock", NULL };
 
 /* key definitions */
 #define Modkey Mod4Mask
