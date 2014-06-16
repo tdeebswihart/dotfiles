@@ -40,6 +40,36 @@ function dict () {
     fi
 }
 
+function serve () {
+    # Manage a simple HTTP server
+    #
+    # Usage:
+    # serve start|stop|restart [port]
+    #
+    local port="${2:-8000}"
+    case $1 in
+    "start")
+    echo "starting http server"
+    nohup python -m SimpleHTTPServer >| /tmp/nohup.out &
+    open "http://localhost:${port}/"
+    ;;
+    "stop")
+    echo "stopping http server"
+    kill $(ps aux | grep "python -m SimpleHTTPServer" \
+                  | grep -v grep \
+                  | awk '{print $2}') > /dev/null
+    ;;
+    "restart")
+    echo "restarting http server"
+    kill $(ps aux | grep "python -m SimpleHTTPServer" \
+                  | grep -v grep | awk '{print $2}') > /dev/null
+    nohup python -m SimpleHTTPServer >| /tmp/nohup.out &
+    ;;
+    *)
+    echo "need start|stop|restart"
+    esac
+}
+
 # Reuse Vim ZSH completions for vim completions
 if [[ "$SHELL" == *zsh ]]; then
     compdef _vim es
