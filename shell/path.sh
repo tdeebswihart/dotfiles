@@ -4,6 +4,7 @@ Linux)
     BASEPATH="~/dev/tools/metasploit-framework:/dev/tools/metasploit-framework/tools:$PATH"
     hash keychain && eval 'keychain --eval id_rsa'
     BASEPATH="/usr/local/texlive/2014/bin/x86_64-linux:$BASEPATH"
+    alias md5='md5sum'
     ;;
 Darwin)
     BASEPATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/texbin"
