@@ -12,3 +12,4 @@ alias rb='ruby'
 alias mountp='mount | column -t'
 alias wekarun="java -Xmx1000M -jar ~/bin/weka/weka.jar"
 alias lockme="xscreensaver-command -lock"
+alias xo='xdg-open'
