@@ -12,7 +12,7 @@ Xft.hintstyle: hintfull
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.dpi: 96
-!Xft.rgba: rgb
+Xft.rgba: rgb
 
 ! URxvt (scrollstyle: rxvt (default), plain, next, or xterm)
 URxvt*termName: rxvt-unicode
