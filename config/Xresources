@@ -4,14 +4,14 @@
 ! Fonts
 URxvt*font: xft:Source Code Pro:regular:size=12
 URxvt*boldFont: xft:Source Code Pro:size=12
-URxvt.letterSpace: -2
+URxvt.letterSpace: -1
 ! font settings suggested by infinality
-!Xft.autohint: 1
-!Xft.lcdfilter: lcddefault
-!Xft.hintstyle: hintfull
-!Xft.hinting: 1
-!Xft.antialias: 1
-!Xft.dpi: 72
+Xft.autohint: 1
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.dpi: 96
 !Xft.rgba: rgb
 
 ! URxvt (scrollstyle: rxvt (default), plain, next, or xterm)
