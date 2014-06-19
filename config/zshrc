@@ -3,7 +3,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-ZSH_THEME="gallois"
+ZSH_THEME="agnoster"
 
 plugins=(git)
 bindkey -v
