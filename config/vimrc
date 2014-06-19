@@ -83,6 +83,8 @@ NeoBundle 'klen/python-mode'
 NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'sophacles/vim-processing'
 NeoBundle 'tpope/vim-markdown'
+NeoBundle 'vim-pandoc/vim-pantondoc'
+NeoBundle 'vim-pandoc/vim-pandoc-syntax'
 
 " Haskell
 NeoBundle 'dag/vim2hs'
@@ -360,6 +362,6 @@ if executable('pt')
 endif
 
 " Markdown
-au BufEnter *.md setlocal foldexpr=MarkdownLevel()
-au BufEnter *.md setlocal foldmethod=expr
+"au BufEnter *.md setlocal foldexpr=MarkdownLevel()
+"au BufEnter *.md setlocal foldmethod=expr
 
