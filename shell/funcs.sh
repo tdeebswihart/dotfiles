@@ -24,6 +24,25 @@ gpx2json () {
     done
 }
 
+b64 () {
+    # Encode data to or decode data from Base64
+    if (( $# < 2 )); then
+        echo "usage: base64 encode|decode DATA"
+    else
+        case $1 in
+        encode)
+            python -c "import base64 as b; print b.b64encode('$2')"
+            ;;
+        decode)
+            python -c "import base64 as b; print b.b64decode('$2')"
+            ;;
+        *)
+            echo "usage: base64 encode|decode DATA"
+            ;;
+        esac
+    fi
+}
+
 urlencode () {
     python -c "import sys, urllib as ul; print ul.quote_plus('$1')"
 }
