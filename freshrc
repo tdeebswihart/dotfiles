@@ -10,6 +10,7 @@ fresh gdbinit/Gdbinit 'gdbinit' --file=~/.gdbinit
 fresh chronoslynx/dotfiles 'bin/*' --bin
 fresh jasoncodes/dotfiles bin/pidof --bin
 fresh avatsaev/Mavericksey mavericksey --bin
+fresh x3ro/dotfiles .bin/omgtex.rb --bin
 #fresh pengwynn/dotfiles bin/e --bin
 #fresh pengwynn/dotfiles bin/gibo --bin
 # fresh holman/spark spark --bin
