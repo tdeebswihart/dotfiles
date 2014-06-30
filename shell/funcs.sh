@@ -53,7 +53,7 @@ urldecode () {
 
 function dict () {
     if [[ "$1" =~ (d|m) ]]; then
-        curl -s dict://dict.org/$1:$2 | tail -n +4 | head -n -2 | less
+        curl -s dict://dict.org/$1:$2 | less
     else
         echo 'Unknown command. Use (d)efine or (m)atch.'
     fi
