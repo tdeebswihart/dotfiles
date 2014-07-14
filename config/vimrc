@@ -81,6 +81,7 @@ NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'sophacles/vim-processing'
 NeoBundle 'vim-pandoc/vim-pantondoc'
 NeoBundle 'vim-pandoc/vim-pandoc-syntax'
+NeoBundle 'chilicuil/vim-sml-coursera'
 
 " Haskell
 NeoBundle 'dag/vim2hs'
