@@ -262,8 +262,8 @@ noremap <leader>yy "*Y
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 " Map :tabnext and :tabprevious to make tab hopping easy
-nnoremap <C-h> :tabp<CR>
-nnoremap <C-l> :tabn<CR>
+" nnoremap <C-h> :tabp<CR>
+" nnoremap <C-l> :tabn<CR>
 nnoremap <leader>nt :tabnew ./
 
 " kill all trailing whitespace
