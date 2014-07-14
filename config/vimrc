@@ -66,9 +66,6 @@ NeoBundle 'Raimondi/delimitMate'
 " Syntastic for syntax checking
 NeoBundle 'scrooloose/syntastic'
 
-" Window Management
-NeoBundle 'spolu/dwm.vim'
-
 " Allow quick commenting/uncommenting of lines
 NeoBundle 'scrooloose/nerdcommenter'
 
@@ -240,10 +237,10 @@ if has ('mouse')
 endif
 
 "" Use ctrl-[hjkl] to select the active split
-" nmap <silent> <c-k> :wincmd k<CR>
-" nmap <silent> <c-j> :wincmd j<CR>
-" nmap <silent> <c-h> :wincmd h<CR>
-" nmap <silent> <c-l> :wincmd l<CR>
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
 
 " Fold opening and closing
 nmap <leader>. za
