@@ -327,7 +327,8 @@ aug end
 
 " Stop putting python comments at the beginning of a line
 au! FileType python setl nosmartindent
-au BufNewFile,BufRead *.txt   set filetype=pandoc
+au Filetype yaml setl ts=2 sw=2 expandtab
+au BufNewFile,BufRead *.txt setl filetype=pandoc
 " Save and load fold states
 "au BufWinLeave * mkview
 "au BufWinEnter * silent loadview
