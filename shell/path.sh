@@ -21,8 +21,13 @@ Darwin)
     if [[ -d "$(brew --prefix ccache)/libexec" ]]; then
         BASEPATH="$(brew --prefix ccache)/libexec:$BASEPATH"
     fi
+
+    # haskell
+    if [[ -d "$HOME/Library/Haskell/bin" ]]; then
+        BASEPATH="$HOME/Library/Haskell/bin:$BASEPATH"
+    fi
     # Fix for homebrew pkg-config
-    export PKG_CONFIG_PATH="/usr/local/Library/ENV/pkgconfig/10.9"
+    #export PKG_CONFIG_PATH="/usr/local/Library/ENV/pkgconfig/10.9"
 
     # GDAL data file locations
     export GDAL_DATA="$(brew --prefix gdal)/share/gdal"
