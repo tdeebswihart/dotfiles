@@ -33,6 +33,10 @@ Darwin)
     export GDAL_DATA="$(brew --prefix gdal)/share/gdal"
 
     alias dutil="diskutil"
+
+    # OPAM configuration
+    hash opam && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
     ;;
 esac
 

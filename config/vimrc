@@ -34,6 +34,7 @@ NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'jordwalke/flatlandia'
 
 
 " Git setup
@@ -65,6 +66,24 @@ NeoBundle 'Raimondi/delimitMate'
 
 " Syntastic for syntax checking
 NeoBundle 'scrooloose/syntastic'
+" TODO: Disable signs in merlin/syntastic, and only use the VimHint
+" strategy of
+" underlining *just* the region of error.
+let g:syntastic_enable_signs=0
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_loc_list_height=15
+" let g:syntastic_warning_symbol=""
+" let g:syntastic_error_symbol=""
+" highlight link SyntasticErrorLine Spellbad
+" highlight link SyntasticWarningLine Spellbad
+" highlight link SyntasticStyleErrorLine Spellbad
+" highlight link SyntasticStyleWarningLine Spellbad
+" For OCaml (which uses syntastic + merlin) always show the sign gutter
+" otherwise it's jarring when it appears.
+" autocmd FileType ocaml sign define dummy
+" autocmd FileType ocaml execute 'sign place 9999 line=1 name=dummy
+" buffer=' . bufnr(')
+" =============================================================================="'
 
 " Allow quick commenting/uncommenting of lines
 NeoBundle 'scrooloose/nerdcommenter'
@@ -82,6 +101,20 @@ NeoBundle 'sophacles/vim-processing'
 NeoBundle 'vim-pandoc/vim-pantondoc'
 NeoBundle 'vim-pandoc/vim-pandoc-syntax'
 NeoBundle 'chilicuil/vim-sml-coursera'
+
+" Ocaml
+if !empty(system('which opam'))
+    " =================================== Merlin
+    " ================================
+    let s:ocamlmerlin=substitute(system('opam config var
+    share'),'\n$','',') . "/ocamlmerlin"
+    execute "set rtp+=".s:ocamlmerlin."/vim"
+    execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
+    let g:syntastic_ocaml_checkers=['merlin']
+else
+    " TODO: figure out opam for windows
+endif
+NeoBundle "def-lkb/ocp-indent-vim"
 
 " Haskell
 NeoBundle 'dag/vim2hs'
@@ -221,7 +254,7 @@ set wildignore+=*.DS_Store
 
 "set runtimepath+=~/.vim.local
 "let $PAGER=''
-colorscheme base16-ocean
+colorscheme flatlandia "base16-ocean
 set background=dark
 call togglebg#map("<F6>")
 "let g:solarized_termcolors=16
@@ -249,6 +282,11 @@ map <leader>. za
 
 " Airline setup for statusbar
 let g:airline#extensions#tabline#enabled = 1
+
+let g:airline_powerline_fonts = 1
+set laststatus=2
+" Disable truncation
+let g:airline#extensions#default#section_truncate_width = {}
 
 setlocal omnifunc=necoghc#omnifunc
 
@@ -333,9 +371,6 @@ au BufNewFile,BufRead *.txt setl filetype=pandoc
 "au BufWinLeave * mkview
 "au BufWinEnter * silent loadview
 
-
-"
-"
 
 "" Unite.vim
 " Act like ctrlp.vim
