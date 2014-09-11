@@ -282,7 +282,7 @@ map <leader>. za
 " Airline setup for statusbar
 let g:airline#extensions#tabline#enabled = 1
 
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 set laststatus=2
 " Disable truncation
 let g:airline#extensions#default#section_truncate_width = {}
