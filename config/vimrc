@@ -279,6 +279,12 @@ nmap <silent> <c-l> :wincmd l<CR>
 nmap <leader>. za
 map <leader>. za
 
+" Tab maneuvering
+nmap <leader>tn :tabnext<CR>
+map <leader>tn :tabnext<CR>
+nmap <leader>tp :tabprevious<CR>
+map <leader>tp :tabprevious<CR>
+
 " Airline setup for statusbar
 let g:airline#extensions#tabline#enabled = 1
 
