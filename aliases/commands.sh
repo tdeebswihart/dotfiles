@@ -14,3 +14,4 @@ alias wekarun="java -Xmx1000M -jar ~/bin/weka/weka.jar"
 alias lockme="xscreensaver-command -lock"
 alias xo='xdg-open'
 alias disas='objdump -d -M intel'
+alias scanb='scan-build --use-analyzer=$(which clang-3.5)'
