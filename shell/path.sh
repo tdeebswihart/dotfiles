@@ -26,6 +26,14 @@ Darwin)
     if [[ -d "$HOME/Library/Haskell/bin" ]]; then
         BASEPATH="$HOME/Library/Haskell/bin:$BASEPATH"
     fi
+
+    # clang tools
+    if [[ -d "/usr/local/share/clang-3.5/tools/scan-build" ]]; then
+        BASEPATH="/usr/local/share/clang-3.5/tools/scan-build:$BASEPATH"
+    fi
+    if [[ -d "/usr/local/share/clang-3.5/tools/scan-view" ]]; then
+        BASEPATH="/usr/local/share/clang-3.5/tools/scan-view:$BASEPATH"
+    fi
     # Fix for homebrew pkg-config
     #export PKG_CONFIG_PATH="/usr/local/Library/ENV/pkgconfig/10.9"
 
