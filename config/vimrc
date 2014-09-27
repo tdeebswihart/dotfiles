@@ -29,6 +29,8 @@ NeoBundle 'altercation/vim-colors-solarized'
 
 "" Plugins
 NeoBundle "Shougo/unite.vim"
+NeoBundle "kana/vim-operator-user"
+NeoBundle "rhysd/vim-clang-format"
 
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
@@ -403,3 +405,8 @@ endif
 "au BufEnter *.md setlocal foldexpr=MarkdownLevel()
 "au BufEnter *.md setlocal foldmethod=expr
 
+" Clang-Format setup
+let g:clang_format#code_style = 'llvm'
+let g:clang_format#command = 'clang-format-3.5'
+let g:clang_format#auto_format = 1
+autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
