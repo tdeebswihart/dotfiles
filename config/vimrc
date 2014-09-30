@@ -408,5 +408,5 @@ endif
 " Clang-Format setup
 let g:clang_format#code_style = 'llvm'
 let g:clang_format#command = 'clang-format-3.5'
-let g:clang_format#auto_format = 1
+"let g:clang_format#auto_format = 1
 autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
