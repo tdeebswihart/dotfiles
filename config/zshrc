@@ -6,5 +6,4 @@ fi
 ZSH_THEME="agnoster"
 
 plugins=(git)
-bindkey -v
 source ~/.fresh/build/shell.sh
