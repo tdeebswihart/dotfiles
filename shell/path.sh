@@ -45,6 +45,10 @@ Darwin)
     # OPAM configuration
     hash opam && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
+    # ipython
+    if [[ -f "/Users/chronon/.pyenv/versions/anaconda-1.9.1/bin/ipython" ]]; then
+        alias ipython="/Users/chronon/.pyenv/versions/anaconda-1.9.1/bin/ipython"
+    fi
     ;;
 esac
 
