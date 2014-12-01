@@ -5,7 +5,7 @@ function _zsh_ltx {
 
 function _bash_ltx {
     local cur=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=( $(compgen -W "$(ls -d $LTXPATH/*/ | rev | cut -d '/' -f2 | rev)") -- $cur) )
+    COMPREPLY=( $(compgen -W "$(ls -d $LTXPATH/*/ | rev | cut -d '/' -f2 | rev)") -- $cur)
 }
 
 case $SHELL in
