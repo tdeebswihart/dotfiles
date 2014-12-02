@@ -36,17 +36,19 @@ FileUtils.chdir(target)
 
 
 
-puts "Creating content.md"
-content_md = <<-EOF
-Base Header Level:  3
-latex input:        document-info
-latex footer:       #{template}-end
+puts "Creating document.tex"
+content = <<-EOF
+\\input{document-info}
+%%% Body below this line
 
-# Hello world
 
+
+%%% Body above this line
+\\input{#{template}-end}
+\\end{document}
 EOF
 
-write_file("content.md", content_md)
+write_file("document.tex", content)
 
 
 
@@ -70,13 +72,10 @@ write_file("document-info.tex", documentinfo_tex)
 
 puts "Creating Makefile"
 makefile = <<-EOF
-all: content.pdf
+all: document.pdf
 
-content.pdf: content.tex document-info.tex
+document.pdf: *.tex
 	omgtex.rb -o content.tex
-
-content.tex: content.md
-	rmultimarkdown --to latex content.md -o content.tex
 
 clean:
 	rm ./*.{aux,log} content.tex
