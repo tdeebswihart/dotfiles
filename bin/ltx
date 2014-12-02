@@ -29,14 +29,8 @@ error(usage) if !File.directory? ARGV[1]
 template = ARGV[0]
 target = ARGV[1]
 
-
-
-puts "Initializing template #{template} in path #{target}"
 FileUtils.chdir(target)
 
-
-
-puts "Creating document.tex"
 content = <<-EOF
 \\input{document-info}
 %%% Body below this line
@@ -50,9 +44,6 @@ EOF
 
 write_file("document.tex", content)
 
-
-
-puts "Creating document-info.tex"
 documentinfo_tex = <<-EOF
 \\input{#{template}-preamble}
 
@@ -70,7 +61,6 @@ EOF
 
 write_file("document-info.tex", documentinfo_tex)
 
-puts "Creating Makefile"
 makefile = <<-EOF
 all: document.pdf
 
@@ -81,5 +71,3 @@ clean:
 	rm ./*.{aux,log}
 EOF
 write_file("Makefile",  makefile)
-
-puts "Done!"
