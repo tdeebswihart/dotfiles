@@ -75,10 +75,10 @@ makefile = <<-EOF
 all: document.pdf
 
 document.pdf: *.tex
-	omgtex.rb -o content.tex
+	omgtex.rb -o document.tex
 
 clean:
-	rm ./*.{aux,log} content.tex
+	rm ./*.{aux,log}
 EOF
 write_file("Makefile",  makefile)
 
