@@ -49,6 +49,11 @@ Darwin)
     if [[ -f "/Users/chronon/.pyenv/versions/anaconda-1.9.1/bin/ipython" ]]; then
         alias ipython="/Users/chronon/.pyenv/versions/anaconda-1.9.1/bin/ipython"
     fi
+
+    # Nim
+    if [[ -f "/Users/chronon/Development/nim/Nim/bin" ]]; then
+        BASEPATH="$BASEPATH:/Users/chronon/Development/nim/Nim/bin"
+    fi
     ;;
 esac
 
