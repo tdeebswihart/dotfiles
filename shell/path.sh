@@ -46,16 +46,16 @@ Darwin)
     hash opam && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
     # ipython
-    if [[ -f "/Users/chronon/.pyenv/versions/anaconda-1.9.1/bin/ipython" ]]; then
+    if [[ -f "$HOME/.pyenv/versions/anaconda-1.9.1/bin/ipython" ]]; then
         alias ipython="/Users/chronon/.pyenv/versions/anaconda-1.9.1/bin/ipython"
     fi
 
     # Nim
-    if [[ -d "/Users/chronon/Development/nim/Nim/bin" ]]; then
+    if [[ -d "$HOME/Development/nim/Nim/bin" ]]; then
         BASEPATH="$BASEPATH:/Users/chronon/Development/nim/Nim/bin"
     fi
-    if [[ -d "~/.nimble/bin" ]]; then
-        BASEPATH="$BASEPATH:~/.nimble/bin"
+    if [[ -d "$HOME/.nimble/bin" ]]; then
+        BASEPATH="$BASEPATH:$HOME/.nimble/bin"
     fi
     ;;
 esac
