@@ -54,6 +54,9 @@ Darwin)
     if [[ -d "/Users/chronon/Development/nim/Nim/bin" ]]; then
         BASEPATH="$BASEPATH:/Users/chronon/Development/nim/Nim/bin"
     fi
+    if [[ -d "~/.nimble/bin" ]]; then
+        BASEPATH="$BASEPATH:~/.nimble/bin"
+    fi
     ;;
 esac
 
