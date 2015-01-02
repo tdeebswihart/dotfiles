@@ -51,7 +51,7 @@ Darwin)
     fi
 
     # Nim
-    if [[ -f "/Users/chronon/Development/nim/Nim/bin" ]]; then
+    if [[ -d "/Users/chronon/Development/nim/Nim/bin" ]]; then
         BASEPATH="$BASEPATH:/Users/chronon/Development/nim/Nim/bin"
     fi
     ;;
