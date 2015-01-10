@@ -21,8 +21,6 @@ def write_file(name, content)
   File.open(name, 'w') {|f| f.write(content) }
 end
 
-
-
 error(usage) if ARGV.length != 2
 error(usage) if !File.directory? ARGV[1]
 
@@ -65,7 +63,7 @@ makefile = <<-EOF
 all: document.pdf
 
 document.pdf: *.tex
-	omgtex.rb -o document.tex
+	latexmk document.tex
 
 clean:
 	rm ./*.{aux,log}
