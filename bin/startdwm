@@ -1,16 +1,14 @@
 #!/bin/sh
-xrdb -merge /users/tswihart3/.Xresources
+xrdb -merge $HOME/.Xresources
 xset +fp /usr/share/fonts/local
 xset fp rehash
 xscreensaver &
-xmodmap /users/tswihart3/.Xmodmap
-sh /users/tswihart3/.screenlayout/default.sh
+xmodmap $HOME/.Xmodmap
+sh $HOME/.screenlayout/default.sh
 urxvtd -q -f -o &
-feh --bg-scale /users/tswihart3/Pictures/ssep.png
+feh --bg-scale $HOME/Pictures/ssep.png
 eval $(gnome-keyring-daemon --start) &
-chromium &
 thunderbird &
 pidgin &
 start-ipython-notebook &
-pcmanfm &
 exec dwmloop
