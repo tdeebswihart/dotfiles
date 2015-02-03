@@ -1,12 +1,12 @@
 #!/bin/sh
-xrdb -merge $HOME/.Xresources
+xrdb -merge /users/tswihart3/.Xresources
 xset +fp /usr/share/fonts/local
 xset fp rehash
 xscreensaver &
-xmodmap $HOME/.Xmodmap
-sh $HOME/.screenlayout/default.sh
+xmodmap /users/tswihart3/.Xmodmap
+sh /users/tswihart3/.screenlayout/default.sh
 urxvtd -q -f -o &
-feh --bg-scale $HOME/Pictures/ssep.png
+feh --bg-scale /users/tswihart3/Pictures/ssep.png
 eval $(gnome-keyring-daemon --start) &
 thunderbird &
 pidgin &
