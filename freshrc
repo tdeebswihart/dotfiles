@@ -7,14 +7,9 @@ fresh chronoslynx/dotfiles 'aliases/*'
 fresh gdbinit/Gdbinit 'gdbinit' --file=~/.gdbinit
 
 ## binfiles
+fresh janosgyerik/shellscripts 'bash/template-sh.sh' --bin
 fresh chronoslynx/dotfiles 'bin/*' --bin
-fresh jasoncodes/dotfiles bin/pidof --bin
-fresh avatsaev/Mavericksey mavericksey --bin
 fresh x3ro/dotfiles .bin/omgtex.rb --bin
-#fresh pengwynn/dotfiles bin/e --bin
-#fresh pengwynn/dotfiles bin/gibo --bin
-# fresh holman/spark spark --bin
-# fresh defunkt/repl bin/repl --bin
 
 ## terminal colors
 fresh chronoslynx/dotfiles 'colors' --file=~/.colors/
