@@ -1,9 +1,3 @@
-## VIM
-# Set the name of vim session the terminal is tied up to
-eset (){
-    export VI_SERVER=$1
-}
-
 # Highlight code for use w/ keynote, etc
 hilight () {
   if [ -z "$1" ]
@@ -26,29 +20,41 @@ gpx2json () {
 
 b64 () {
     # Encode data to or decode data from Base64
+    local USAGE="usage: base64 encode|decode DATA"
     if (( $# < 2 )); then
-        echo "usage: base64 encode|decode DATA"
+        echo $USAGE
     else
         case $1 in
-        encode)
-            python -c "import base64 as b; print b.b64encode('$2')"
-            ;;
-        decode)
-            python -c "import base64 as b; print b.b64decode('$2')"
-            ;;
-        *)
-            echo "usage: base64 encode|decode DATA"
-            ;;
+            encode|decode)
+                python -c "import base64 as b; print b.b64$1('$2')"
+                ;;
+            *)
+                echo $USAGE
+                ;;
         esac
     fi
 }
 
-urlencode () {
-    python -c "import sys, urllib as ul; print ul.quote_plus('$1')"
-}
-
-urldecode () {
-    python -c "import sys, urllib as ul; print ul.unquote_plus('$1')"
+url () {
+    local USAGE="usage: url encode|decode STRING"
+    if (( $# < 2 )); then
+        echo $USAGE
+    else
+        local FN=
+        case $1 in
+            encode)
+                FN="quote_plus"
+                ;;
+            decode)
+                FN="unquote_plus"
+                ;;
+            *)
+                echo $USAGE
+                return
+                ;;
+        esac
+        python -c "import sys, urllib as ul; print ul.$FN('$2')"
+    fi
 }
 
 function dict () {
@@ -67,25 +73,25 @@ function serve () {
     #
     local port="${2:-8000}"
     case $1 in
-    "start")
-    echo "starting http server"
-    nohup python -m SimpleHTTPServer >| /tmp/nohup.out &
-    open "http://localhost:${port}/"
-    ;;
-    "stop")
-    echo "stopping http server"
-    kill $(ps aux | grep "python -m SimpleHTTPServer" \
-                  | grep -v grep \
-                  | awk '{print $2}') > /dev/null
-    ;;
-    "restart")
-    echo "restarting http server"
-    kill $(ps aux | grep "python -m SimpleHTTPServer" \
-                  | grep -v grep | awk '{print $2}') > /dev/null
-    nohup python -m SimpleHTTPServer >| /tmp/nohup.out &
-    ;;
-    *)
-    echo "need start|stop|restart"
+        "start")
+            echo "starting http server"
+            nohup python -m SimpleHTTPServer >| /tmp/nohup.out &
+            open "http://localhost:${port}/"
+            ;;
+        "stop")
+            echo "stopping http server"
+            kill $(ps aux | grep "python -m SimpleHTTPServer" \
+                          | grep -v grep \
+                          | awk '{print $2}') > /dev/null
+            ;;
+        "restart")
+            echo "restarting http server"
+            kill $(ps aux | grep "python -m SimpleHTTPServer" \
+                          | grep -v grep | awk '{print $2}') > /dev/null
+            nohup python -m SimpleHTTPServer >| /tmp/nohup.out &
+            ;;
+        *)
+            echo "need start|stop|restart"
     esac
 }
 
