@@ -65,12 +65,6 @@ esac
 #     BASEPATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$BASEPATH"
 # fi
 
-# Python via pyenv
-if [[ -d "$HOME/.pyenv" ]]; then
-    BASEPATH="$BASEPATH:$HOME/.pyenv/bin"
-    BASEPATH="$HOME/.pyenv/shims:$BASEPATH"
-fi
-
 # Cabal binfiles
 if [[ -d "$HOME/.cabal/bin" ]]; then
     BASEPATH="$HOME/.cabal/bin:$BASEPATH"
