@@ -47,3 +47,4 @@ URxvt.colorIT: base0B
 URxvt.colorBD: base08
 URxvt.colorUL: base09
 URxvt.colorRV: base0A
+URxvt.intensityStyles: false
