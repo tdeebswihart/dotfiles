@@ -83,7 +83,7 @@ static const char *terminal[]  	    = 	{ "urxvtc", NULL };
 static const char *slockcmd[]  	    = 	{ "gnome-screensaver-command", "--lock", NULL };
 
 /* key definitions */
-#define Modkey Mod1Mask
+#define Modkey Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ Modkey,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ Modkey|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
