@@ -95,6 +95,15 @@ function serve () {
     esac
 }
 
+#Quick CoPy
+function qcp () {
+    if [ $# -lt 2 ]; then
+        echo "usage: qcp [rsync flags] source dest"
+    else
+        rsync -azhW $*
+    fi
+}
+
 # Reuse Vim ZSH completions for vim completions
 if [[ "$SHELL" == *zsh ]]; then
     compdef _vim es
