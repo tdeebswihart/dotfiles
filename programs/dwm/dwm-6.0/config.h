@@ -34,15 +34,15 @@ static const char colors[NUMCOLORS][ColLast][20] = {
 //    { "#0300ff", "#0300ff", "#802635" },  // 15 - warning
 };
 
-static const char font[]					= "Source Code Pro Regular 14";
+static const char font[]			= "Source Code Pro Regular 14";
 static const unsigned int borderpx  		= 1;        	// border pixel of windows
 static const unsigned int snap         		= 2;     	// snap pixel
-static const unsigned int gappx				= 0;		// gap pixel between windows (uselessgaps patch)
+static const unsigned int gappx			= 0;		// gap pixel between windows (uselessgaps patch)
 static const Bool showbar               	= True;  	// False means no bar
 static const Bool topbar                	= True;  	// False means bottom bar
 static const unsigned int systrayspacing 	= 2;   		// systray spacing
 static const Bool showsystray       		= True;     	// False means no systray
-static const Bool transbar					= False;		// True means transparent status bar
+static const Bool transbar			= False;		// True means transparent status bar
 
 /* Layout(s) */
 static const float mfact      				= 0.63;  	// factor of master area size [0.05..0.95]
@@ -77,22 +77,31 @@ static const Rule rules[] = {
 /* commands */
 static const char *dmenucmd[]       =   { "dmenu_run", "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG], "-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
 static const char *webcmd[]         =   { "chromium-browser", NULL };
-static const char *killdwm[]		=	{ "killall", "dwm", NULL };
-static const char *fileman[] 		= 	{ "pcmanfm", NULL };
-static const char *terminal[]  		= 	{ "urxvtc", NULL };
-static const char *slockcmd[]  		= 	{ "gnome-screensaver-command", "--lock", NULL };
+static const char *killdwm[]	    =	{ "killall", "dwm", NULL };
+static const char *fileman[] 	    = 	{ "pcmanfm", NULL };
+static const char *terminal[]  	    = 	{ "urxvtc", NULL };
+static const char *slockcmd[]  	    = 	{ "gnome-screensaver-command", "--lock", NULL };
 
 /* key definitions */
-#define Modkey Mod4Mask
+#define Modkey Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ Modkey,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ Modkey|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ Modkey|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ Modkey|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
+/* Use function keys for tag navigation/manipulation */
+#define FNTAGS(KEY,TAG) \
+        { 0,                            KEY,      view,           {.ui = 1 << TAG} }, \
+        { ShiftMask,                    KEY,      tag,            {.ui = 1 << TAG} }
+
 static Key keys[] = {
 	/* modifier                     	key        				function        	argument */
 	/* modifier                     key        function        argument */
+        FNTAGS(                         XK_F1,                         0),
+        FNTAGS(                         XK_F2,                         1),
+        FNTAGS(                         XK_F3,                         2),
+        FNTAGS(                         XK_F4,                         3),
 	{ Modkey,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ Modkey|ShiftMask,             XK_Return, spawn,          {.v = terminal } },
 	{ Modkey|ShiftMask,				XK_w,      spawn,          {.v = webcmd } },
