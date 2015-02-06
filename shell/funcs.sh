@@ -104,10 +104,4 @@ function qcp () {
     fi
 }
 
-# Reuse Vim ZSH completions for vim completions
-if [[ "$SHELL" == *zsh ]]; then
-    compdef _vim es
-    eset zshsession
-fi
-
 test -f ~/.local.sh && source ~/.local.sh
