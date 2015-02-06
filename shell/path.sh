@@ -74,6 +74,10 @@ if [[ -d "$HOME/Development/mygo/bin" ]]; then
     BASEPATH="$HOME/Development/mygo/bin:$BASEPATH"
 fi
 
+if [[ -d "$HOME/.pyenv/bin" ]]; then
+    BASEPATH="$HOME/.pyenv/bin:$BASEPATH"
+fi
+
 #Setting path
 PATH=$BASEPATH
 export PATH
