@@ -61,9 +61,9 @@ Darwin)
 esac
 
 # Ruby via rbenv
-# if [[ -d "$HOME/.rbenv" ]]; then
-#     BASEPATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$BASEPATH"
-# fi
+if [[ -d "$HOME/.rbenv" ]]; then
+     BASEPATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$BASEPATH"
+fi
 
 # Cabal binfiles
 if [[ -d "$HOME/.cabal/bin" ]]; then
