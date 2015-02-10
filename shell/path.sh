@@ -47,12 +47,12 @@ Darwin)
 
     # ipython
     if [[ -f "$HOME/.pyenv/versions/anaconda-1.9.1/bin/ipython" ]]; then
-        alias ipython="/Users/chronon/.pyenv/versions/anaconda-1.9.1/bin/ipython"
+        alias ipython="$HOME/.pyenv/versions/anaconda-1.9.1/bin/ipython"
     fi
 
     # Nim
     if [[ -d "$HOME/Development/nim/Nim/bin" ]]; then
-        BASEPATH="$BASEPATH:/Users/chronon/Development/nim/Nim/bin"
+        BASEPATH="$BASEPATH:$HOME/Development/nim/Nim/bin"
     fi
     if [[ -d "$HOME/.nimble/bin" ]]; then
         BASEPATH="$BASEPATH:$HOME/.nimble/bin"
