@@ -59,7 +59,7 @@ elif [[ $CURRENT_OS == 'Cygwin' ]]; then
     antigen bundle cygwin
 fi
 
-antigen theme agnoster
+antigen theme gallois
 antigen apply
 
 # Other Config
