@@ -2,8 +2,8 @@
 #include "/users/tswihart3/.colors/base16-ocean.dark"
 
 ! Fonts
-URxvt*font: xft:Source Code Pro:regular:size=10
-URxvt*boldFont: xft:Source Code Pro:size=10
+URxvt*font: xft:Source Code Pro for Powerline:regular:size=10
+URxvt*boldFont: xft:Source Code Pro for Powerline:size=10
 URxvt.letterSpace: -1
 ! font settings suggested by infinality
 Xft.autohint: 1
