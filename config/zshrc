@@ -64,3 +64,4 @@ antigen apply
 
 # Other Config
 source ~/.fresh/build/shell.sh
+fpath=(~/.zsh $fpath)
