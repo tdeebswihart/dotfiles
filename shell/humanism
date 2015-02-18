@@ -1,0 +1,2 @@
+export HUMANISM_BASE="$HOME/.humanism"
+source "$HUMANISM_BASE/humanism.sh"

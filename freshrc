@@ -6,6 +6,7 @@ fresh chronoslynx/dotfiles 'shell/*'
 fresh chronoslynx/dotfiles 'aliases/*'
 fresh gdbinit/Gdbinit 'gdbinit' --file=~/.gdbinit
 fresh zsh-users/antigen 'antigen.zsh' --file=~/.antigen.zsh
+fresh cyphunk/humanism.sh --file=~/.humanism/
 
 ## binfiles
 fresh janosgyerik/shellscripts 'bash/template-sh.sh' --bin
