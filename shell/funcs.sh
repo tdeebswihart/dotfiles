@@ -26,7 +26,7 @@ b64 () {
     else
         case $1 in
             encode|decode)
-                python -c "import base64 as b; print b.b64$1('$2')"
+                python -c "import base64 as b; print(b.b64$1('$2'))"
                 ;;
             *)
                 echo $USAGE
