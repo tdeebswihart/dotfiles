@@ -12,6 +12,7 @@ fresh cyphunk/humanism.sh . --file=~/.humanism/
 fresh janosgyerik/shellscripts 'bash/template-sh.sh' --bin
 fresh chronoslynx/dotfiles 'bin/*' --bin
 fresh x3ro/dotfiles .bin/omgtex.rb --bin
+fresh chronoslynx/scapy-tools '*' --bin
 
 ## terminal colors
 fresh chronoslynx/dotfiles 'colors' --file=~/.colors/
