@@ -12,10 +12,10 @@ sh $HOME/.screenlayout/default.sh
 # Start Applications
 urxvtd -q -f -o &
 feh --bg-scale $HOME/Pictures/ssep.png
-eval $(gnome-keyring-daemon --start) &
+#eval $(gnome-keyring-daemon --start) &
 thunderbird &
 pidgin &
-start-ipython-notebook &
+#start-ipython-notebook &
 
 # Set up windows
 exec dwmloop
