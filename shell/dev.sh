@@ -1,11 +1,7 @@
 export DEV=$HOME/Development
 
 #GO exports
-export MYGO=$DEV/mygo/src/chronon
-# export GOROOT="$DEV/go"
-# export GOBIN="$GOROOT/bin"
 export GOPATH="$DEV/mygo"
-# source $(go env | grep)/misc/zsh/go
 
 export MAKEFLAGS='-j 4'
 # ccache settings
