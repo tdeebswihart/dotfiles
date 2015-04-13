@@ -19,6 +19,12 @@ function runrio {
         echo Error: invalid home $DYNAMORIO_HOME
     fi
 }
+
+function riob {
+    # dynamoRIO Build
+    cmake -DDynamoRIO_DIR="$DYNAMORIO_HOME"/cmake $1
+}
+
 alias rio='runrio 32'
 alias rio64='runrio 64'
 alias drio='runrio 32 -debug'
