@@ -39,7 +39,7 @@ Darwin)
         alias ipython="$HOME/.pyenv/versions/anaconda-1.9.1/bin/ipython"
     fi
     # cross compilation tools
-    if [[ -f "$HOME/opt/cross/bin" ]]; then
+    if [[ -d "$HOME/opt/cross/bin" ]]; then
         BASEPATH="$BASEPATH:$HOME/opt/cross/bin"
     fi
 esac
