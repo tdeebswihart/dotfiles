@@ -1,3 +1,0 @@
-export HUMANISM_BASE="$HOME/.humanism"
-#TODO: humanism doesn't work with zsh right now. Needs 'shopt'
-#source "$HUMANISM_BASE/humanism.sh"

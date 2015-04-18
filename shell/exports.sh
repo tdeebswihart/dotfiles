@@ -1,5 +1,3 @@
-export TODOTXT_DEFAULT_ACTION=pv
-
 if [[ "$SHELL" == *zsh ]]; then
     setopt APPEND_HISTORY
     setopt SHARE_HISTORY
@@ -9,6 +7,7 @@ fi
 export HISTFILE="$HOME/.zshistory"
 export HISTSIZE=10000
 export SAVEHIST=10000
+export STOW_DIR="$HOME/.stow"
 
 for i in `ls ~/.secret/*.sh`; do
     source $i
