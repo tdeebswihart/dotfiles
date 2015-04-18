@@ -6,7 +6,8 @@ Linux)
     alias md5='md5sum'
     ;;
 Darwin)
-    BASEPATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/texbin"
+    # since /usr/local is managed by homebrew (and it complains about "unmanaged" pkgs, I use $HOME/.local
+    BASEPATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/texbin"
     if [ -z "$JAVA_HOME" -a -d /System/Library/Frameworks/JavaVM.framework/Home ]; then
         export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
     fi
@@ -14,11 +15,6 @@ Darwin)
     # NPM for node
     if [[ -d "/usr/local/share/npm/bin" ]]; then
         BASEPATH="$BASEPATH:/usr/local/share/npm/bin"
-    fi
-
-    # ccache symlinks for compilers
-    if [[ -d "$(brew --prefix ccache)/libexec" ]]; then
-        BASEPATH="$(brew --prefix ccache)/libexec:$BASEPATH"
     fi
 
     # haskell
@@ -39,7 +35,7 @@ Darwin)
         alias ipython="$HOME/.pyenv/versions/anaconda-1.9.1/bin/ipython"
     fi
     # cross compilation tools
-    if [[ -d "$HOME/opt/cross/bin" ]]; then
+    if [[ -d "$HOME/.opt/cross/bin" ]]; then
         BASEPATH="$BASEPATH:$HOME/opt/cross/bin"
     fi
 esac
