@@ -34,6 +34,10 @@ Darwin)
     if [[ -f "$HOME/.pyenv/versions/anaconda-1.9.1/bin/ipython" ]]; then
         alias ipython="$HOME/.pyenv/versions/anaconda-1.9.1/bin/ipython"
     fi
+    # llvm
+    if [[ -d "/usr/local/opt/llvm/bin" ]]; then
+        BASEPATH="/usr/local/opt/llvm/bin:$BASEPATH"
+    fi
 esac
 
 # Ruby via rbenv
