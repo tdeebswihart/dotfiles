@@ -7,7 +7,7 @@ Linux)
     ;;
 Darwin)
     # since /usr/local is managed by homebrew (and it complains about "unmanaged" pkgs, I use $HOME/.local
-    BASEPATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/texbin"
+    BASEPATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/texbin"
     if [ -z "$JAVA_HOME" -a -d /System/Library/Frameworks/JavaVM.framework/Home ]; then
         export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
     fi
@@ -34,10 +34,6 @@ Darwin)
     if [[ -f "$HOME/.pyenv/versions/anaconda-1.9.1/bin/ipython" ]]; then
         alias ipython="$HOME/.pyenv/versions/anaconda-1.9.1/bin/ipython"
     fi
-    # cross compilation tools
-    if [[ -d "$HOME/.opt/cross/bin" ]]; then
-        BASEPATH="$BASEPATH:$HOME/opt/cross/bin"
-    fi
 esac
 
 # Ruby via rbenv
@@ -63,5 +59,5 @@ if [[ -d "$GOPATH/bin" ]]; then
 fi
 
 #Setting path
-PATH=$BASEPATH
+PATH="$HOME/.local/bin:$BASEPATH"
 export PATH
