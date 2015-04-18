@@ -1,7 +1,6 @@
 case $(uname -s) in
 Linux)
     # /usr/lib/lightdm/lightdm:
-    BASEPATH="~/dev/tools/metasploit-framework:/dev/tools/metasploit-framework/tools:$PATH"
     hash keychain && eval 'keychain --eval id_rsa'
     BASEPATH="/usr/local/texlive/2014/bin/x86_64-linux:$BASEPATH"
     alias md5='md5sum'
@@ -14,7 +13,7 @@ Darwin)
 
     # NPM for node
     if [[ -d "/usr/local/share/npm/bin" ]]; then
-        BASEPATH="/usr/local/share/npm/bin:$BASEPATH"
+        BASEPATH="$BASEPATH:/usr/local/share/npm/bin"
     fi
 
     # ccache symlinks for compilers
@@ -24,18 +23,8 @@ Darwin)
 
     # haskell
     if [[ -d "$HOME/Library/Haskell/bin" ]]; then
-        BASEPATH="$HOME/Library/Haskell/bin:$BASEPATH"
+        BASEPATH="$BASEPATH:$HOME/Library/Haskell/bin"
     fi
-
-    # clang tools
-    if [[ -d "/usr/local/share/clang-3.5/tools/scan-build" ]]; then
-        BASEPATH="/usr/local/share/clang-3.5/tools/scan-build:$BASEPATH"
-    fi
-    if [[ -d "/usr/local/share/clang-3.5/tools/scan-view" ]]; then
-        BASEPATH="/usr/local/share/clang-3.5/tools/scan-view:$BASEPATH"
-    fi
-    # Fix for homebrew pkg-config
-    #export PKG_CONFIG_PATH="/usr/local/Library/ENV/pkgconfig/10.9"
 
     # GDAL data file locations
     export GDAL_DATA="$(brew --prefix gdal)/share/gdal"
@@ -49,15 +38,10 @@ Darwin)
     if [[ -f "$HOME/.pyenv/versions/anaconda-1.9.1/bin/ipython" ]]; then
         alias ipython="$HOME/.pyenv/versions/anaconda-1.9.1/bin/ipython"
     fi
-
-    # Nim
-    if [[ -d "$HOME/Development/nim/Nim/bin" ]]; then
-        BASEPATH="$BASEPATH:$HOME/Development/nim/Nim/bin"
+    # cross compilation tools
+    if [[ -f "$HOME/opt/cross/bin" ]]; then
+        BASEPATH="$BASEPATH:$HOME/opt/cross/bin"
     fi
-    if [[ -d "$HOME/.nimble/bin" ]]; then
-        BASEPATH="$BASEPATH:$HOME/.nimble/bin"
-    fi
-    ;;
 esac
 
 # Ruby via rbenv
