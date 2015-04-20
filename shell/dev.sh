@@ -6,5 +6,7 @@ export GOPATH="$DEV/mygo"
 export MAKEFLAGS='-j 4'
 # ccache settings
 export CCACHE_COMPRESS=1
+
 # personal installation prefix
 export PREFIX="$HOME/.local"
+export XTARGET="i686-elf"
