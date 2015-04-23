@@ -2,6 +2,7 @@ export DEV=$HOME/Development
 
 #GO exports
 export GOPATH="$DEV/mygo"
+export GDTMPLS="$GOPATH/src/github.com/chronoslynx/godoc-tmpls"
 
 export MAKEFLAGS='-j 4'
 # ccache settings
