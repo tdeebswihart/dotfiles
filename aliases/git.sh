@@ -1,2 +1,2 @@
-eval "$(hub alias -s)"
+hash hub && eval "$(hub alias -s)"
 alias g='git'
