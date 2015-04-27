@@ -1,8 +1,8 @@
 case $(uname -s) in
 Linux)
     # /usr/lib/lightdm/lightdm:
+    BASEPATH="/usr/local/texlive/2014/bin/x86_64-linux:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
     hash keychain && eval 'keychain --eval id_rsa'
-    BASEPATH="/usr/local/texlive/2014/bin/x86_64-linux:$BASEPATH"
     alias md5='md5sum'
     ;;
 Darwin)
