@@ -1,7 +1,9 @@
 export DEV=$HOME/Development
 
 #GO exports
-export GOPATH="$DEV/mygo"
+if [ "" = "${ALREADY_GLIDING}" ]; then
+    export GOPATH="$DEV/mygo"
+fi
 export GDTMPLS="$GOPATH/src/github.com/chronoslynx/godoc-tmpls"
 
 export MAKEFLAGS='-j 4'
