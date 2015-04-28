@@ -51,3 +51,4 @@ copy() {
 
     $res && echo -ne "$output" | pbcopy -Prefer txt
     echo -e "$msg"
+}
