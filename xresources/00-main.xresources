@@ -1,0 +1,3 @@
+! Colors
+#include "/users/tswihart3/.colors/gruvbox-dark.xresources"
+#include "/users/tswihart3/.colors/gruvbox-urxvt.xresources"

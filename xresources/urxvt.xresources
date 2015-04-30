@@ -1,9 +1,6 @@
-! Colors
-#include "/users/tswihart3/.colors/gruvbox-dark.xresources"
-
 ! Fonts
-URxvt*font: xft:Input:regular:size=12
-URxvt*boldFont: xft:Input:size=12
+URxvt*font: xft:Source Code Pro for Powerline:regular:size=12
+URxvt*boldFont: xft:Source Code Pro for Powerline:size=12
 URxvt.letterSpace: -1
 ! font settings suggested by infinality
 Xft.autohint: 1
