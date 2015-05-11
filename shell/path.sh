@@ -19,7 +19,7 @@ Darwin)
 
     # haskell
     if [[ -d "$HOME/Library/Haskell/bin" ]]; then
-        BASEPATH="$BASEPATH:$HOME/Library/Haskell/bin"
+        BASEPATH="HOME/Library/Haskell/bin:$BASEPATH"
     fi
 
     # GDAL data file locations
