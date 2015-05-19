@@ -2,6 +2,9 @@
 # Start Gnome Polkit authentication agent.
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
+# Start udiskie so that drives can be mounted automatically
+/usr/local/bin/udiskie &
+
 # XResources and setup
 xrdb -merge $HOME/.Xresources
 xset +fp /usr/share/fonts/local
