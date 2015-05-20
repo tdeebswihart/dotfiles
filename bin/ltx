@@ -1,71 +1,62 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env python
 #
-# A tool to quickly initialize a Multimarkdown "project" based on an x3-template
+# A tool to quickly initialize a latex "project" based on an x3-template
 #
+import os
+import sys
 
-require 'fileutils'
-
-def usage
-  """
-  Usage: ltx <template-name> <init-path>
-    (init-path must exist)
-  """
-end
-
-def error(msg)
-  abort "Error: #{msg}"
-end
-
-def write_file(name, content)
-  error "Refusing to overwrite content in #{name}!" if File.exists? name
-  File.open(name, 'w') {|f| f.write(content) }
-end
-
-error(usage) if ARGV.length != 2
-error(usage) if !File.directory? ARGV[1]
-
-template = ARGV[0]
-target = ARGV[1]
-
-FileUtils.chdir(target)
-
-content = <<-EOF
-\\input{document-info}
+content = '''
+\\input{{document-info}}
 %%% Body below this line
 
 
 
 %%% Body above this line
-\\input{#{template}-end}
-\\end{document}
-EOF
+\\input{{#{template}-end}}
+\\end{{document}}'''
 
-write_file("document.tex", content)
-
-documentinfo_tex = <<-EOF
-\\input{#{template}-preamble}
+documentinfo_tex = '''
+\\input{{#{template}-preamble}}
 
 %
 % Begin: Author and Document Information
 %
-\\def\\documentAuthor{}
-\\def\\documentTitle{}
+\\def\\documentAuthor{{}}
+\\def\\documentTitle{{}}
 %
 % End: Author and Document Information
 %
 
-\\input{#{template}-begin}
-EOF
+\\input\{{{template}-begin\}}
+'''
 
-write_file("document-info.tex", documentinfo_tex)
-
-makefile = <<-EOF
+makefile = '''
 all: document.pdf
 
 document.pdf: *.tex
 	latexmk document.tex
 
 clean:
-	rm ./*.{aux,log}
-EOF
-write_file("Makefile",  makefile)
+	rm ./*.{{aux,log}}'''
+
+def usage():
+    print("usage: ltx template-name init-path")
+    sys.exit(1)
+
+def main(templ, path):
+    files = ["document.tex", "document-info.tex", "Makefile"]
+    templates = [content, documentinfo_tex, makefile]
+    if os.path.exists(path):
+        if not os.path.isdir(path):
+            print("path '{}' exists but is not a directory".format(path))
+            sys.exit(1)
+    else:
+        os.makedirs(path)
+    for fn, stmpl in zip(files, templates):
+        with open(os.path.join(path, fn), 'w') as f:
+            f.write(stmpl.format(template=templ))
+
+if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        usage()
+    main(sys.argv[1], sys.argv[2])
