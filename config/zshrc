@@ -11,6 +11,7 @@ if ! zgen saved; then
     done
     zgen load zsh-users/zsh-syntax-highlighting
     zgen load zsh-users/zsh-history-substring-search
+    zgen load sharat87/pip-app
 
     case $(uname -s) in
         Linux)
