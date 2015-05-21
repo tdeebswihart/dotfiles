@@ -1,7 +1,7 @@
 copy() {
     if [[ $1 =~ ^-?[hH] ]]; then
         echo "Intelligently copies command results, text file, or raw text to"
-        echo "the ecclipboard"
+        echo "the clipboard"
         echo
         echo "Usage: copy [command or text]"
         echo "  or pipe a command: [command] | copy"

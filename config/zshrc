@@ -1,2 +1,42 @@
-source ~/.fresh/build/shell.sh
+# Load zgen
+source "${HOME}/.zgen.zsh"
+if ! zgen saved; then
+    echo "Creating a zgen save"
+
+    zgen oh-my-zsh
+    omzplugs=(git ssh-agent extract sudo httpie cp golang python pyenv rsync supervisor tmux vagrant)
+    # plugins
+    for plug in "${omzplugs[@]}"; do
+        zgen oh-my-zsh plugins/$plug
+    done
+    zgen load zsh-users/zsh-syntax-highlighting
+    zgen load zsh-users/zsh-history-substring-search
+
+    case $(uname -s) in
+        Linux)
+            case $(lsb_release -si) in
+                Ubuntu)
+                    zgen oh-my-zsh plugins/ubuntu
+                    ;;
+            esac
+            ;;
+        Darwin)
+            zgen oh-my-zsh plugins/brew
+            zgen oh-my-zsh plugins/brew-cask
+            ;;
+    esac
+    # Completions
+    zgen load zsh-users/zsh-completions src
+
+    # Themes
+    zgen oh-my-zsh themes/theunraveler #sunrise # gallois
+
+    # Save it to an init script
+    zgen save
+fi
+
+# Completions
 fpath=(~/.zsh $fpath)
+
+# load fresh-built files
+source ~/.fresh/build/shell.sh

@@ -1,18 +1,17 @@
-fresh freshshell/fresh bin/fresh --bin
+fresh freshshell/fresh bin/fresh --bin=~/.local/bin/fresh
 
 # dotfiles
 fresh chronoslynx/dotfiles 'config/*' --file
 fresh chronoslynx/dotfiles 'shell/*'
 fresh chronoslynx/dotfiles 'aliases/*'
+fresh chronoslynx/dotfiles 'xresources/*' --file=~/.Xresources
 fresh gdbinit/Gdbinit 'gdbinit' --file=~/.gdbinit
-fresh zsh-users/antigen 'antigen.zsh' --file=~/.antigen.zsh
-fresh cyphunk/humanism.sh . --file=~/.humanism/
+fresh tarjoilija/zgen 'zgen.zsh' --file=~/.zgen.zsh
+fresh tarjoilija/zgen '_zgen' --file=~/.zsh/_zgen
 
 ## binfiles
-fresh janosgyerik/shellscripts 'bash/template-sh.sh' --bin
-fresh chronoslynx/dotfiles 'bin/*' --bin
-fresh x3ro/dotfiles .bin/omgtex.rb --bin
-fresh chronoslynx/scapy-tools '*' --bin
+fresh chronoslynx/dotfiles 'bin/dwmloop' --bin=~/.local/bin/dwmloop
+fresh chronoslynx/dotfiles 'bin/ltx' --bin=~/.local/bin/ltx
 
 ## terminal colors
 fresh chronoslynx/dotfiles 'colors' --file=~/.colors/
