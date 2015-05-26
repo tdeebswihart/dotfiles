@@ -1,61 +1,44 @@
 case $(uname -s) in
-Linux)
-    # /usr/lib/lightdm/lightdm:
-    BASEPATH="/usr/local/texlive/2014/bin/x86_64-linux:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
-    hash keychain && eval 'keychain --eval id_rsa'
-    alias md5='md5sum'
-    ;;
-Darwin)
-    # since /usr/local is managed by homebrew (and it complains about "unmanaged" pkgs, I use $HOME/.local
-    BASEPATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/texbin"
-    if [ -z "$JAVA_HOME" -a -d /System/Library/Frameworks/JavaVM.framework/Home ]; then
-        export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
-    fi
+    Linux)
+        # /usr/lib/lightdm/lightdm:
+        BASEPATH="/usr/local/texlive/2014/bin/x86_64-linux:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+        hash keychain && eval 'keychain --eval id_rsa'
+        alias md5='md5sum'
+        ;;
+    Darwin)
+        # since /usr/local is managed by homebrew (and it complains about "unmanaged" pkgs, I use $HOME/.local
+        BASEPATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/texbin"
+        if [ -z "$JAVA_HOME" -a -d /System/Library/Frameworks/JavaVM.framework/Home ]; then
+            export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
+        fi
 
-    # NPM for node
-    if [[ -d "/usr/local/share/npm/bin" ]]; then
-        BASEPATH="$BASEPATH:/usr/local/share/npm/bin"
-    fi
+        # NPM for node
+        if [[ -d "/usr/local/share/npm/bin" ]]; then
+            BASEPATH="$BASEPATH:/usr/local/share/npm/bin"
+        fi
 
-    # haskell
-    if [[ -d "$HOME/Library/Haskell/bin" ]]; then
-        BASEPATH="$HOME/Library/Haskell/bin:$BASEPATH"
-    fi
+        # haskell
+        if [[ -d "$HOME/Library/Haskell/bin" ]]; then
+            BASEPATH="$HOME/Library/Haskell/bin:$BASEPATH"
+        fi
 
-    # GDAL data file locations
-    export GDAL_DATA="$(brew --prefix gdal)/share/gdal"
+        # GDAL data file locations
+        export GDAL_DATA="$(brew --prefix gdal)/share/gdal"
 
-    alias dutil="diskutil"
+        alias dutil="diskutil"
 
-    # OPAM configuration
-    hash opam && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-    # ipython
-    if [[ -f "$HOME/.pyenv/versions/anaconda-1.9.1/bin/ipython" ]]; then
-        alias ipython="$HOME/.pyenv/versions/anaconda-1.9.1/bin/ipython"
-    fi
-    # llvm
-    if [[ -d "/usr/local/opt/llvm/bin" ]]; then
-        BASEPATH="/usr/local/opt/llvm/bin:$BASEPATH"
-    fi
+        # OPAM configuration
+        hash opam && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 esac
 
 # Ruby via rbenv
-if [[ -d "$HOME/.rbenv" ]]; then
-     BASEPATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$BASEPATH"
-fi
+#if [[ -d "$HOME/.rbenv" ]]; then
+#     BASEPATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$BASEPATH"
+#fi
 
 # Cabal binfiles
 if [[ -d "$HOME/.cabal/bin" ]]; then
     BASEPATH="$HOME/.cabal/bin:$BASEPATH"
-fi
-
-if [[ -d "$HOME/Development/mygo/bin" ]]; then
-    BASEPATH="$HOME/Development/mygo/bin:$BASEPATH"
-fi
-
-if [[ -d "$HOME/.pyenv/bin" ]]; then
-    BASEPATH="$HOME/.pyenv/bin:$BASEPATH"
 fi
 
 if [[ -d "$GOPATH/bin" ]]; then
