@@ -29,6 +29,13 @@ case $(uname -s) in
 
         # OPAM configuration
         hash opam && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+        # Haskell, since the brew installed version has issues
+        # Add GHC 7.8.4 to the PATH, via https://ghcformacosx.github.io/
+        export GHC_DOT_APP="$HOME/Applications/ghc-7.8.4.app"
+        if [ -d "$GHC_DOT_APP" ]; then
+            BASEPATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${BASEPATHPATH}"
+        fi
 esac
 
 # Ruby via rbenv
@@ -45,6 +52,6 @@ if [[ -d "$GOPATH/bin" ]]; then
     BASEPATH="$GOPATH/bin:$BASEPATH"
 fi
 
-#Setting path
+#Setting path -- my local prefix comes first *always*
 PATH="$HOME/.local/bin:$BASEPATH"
 export PATH
