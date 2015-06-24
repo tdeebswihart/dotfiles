@@ -34,7 +34,7 @@ case $(uname -s) in
         # Add GHC 7.8.4 to the PATH, via https://ghcformacosx.github.io/
         export GHC_DOT_APP="$HOME/Applications/ghc-7.8.4.app"
         if [ -d "$GHC_DOT_APP" ]; then
-            BASEPATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${BASEPATHPATH}"
+            BASEPATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${BASEPATH}"
         fi
 esac
 
