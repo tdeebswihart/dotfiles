@@ -1,6 +1,6 @@
 ;; (Shamelessly based on chrisdone's emacs config)
 ;; Standard libraries needed
-(add-to-list 'load-path "packages/dash")
+(add-to-list 'load-path "~/.emacs.d/packages/dash")
 (require dash)
 
 ;; Packages to laod
@@ -8,7 +8,6 @@
   '(better-defaults
     company
     company-jedi
-    dash
     flycheck
     flycheck-pylama
     god-mode
@@ -53,20 +52,24 @@
                                        location)))))
 
 ;; Load packages
-(loop for name in packages
-      do (progn (unless (fboundp name)
-                  (add-to-list 'load-path
-                               (concat (file-name-directory (or load-file-name
-                                                                (buffer-file-name)))
-                                       "packages/"
-                                       (symbol-name name)))
-                  (require name))))
+(let (s)
+  (-each packages
+    (lamba (name)
+           (progn (unless (fboundp name)
+                    (add-to-list 'load-path
+                                 (concat (file-name-directory (or load-file-name
+                                                                  (buffer-file-name)))
+                                         "packages/"
+                                         (symbol-name name)))
+                    (require name))))))
 
 ;; Load configurations
-(loop for name in configs
-      do (load (concat (file-name-directory load-file-name)
-                       "config/"
-                       name ".el")))
+(let (s)
+  (-each configs
+    (lambda (name)
+      (load (concat (file-name-directory load-file-name)
+                    "config/"
+                    name ".el")))))
 
 ;; Mode initializations
 (add-hook 'after-init-hook #'global-flycheck-mode)
