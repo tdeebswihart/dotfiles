@@ -12,7 +12,7 @@
 
 ;; Smartscan <https://github.com/mickeynp/smart-scan> setup
 (package-install 'smartscan)
-(global-smartscan-mode 1)(load-theme 'gruvbox t)
+(load-theme 'gruvbox t)
 (defun fontify-frame (frame)
   (set-frame-parameter frame 'font "Input-18"))
 ;; Fontify the current frame
