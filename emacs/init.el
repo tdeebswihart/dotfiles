@@ -19,7 +19,6 @@
     rust-mode
     smartscan
     smartparens
-    smex
     sml-mode
     with-editor)
   "Packages whose location follows the
@@ -30,6 +29,7 @@
     "god"
     "golang"
     "haskell"
+    "prelude-helm-everywhere"
     "markdown"
     "my-magit"
     "rust"
@@ -38,7 +38,8 @@
   format.")
 
 (defvar custom-load-paths
-  '("emacs-async"
+  '("company-mode"
+    "emacs-async"
     "flx"
     "helm"
     "magit/lisp"))
@@ -73,7 +74,7 @@
                     name ".el")))))
 
 ;; Mode initializations
+(require 'helm-config)
 (projectile-global-mode)
 (add-hook 'after-init-hook #'global-flycheck-mode)
-(smex-mode)
 (god-mode)

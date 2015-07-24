@@ -2,6 +2,8 @@
 (require 'uniquify)
 (require 'projectile)
 (require 'flycheck)
+(require 'rainbow-delimeters)
+
 ;; Fundamental functions
 
 (defun delete-blank-lines-in (start end)
@@ -91,8 +93,6 @@
 (global-set-key (kbd "<up>") 'windmove-up)
 (global-set-key (kbd "<down>") 'windmove-down)
 
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c M-x") 'execute-extended-command)
 ;; Convenience bindings for god-mode
 
@@ -102,11 +102,13 @@
 
 ;; Hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; Autoloads
 (add-to-list 'auto-mode-alist (cons "\\.el\\'" 'emacs-lisp-mode))
+(add-to-list 'auto-mode-alist (cons "\\.text\\'" 'markdown-mode))
 (add-to-list 'auto-mode-alist (cons "\\.md\\'" 'markdown-mode))
 (add-to-list 'auto-mode-alist (cons "\\.markdown\\'" 'markdown-mode))
 
@@ -116,12 +118,23 @@
 
 ;; font and color
 (defun fontify-frame (frame)
-  (set-frame-parameter frame 'font "Input-18"))
+  (set-frame-parameter frame 'font "Input-14"))
 (fontify-frame nil)
 (push 'fontify-frame after-make-frame-functions)
 (load-theme 'gruvbox t)
 (global-smartscan-mode 1)
 
+;; Company
+(setq company-tooltip-flip-when-above t)
 
+;; Helm
+(require 'helm-projectile)
+(setq helm-split-window-in-side-p           t
+      helm-buffers-fuzzy-matching           t
+      helm-move-to-line-cycle-in-source     t
+      helm-ff-search-library-in-sexp        t
+      helm-ff-file-name-history-use-recentf t)
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
 
 (provide 'global)
