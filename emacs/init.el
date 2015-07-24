@@ -39,6 +39,7 @@
 
 (defvar custom-load-paths
   '("emacs-async"
+    "flx"
     "helm"
     "magit/lisp"))
 
@@ -72,6 +73,7 @@
                     name ".el")))))
 
 ;; Mode initializations
+(projectile-global-mode)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (smex-mode)
 (god-mode)

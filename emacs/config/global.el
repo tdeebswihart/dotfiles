@@ -1,6 +1,7 @@
 ;; Requirements
 (require 'uniquify)
-
+(require 'projectile)
+(require 'flycheck)
 ;; Fundamental functions
 
 (defun delete-blank-lines-in (start end)

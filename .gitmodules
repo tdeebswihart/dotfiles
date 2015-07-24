@@ -31,3 +31,9 @@
 [submodule "emacs/packages/dash"]
 	path = emacs/packages/dash
 	url = https://github.com/magnars/dash.el.git
+[submodule "emacs/packages/flx"]
+	path = emacs/packages/flx
+	url = https://github.com/lewang/flx.git
+[submodule "emacs/packages/markdown-mode"]
+	path = emacs/packages/markdown-mode
+	url = git://jblevins.org/git/markdown-mode.git
