@@ -1,48 +1,9 @@
 [submodule "dircolors-solarized"]
 	path = dircolors-solarized
 	url = git://github.com/huyz/dircolors-solarized.git
-[submodule "emacs/packages/better-defaults"]
-	path = emacs/packages/better-defaults
-	url = https://github.com/technomancy/better-defaults
-[submodule "emacs/packages/magit"]
-	path = emacs/packages/magit
-	url = git://github.com/magit/magit.git
-[submodule "emacs/packages/helm"]
-	path = emacs/packages/helm
-	url = https://github.com/emacs-helm/helm.git
-[submodule "emacs/packages/emacs-async"]
-	path = emacs/packages/emacs-async
-	url = https://github.com/jwiegley/emacs-async.git
-[submodule "emacs/packages/god-mode"]
-	path = emacs/packages/god-mode
-	url = https://github.com/chrisdone/god-mode.git
-[submodule "emacs/packages/smex"]
-	path = emacs/packages/smex
-	url = https://github.com/nonsequitur/smex.git
-[submodule "emacs/packages/projectile"]
-	path = emacs/packages/projectile
-	url = https://github.com/bbatsov/projectile
 [submodule "emacs/packages/dash.el"]
 	path = emacs/packages/dash.el
 	url = https://github.com/magnars/dash.el.git
 [submodule "emacs/packages/--name"]
 	path = emacs/packages/--name
 	url = https://github.com/magnars/dash.el.git
-[submodule "emacs/packages/dash"]
-	path = emacs/packages/dash
-	url = https://github.com/magnars/dash.el.git
-[submodule "emacs/packages/flx"]
-	path = emacs/packages/flx
-	url = https://github.com/lewang/flx.git
-[submodule "emacs/packages/markdown-mode"]
-	path = emacs/packages/markdown-mode
-	url = git://jblevins.org/git/markdown-mode.git
-[submodule "emacs/packages/rainbow-delimiters"]
-	path = emacs/packages/rainbow-delimiters
-	url = https://github.com/Fanael/rainbow-delimiters.git
-[submodule "emacs/packages/company-mode"]
-	path = emacs/packages/company-mode
-	url = https://github.com/company-mode/company-mode.git
-[submodule "emacs/packages/company-jedi"]
-	path = emacs/packages/company-jedi
-	url = https://github.com/syohex/emacs-company-jedi.git
