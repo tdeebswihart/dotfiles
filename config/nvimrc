@@ -18,8 +18,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'klen/python-mode'
   Plug 'rodjek/vim-puppet'
   Plug 'sophacles/vim-processing'
-  Plug 'vim-pandoc/vim-pantondoc'
-  Plug 'vim-pandoc/vim-pandoc-syntax'
+  "Plug 'vim-pandoc/vim-pantondoc'
+  "Plug 'vim-pandoc/vim-pandoc-syntax'
   Plug 'chilicuil/vim-sml-coursera'
   "}}}
 call plug#end()
@@ -32,21 +32,12 @@ set background=dark
 let mapleader = ","
 "let LocalLeader = ";"
 noremap <leader>w :w<CR>
-noremap <leader>W :w!sudo tee %
 noremap <leader>q :q<CR>
 noremap <leader>ev :vsplit ./
 noremap <leader>eh :split ./
-
-noremap <leader>uf :Unite file<CR>
-noremap <leader>ub :Unite buffer<CR>
-
-nnoremap ' `
-nnoremap <Leader>G <Plug>(golden_ratio_resize)
-
-nnoremap ` '
-nnoremap <Leader>S :%s//<left>
-inoremap jj <Esc>
+"inoremap jj <Esc>
 "}}}
+
 ""Tab behavior{{{
 set tabstop=4
 " Set soft tabs equal to 4 spaces.
@@ -60,6 +51,7 @@ set smarttab
 set expandtab
 set nolist
 "}}}
+
 " List of characters to show instead of whitespace.
 set listchars=tab:▸\ ,eol:¬,trail:⌴,extends:❯,precedes:❮
 let &showbreak=nr2char(8618).' '
@@ -85,10 +77,10 @@ if has ('mouse')
     endif
 endif
 "" Use ctrl-[hjkl] to select the active split
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
+nmap <silent> <C-w-k> :wincmd k<CR>
+nmap <silent> <C-w-j> :wincmd j<CR>
+nmap <silent> <C-w-h> :wincmd h<CR>
+nmap <silent> <C-w-l> :wincmd l<CR>
 " Fold opening and closing
 nmap <leader>. za
 map <leader>. za
@@ -102,7 +94,6 @@ nnoremap <leader>nt :tabnew ./
 " Airline setup for statusbar
 let g:airline#extensions#tabline#enabled = 1
 
-"let g:airline_powerline_fonts = 1
 set laststatus=2
 " Disable truncation
 let g:airline#extensions#default#section_truncate_width = {}
