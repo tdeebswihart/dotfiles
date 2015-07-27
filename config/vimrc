@@ -7,9 +7,9 @@ Plug 'chriskempson/base16-vim'
 Plug 'altercation/vim-colors-solarized'
 
 "" Plugins
-Plug "Shougo/unite.vim"
-Plug "kana/vim-operator-user"
-Plug "rhysd/vim-clang-format"
+Plug 'Shougo/unite.vim'
+Plug 'kana/vim-operator-user'
+Plug 'rhysd/vim-clang-format'
 
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 
@@ -95,7 +95,7 @@ if !empty(system('which opam'))
 else
     " TODO: figure out opam for windows
 endif
-Plug "def-lkb/ocp-indent-vim"
+Plug 'def-lkb/ocp-indent-vim'
 
 " Haskell
 Plug 'dag/vim2hs'
