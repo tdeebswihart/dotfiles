@@ -1,7 +1,7 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-plug#begin()
+call plug#begin('~/.vim/plugged')
 "" Colors
 Plug 'chriskempson/base16-vim'
 Plug 'altercation/vim-colors-solarized'
@@ -108,7 +108,7 @@ Plug 'Shutnik/jshint2.vim'
 " Tab management
 Plug 'kien/tabman.vim'
 
-plug#end()
+call plug#end()
 
 " Configuration
 syntax on        " turn on hilighting
