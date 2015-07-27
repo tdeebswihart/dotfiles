@@ -1,73 +1,52 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-set runtimepath+=~/.vim/bundle/vimproc.vim/
-
-call neobundle#rc(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'shougo/neobundle.vim'
-
-" Recommended to install
-" After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f
-" your_machines_makefile
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-
+plug#begin()
 "" Colors
-NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
+Plug 'altercation/vim-colors-solarized'
 
 "" Plugins
-NeoBundle "Shougo/unite.vim"
-NeoBundle "kana/vim-operator-user"
-NeoBundle "rhysd/vim-clang-format"
+Plug "Shougo/unite.vim"
+Plug "kana/vim-operator-user"
+Plug "rhysd/vim-clang-format"
 
-NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 
-" NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'jordwalke/flatlandia'
+" Plug 'Lokaltog/vim-easymotion'
+Plug 'bling/vim-airline'
+Plug 'jordwalke/flatlandia'
 
 
 " Git setup
-NeoBundle 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Colors hex values in CSS files
-"NeoBundle 'ap/vim-css-color'
+"Plug 'ap/vim-css-color'
 
 " Autocloses if->endif, etc...
-NeoBundle 'tpope/vim-endwise'
+Plug 'tpope/vim-endwise'
 
 " Allows changing surrounding delimeters
-NeoBundle 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " Vim personal wiki. hooked into trunknotes for me
-NeoBundle 'vim-scripts/vimwiki'
+Plug 'vim-scripts/vimwiki'
 
 " Colors parens
-NeoBundle 'kien/rainbow_parentheses.vim'
+Plug 'kien/rainbow_parentheses.vim'
 
 " Automatically closes quotes, parenthesis, brackets, etc.
-NeoBundle 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 
 " looks for todos
-"NeoBundle 'vim-scripts/TaskList.vim'
+"Plug 'vim-scripts/TaskList.vim'
 
 " Matching if/endif, not just {} [] ()
-"NeoBundle 'vim-scripts/matchit.zip'
+"Plug 'vim-scripts/matchit.zip'
 
 " Syntastic for syntax checking
-NeoBundle 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 " TODO: Disable signs in merlin/syntastic, and only use the VimHint
 " strategy of
 " underlining *just* the region of error.
@@ -88,22 +67,22 @@ let g:syntastic_loc_list_height=15
 " =============================================================================="'
 
 " Allow quick commenting/uncommenting of lines
-NeoBundle 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 "" Syntaxes
-NeoBundle 'cespare/vim-toml'
-NeoBundle 'tpope/vim-git'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'mmalecki/vim-node.js'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'klen/python-mode'
-NeoBundle 'rodjek/vim-puppet'
-NeoBundle 'sophacles/vim-processing'
-NeoBundle 'vim-pandoc/vim-pantondoc'
-NeoBundle 'vim-pandoc/vim-pandoc-syntax'
-NeoBundle 'chilicuil/vim-sml-coursera'
+Plug 'cespare/vim-toml'
+Plug 'tpope/vim-git'
+Plug 'pangloss/vim-javascript'
+Plug 'mmalecki/vim-node.js'
+Plug 'vim-ruby/vim-ruby'
+Plug 'ChrisYip/Better-CSS-Syntax-for-Vim'
+Plug 'othree/html5.vim'
+Plug 'klen/python-mode'
+Plug 'rodjek/vim-puppet'
+Plug 'sophacles/vim-processing'
+Plug 'vim-pandoc/vim-pantondoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'chilicuil/vim-sml-coursera'
 
 " Ocaml
 if !empty(system('which opam'))
@@ -116,20 +95,20 @@ if !empty(system('which opam'))
 else
     " TODO: figure out opam for windows
 endif
-NeoBundle "def-lkb/ocp-indent-vim"
+Plug "def-lkb/ocp-indent-vim"
 
 " Haskell
-NeoBundle 'dag/vim2hs'
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'eagletmt/neco-ghc'
+Plug 'dag/vim2hs'
+Plug 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/neco-ghc'
 
 " Javascript
-NeoBundle 'Shutnik/jshint2.vim'
+Plug 'Shutnik/jshint2.vim'
 
 " Tab management
-NeoBundle 'kien/tabman.vim'
+Plug 'kien/tabman.vim'
 
-NeoBundleCheck
+plug#end()
 
 " Configuration
 syntax on        " turn on hilighting
