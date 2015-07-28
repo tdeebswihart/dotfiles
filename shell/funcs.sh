@@ -1,11 +1,49 @@
+loginfo () {
+    local prog="$1"
+    shift 1
+    echo "$@"
+    logger -p user.notice -t "$prog" "$@"
+}
+
+logerr () {
+    local prog="$1"
+    shift 1
+    echo "$@" >&2
+    logger -p user.error -t "$prog" "$@"
+}
+
 # Send a push notification via pushover
 push_notify () {
+    local title=$1
+    shift
     curl -s \
          -F "token=$PUSHOVER_TOK" \
          -F "user=$PUSHOVER_SELF" \
+         -F "title=$title" \
          -F "message=$*" \
          https://api.pushover.net/1/messages.json
 }
+
+# Execute the command defined by
+push_exec () {
+    local logf="$HOME/Library/Logs/push_exec.$RANDOM.log"
+    loginfo push_exec "Executing and watching '$*'"
+    ($@ 2>&1) > $logf
+    if [ $? -eq 0 ] ; then
+        # Success case
+        local msg="succeeded on $(hostname): $* (in $(pwd))"
+        loginfo 'push_exec' "$msg"
+        push_notify "Command Succeeded" "$msg" >/dev/null
+        rm "$logf" >/dev/null
+    else
+        # Error case
+        local msg="exit $? on $(hostname): $* (in $(pwd))"
+        logerr 'push_exec' "$msg"
+        logerr 'push_exec' "Log can be found at $logf"
+        push_notify "Command Failed" "$msg" >/dev/null
+    fi
+}
+
 
 # Highlight code for use w/ keynote, etc
 hilight () {
