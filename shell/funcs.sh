@@ -1,3 +1,12 @@
+# Send a push notification via pushover
+push_notify () {
+    curl -s \
+         -F "token=$PUSHOVER_TOK" \
+         -F "user=$PUSHOVER_SELF" \
+         -F "message=$*" \
+         https://api.pushover.net/1/messages.json
+}
+
 # Highlight code for use w/ keynote, etc
 hilight () {
   if [ -z "$1" ]
