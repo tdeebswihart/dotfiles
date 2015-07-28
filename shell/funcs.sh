@@ -18,7 +18,7 @@ push_notify () {
     shift
     curl -s \
          -F "token=$PUSHOVER_TOK" \
-         -F "user=$PUSHOVER_SELF" \
+         -F "user=$PUSHOVER_USER" \
          -F "title=$title" \
          -F "message=$*" \
          https://api.pushover.net/1/messages.json
