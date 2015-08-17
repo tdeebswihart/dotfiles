@@ -52,6 +52,9 @@ if [[ -d "$GOPATH/bin" ]]; then
     BASEPATH="$GOPATH/bin:$BASEPATH"
 fi
 
+# fzf
+[ -f "~/.fzf.zsh" ] && source ~/.fzf.zsh
+
 #Setting path -- my local prefix comes first *always*
 PATH="$HOME/.local/bin:$BASEPATH"
 export PATH

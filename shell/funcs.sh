@@ -44,7 +44,6 @@ push_exec () {
     fi
 }
 
-
 # Highlight code for use w/ keynote, etc
 hilight () {
   if [ -z "$1" ]

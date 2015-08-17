@@ -1,9 +1,0 @@
-[submodule "dircolors-solarized"]
-	path = dircolors-solarized
-	url = git://github.com/huyz/dircolors-solarized.git
-[submodule "emacs/packages/dash.el"]
-	path = emacs/packages/dash.el
-	url = https://github.com/magnars/dash.el.git
-[submodule "emacs/packages/--name"]
-	path = emacs/packages/--name
-	url = https://github.com/magnars/dash.el.git
