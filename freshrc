@@ -12,6 +12,6 @@ fresh tarjoilija/zgen '_zgen' --file=~/.zsh/_zgen
 ## binfiles
 fresh chronoslynx/dotfiles 'bin/dwmloop' --bin=~/.local/bin/dwmloop
 fresh chronoslynx/dotfiles 'bin/ltx' --bin=~/.local/bin/ltx
-
+fresh chronoslynx/dotfiles 'bin/udacity-tagger' --bin=~/.local/bin/udacity-tagger
 ## terminal colors
 fresh chronoslynx/dotfiles 'colors' --file=~/.colors/
