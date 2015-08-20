@@ -28,7 +28,7 @@ case $(uname -s) in
         alias dutil="diskutil"
 
         # OPAM configuration
-        hash opam && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+        #hash opam && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
         # Haskell, since the brew installed version has issues
         # Add GHC 7.8.4 to the PATH, via https://ghcformacosx.github.io/
@@ -36,6 +36,9 @@ case $(uname -s) in
         if [ -d "$GHC_DOT_APP" ]; then
             BASEPATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${BASEPATH}"
         fi
+
+        # iTerm 2.9+
+        test -f "${HOME}/.iterm2_shell_integration.$(basename ${SHELL})" && source "${HOME}/.iterm2_shell_integration.$(basename ${SHELL})"
 esac
 
 # Ruby via rbenv
@@ -52,9 +55,9 @@ if [[ -d "$GOPATH/bin" ]]; then
     BASEPATH="$GOPATH/bin:$BASEPATH"
 fi
 
-# fzf
-[ -f "~/.fzf.zsh" ] && source ~/.fzf.zsh
 
 #Setting path -- my local prefix comes first *always*
 PATH="$HOME/.local/bin:$BASEPATH"
 export PATH
+# fzf
+test -f "${HOME}/.fzf.$(basename ${SHELL})" && source "${HOME}/.fzf.$(basename ${SHELL})"
