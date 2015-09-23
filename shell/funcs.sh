@@ -118,23 +118,27 @@ function serve () {
     # serve start|stop|restart [port]
     #
     local port="${2:-8000}"
+    local module="SimpleHTTPServer"
+    if python --version | grep 'Python 3' >/dev/null; then
+        module='http.server'
+    fi
     case $1 in
         "start")
             echo "starting http server"
-            nohup python -m SimpleHTTPServer >| /tmp/nohup.out &
+            nohup python -m "$module" >| /tmp/nohup.out &
             open "http://localhost:${port}/"
             ;;
         "stop")
             echo "stopping http server"
-            kill $(ps aux | grep "python -m SimpleHTTPServer" \
+            kill $(ps aux | grep "python -m $module" \
                           | grep -v grep \
                           | awk '{print $2}') > /dev/null
             ;;
         "restart")
             echo "restarting http server"
-            kill $(ps aux | grep "python -m SimpleHTTPServer" \
+            kill $(ps aux | grep "python -m $module" \
                           | grep -v grep | awk '{print $2}') > /dev/null
-            nohup python -m SimpleHTTPServer >| /tmp/nohup.out &
+            nohup python -m "$module" >| /tmp/nohup.out &
             ;;
         *)
             echo "need start|stop|restart"
