@@ -4,13 +4,13 @@ if ! zgen saved; then
     echo "Creating a zgen save"
 
     zgen oh-my-zsh
-    omzplugs=(git ssh-agent sudo httpie golang python pyenv supervisor vagrant)
+    omzplugs=(git ssh-agent golang pyenv vagrant)
     # plugins
     for plug in "${omzplugs[@]}"; do
         zgen oh-my-zsh plugins/$plug
     done
     zgen load zsh-users/zsh-syntax-highlighting
-    zgen load zsh-users/zsh-history-substring-search
+    # zgen load zsh-users/zsh-history-substring-search
 
     case $(uname -s) in
         Linux)
