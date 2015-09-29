@@ -12,7 +12,7 @@ Plug 'rhysd/vim-clang-format'
 
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 
-Plug 'bling/vim-airline'
+" Plug 'bling/vim-airline'
 Plug 'jordwalke/flatlandia'
 
 
@@ -193,7 +193,6 @@ set wildignore+=*.DS_Store
 
 colorscheme gruvbox
 set background=dark
-call togglebg#map("<F6>")
 set t_Co=16
 
 if has ('mouse')
