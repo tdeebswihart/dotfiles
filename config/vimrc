@@ -3,8 +3,7 @@ filetype off                   " required!
 
 call plug#begin('~/.vim/plugged')
 "" Colors
-Plug 'chriskempson/base16-vim'
-Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 
 "" Plugins
 Plug 'Shougo/unite.vim'
@@ -13,7 +12,6 @@ Plug 'rhysd/vim-clang-format'
 
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 
-" Plug 'Lokaltog/vim-easymotion'
 Plug 'bling/vim-airline'
 Plug 'jordwalke/flatlandia'
 
@@ -30,59 +28,28 @@ Plug 'tpope/vim-endwise'
 " Allows changing surrounding delimeters
 Plug 'tpope/vim-surround'
 
-" Vim personal wiki. hooked into trunknotes for me
-Plug 'vim-scripts/vimwiki'
-
 " Colors parens
 Plug 'kien/rainbow_parentheses.vim'
 
 " Automatically closes quotes, parenthesis, brackets, etc.
 Plug 'Raimondi/delimitMate'
 
-" looks for todos
-"Plug 'vim-scripts/TaskList.vim'
-
-" Matching if/endif, not just {} [] ()
-"Plug 'vim-scripts/matchit.zip'
-
 " Syntastic for syntax checking
 Plug 'scrooloose/syntastic'
-" TODO: Disable signs in merlin/syntastic, and only use the VimHint
-" strategy of
-" underlining *just* the region of error.
 let g:syntastic_enable_signs=0
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_loc_list_height=15
-" let g:syntastic_warning_symbol=""
-" let g:syntastic_error_symbol=""
-" highlight link SyntasticErrorLine Spellbad
-" highlight link SyntasticWarningLine Spellbad
-" highlight link SyntasticStyleErrorLine Spellbad
-" highlight link SyntasticStyleWarningLine Spellbad
-" For OCaml (which uses syntastic + merlin) always show the sign gutter
-" otherwise it's jarring when it appears.
-" autocmd FileType ocaml sign define dummy
-" autocmd FileType ocaml execute 'sign place 9999 line=1 name=dummy
-" buffer=' . bufnr(')
-" =============================================================================="'
 
 " Allow quick commenting/uncommenting of lines
 Plug 'scrooloose/nerdcommenter'
 
 "" Syntaxes
-Plug 'cespare/vim-toml'
 Plug 'tpope/vim-git'
 Plug 'pangloss/vim-javascript'
-Plug 'mmalecki/vim-node.js'
-Plug 'vim-ruby/vim-ruby'
 Plug 'ChrisYip/Better-CSS-Syntax-for-Vim'
 Plug 'othree/html5.vim'
 Plug 'klen/python-mode'
 Plug 'rodjek/vim-puppet'
-Plug 'sophacles/vim-processing'
-"Plug 'vim-pandoc/vim-pantondoc'
-"Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'chilicuil/vim-sml-coursera'
 
 " Ocaml
 if !empty(system('which opam'))
@@ -92,8 +59,6 @@ if !empty(system('which opam'))
     execute "set rtp+=".s:ocamlmerlin."/vim"
     execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
     let g:syntastic_ocaml_checkers=['merlin']
-else
-    " TODO: figure out opam for windows
 endif
 Plug 'def-lkb/ocp-indent-vim'
 
@@ -104,9 +69,6 @@ Plug 'eagletmt/neco-ghc'
 
 " Javascript
 Plug 'Shutnik/jshint2.vim'
-
-" Tab management
-Plug 'kien/tabman.vim'
 
 call plug#end()
 
@@ -127,19 +89,19 @@ set smartcase
 filetype indent on
 filetype plugin indent on
 
-let mapleader = ","
-"let LocalLeader = ";"
+let mapleader = "\<Space>"
+let LocalLeader = ";"
 noremap <leader>w :w<CR>
 noremap <leader>W :w!sudo tee %
 noremap <leader>q :q<CR>
 noremap <leader>ev :vsplit ./
 noremap <leader>eh :split ./
 
-noremap <leader>uf :Unite file<CR>
-noremap <leader>ub :Unite buffer<CR>
+noremap <leader>e :Unite file<CR>
+noremap <leader>b :Unite buffer<CR>
 
 nnoremap <Leader>S :%s//<left>
-inoremap jj <Esc>
+inoremap jk <Esc>
 
 set backup
 set autowrite
@@ -229,12 +191,9 @@ set wildignore+=*~,#*#,*.sw?,%*,*=
 " Mac OS X.
 set wildignore+=*.DS_Store
 
-"set runtimepath+=~/.vim.local
-"let $PAGER=''
-colorscheme flatlandia "base16-ocean
+colorscheme gruvbox
 set background=dark
 call togglebg#map("<F6>")
-"let g:solarized_termcolors=16
 set t_Co=16
 
 if has ('mouse')
@@ -297,10 +256,6 @@ let g:html_indent_inctags = "html,body,head,tbody,div"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
-let g:vimwiki_list = [
-    \ {'path': '~/Dropbox/trunksync/notes/', 'index': 'HomePage', 'path_html': '~/trunknotes_html', 'ext': '.markdown', 'auto_export': 0}
-    \ ]
-
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 let g:extradite_showhash = 1
@@ -318,8 +273,6 @@ let g:EasyMotion_leader_key = ';'
 
 "" Python-Mode setup
 " disable pylint on every save
-"let g:pymode_lint_write = 0
-" Press <leader>d to show docs
 let g:pymode_doc_key = '<leader>d'
 
 
@@ -350,10 +303,6 @@ aug end
 au! FileType python setl nosmartindent
 au Filetype yaml setl ts=2 sw=2 expandtab
 au BufNewFile,BufRead *.txt setl filetype=pandoc
-" Save and load fold states
-"au BufWinLeave * mkview
-"au BufWinEnter * silent loadview
-
 
 "" Unite.vim
 " Act like ctrlp.vim
@@ -376,13 +325,3 @@ if executable('pt')
   let g:unite_source_grep_default_opts = '--nogroup --nocolor'
   let g:unite_source_grep_recursive_opt = ''
 endif
-
-" Markdown
-"au BufEnter *.md setlocal foldexpr=MarkdownLevel()
-"au BufEnter *.md setlocal foldmethod=expr
-
-" Clang-Format setup
-let g:clang_format#code_style = 'llvm'
-let g:clang_format#command = 'clang-format-3.5'
-"let g:clang_format#auto_format = 1
-autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
