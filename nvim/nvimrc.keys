@@ -35,9 +35,9 @@ nnoremap <leader>lp :lprev<cr>
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
-
 " Convert markdown to html.
 nmap <leader>m :silent !pandoc %:p -o %:r.html<cr>
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+imap jk <Esc>
