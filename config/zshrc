@@ -3,10 +3,11 @@ source "${HOME}/.zgen.zsh"
 if ! zgen saved; then
     echo "Creating a zgen save"
 
+    zgen oh-my-zsh
     zgen load zsh-users/zsh-syntax-highlighting
 
     # Themes
-    zgen oh-my-zsh themes/theunraveler #sunrise # gallois
+    zgen oh-my-zsh themes/theunraveler
 
     # Save it to an init script
     zgen save
