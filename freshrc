@@ -11,8 +11,8 @@ fresh tarjoilija/zgen '_zgen' --file=~/.zsh/_zgen
 
 ## binfiles
 fresh chronoslynx/dotfiles 'bin/dwmloop' --bin=~/.local/bin/dwmloop
-fresh chronoslynx/dotfiles 'bin/edit' --bin=~/.local/bin/edit
 fresh chronoslynx/dotfiles 'bin/ltx' --bin=~/.local/bin/ltx
 fresh chronoslynx/dotfiles 'bin/udacity-tagger' --bin=~/.local/bin/udacity-tagger
+fresh wwalker/ssh-find-agent 'ssh-find-agent.sh' --bin=~/.ssh-find-agent.sh
 ## terminal colors
 fresh chronoslynx/dotfiles 'colors' --file=~/.colors/
