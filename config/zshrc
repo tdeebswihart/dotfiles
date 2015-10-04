@@ -1,4 +1,4 @@
-if ! source "${HOME}/zgen/init.zsh"; then
+if ! source "${HOME}/.zgen/init.zsh"; then
     # Load zgen
     source "${HOME}/.zgen.zsh"
     echo "Creating a zgen save"
