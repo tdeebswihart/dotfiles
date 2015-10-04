@@ -26,7 +26,6 @@ Plug 'jsx/jsx.vim'
 Plug 'mitsuhiko/jinja2', { 'rtp': 'ext/Vim' }
 Plug 'groenewege/vim-less'
 
-Plug 'bbenne10/simpleburn'
 Plug 'morhetz/gruvbox'
 
 call plug#end()
