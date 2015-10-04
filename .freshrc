@@ -1,0 +1,21 @@
+fresh freshshell/fresh bin/fresh --bin=~/.local/bin/fresh
+
+# dotfiles
+fresh chronoslynx/dotfiles 'config/*' --file
+fresh chronoslynx/dotfiles 'shell/*'
+fresh chronoslynx/dotfiles 'aliases/*'
+fresh chronoslynx/dotfiles 'xresources/*' --file=~/.Xresources
+fresh gdbinit/Gdbinit 'gdbinit' --file=~/.gdbinit
+fresh tarjoilija/zgen 'zgen.zsh' --file=~/.zgen.zsh
+fresh tarjoilija/zgen '_zgen' --file=~/.zsh/_zgen
+
+## binfiles
+fresh chronoslynx/dotfiles 'bin/dwmloop' --bin=~/.local/bin/dwmloop
+fresh chronoslynx/dotfiles 'bin/ltx' --bin=~/.local/bin/ltx
+fresh chronoslynx/dotfiles 'bin/udacity-tagger' --bin=~/.local/bin/udacity-tagger
+fresh wwalker/ssh-find-agent 'ssh-find-agent.sh' --bin=~/.ssh-find-agent.sh
+## terminal colors
+fresh chronoslynx/dotfiles 'colors' --file=~/.colors/
+
+## nvim config
+fresh chronoslynx/dotfiles 'nvim' --file=~/.nvim/
