@@ -4,7 +4,7 @@ if ! zgen saved; then
     echo "Creating a zgen save"
 
     zgen oh-my-zsh
-    omzplugs=(ssh-agent pyenv)
+    omzplugs=(ssh-agent pyenv git)
     # plugins
     for plug in "${omzplugs[@]}"; do
         zgen oh-my-zsh plugins/$plug
