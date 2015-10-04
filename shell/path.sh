@@ -7,7 +7,7 @@ case $(uname -s) in
         ;;
     Darwin)
         # since /usr/local is managed by homebrew (and it complains about "unmanaged" pkgs, I use $HOME/.local
-        BASEPATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/texbin"
+        BASEPATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin"
         if [ -z "$JAVA_HOME" -a -d /System/Library/Frameworks/JavaVM.framework/Home ]; then
             export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
         fi
@@ -20,6 +20,11 @@ case $(uname -s) in
         # haskell
         if [[ -d "$HOME/Library/Haskell/bin" ]]; then
             BASEPATH="$HOME/Library/Haskell/bin:$BASEPATH"
+        fi
+
+        if [[ -d "/Library/TeX/texbin" ]]; then
+            # Fix for TeX on El Capitan
+            BASEPATH="/Library/TeX/texbin:$BASEPATH"
         fi
 
         # GDAL data file locations
