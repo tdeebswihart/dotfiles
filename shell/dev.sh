@@ -13,3 +13,5 @@ export CCACHE_COMPRESS=1
 # personal installation prefix
 export PREFIX="$HOME/.local"
 export XTARGET="i686-elf"
+
+[ ! -z "$DESK_ENV" ] && source "$DESK_ENV"
