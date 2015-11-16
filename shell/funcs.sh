@@ -167,9 +167,14 @@ function title {
 
 title
 
+# Project Management, utility functions.
 # vagrant helper function. I'm tired of cd-ing and typing 'vagrant' everywhere
-v() {
-    (cd "${VAGRANT_DIR:-.}" && vagrant "$@")
-}
+v() { (cd "${VAGRANT_DIR:-.}" && vagrant "$@") }
+
+build() { (cd "${BUILDDIR:-.}" && "${BUILDCMD:-make}") }
+
+provision() { (cd "${PROVISIONDIR:-.}" && "${PROVISIONCMD:-ansible-playbook}" "${PROVISIONARGS} $@") }
+
+testit() { (cd "${TESTDIR:-.}" && "${TESTCMD:-make tests}") }
 
 test -f ~/.local.sh && source ~/.local.sh
