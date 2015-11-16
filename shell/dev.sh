@@ -14,4 +14,4 @@ export CCACHE_COMPRESS=1
 export PREFIX="$HOME/.local"
 export XTARGET="i686-elf"
 
-[ ! -z "$DESK_ENV" ] && source "$DESK_ENV"
+which direnv >/dev/null && eval "$(direnv hook zsh)"
