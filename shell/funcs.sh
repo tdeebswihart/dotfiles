@@ -167,4 +167,9 @@ function title {
 
 title
 
+# vagrant helper function. I'm tired of cd-ing and typing 'vagrant' everywhere
+v() {
+    (cd "${VAGRANT_DIR:-.}" && vagrant "$@")
+}
+
 test -f ~/.local.sh && source ~/.local.sh
