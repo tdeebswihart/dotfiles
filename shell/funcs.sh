@@ -171,10 +171,10 @@ title
 # vagrant helper function. I'm tired of cd-ing and typing 'vagrant' everywhere
 v() { (cd "${VAGRANT_DIR:-.}" && vagrant "$@") }
 
-build() { (cd "${BUILDDIR:-.}" && "${BUILDCMD:-make}") }
+build() { (cd "${BUILDDIR:-.}" && "${BUILDCMD:-make}" "${BUILDARGS}") }
 
-provision() { (cd "${PROVISIONDIR:-.}" && "${PROVISIONCMD:-ansible-playbook}" "${PROVISIONARGS} $@") }
+provision() { (cd "${PROVISIONDIR:-.}" && "${PROVISIONCMD:-ansible-playbook}" "${PROVISIONARGS}" "$@") }
 
-testit() { (cd "${TESTDIR:-.}" && "${TESTCMD:-make tests}") }
+testit() { (cd "${TESTDIR:-.}" && "${TESTCMD:-make}" "${TESTARGS}" "$@") }
 
 test -f ~/.local.sh && source ~/.local.sh
