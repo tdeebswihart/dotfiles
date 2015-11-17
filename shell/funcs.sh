@@ -174,22 +174,25 @@ v() { (cd "${VAGRANT_DIR:-.}" && vagrant "$@") }
 build() {
     if [ "${BUILDARGS}" ]; then
         (cd "${BUILDDIR:-.}" && "${BUILDCMD:-make}" "${BUILDARGS}" "$@")
+    else
+        (cd "${BUILDDIR:-.}" && "${BUILDCMD:-make}" "$@")
     fi
-    (cd "${BUILDDIR:-.}" && "${BUILDCMD:-make}" "$@")
 }
 
 provision() {
     if [ "$PROVISIONARGS" ]; then
         (cd "${PROVISIONDIR:-.}" && "${PROVISIONCMD:-ansible-playbook}" "${PROVISIONARGS}" "$@")
+    else
+        (cd "${PROVISIONDIR:-.}" && "${PROVISIONCMD:-ansible-playbook}" "$@")
     fi
-    (cd "${PROVISIONDIR:-.}" && "${PROVISIONCMD:-ansible-playbook}" "$@")
 }
 
 testit() {
     if [ "${TESTARGS}" ]; then
         (cd "${TESTDIR:-.}" && "${TESTCMD:-make}" "${TESTARGS}" "$@")
+    else
+        (cd "${TESTDIR:-.}" && "${TESTCMD:-make}" "$@")
     fi
-    (cd "${TESTDIR:-.}" && "${TESTCMD:-make}" "$@")
 }
 
 test -f ~/.local.sh && source ~/.local.sh
