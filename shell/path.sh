@@ -60,6 +60,10 @@ if [[ -d "$GOPATH/bin" ]]; then
     BASEPATH="$GOPATH/bin:$BASEPATH"
 fi
 
+if [[ -s "$HOME/.cargo/bin" ]]; then
+    BASEPATH="$HOM#/.cargo/bin:$BASEPATH"
+fi
+
 
 #Setting path -- my local prefix comes first *always*
 PATH="$HOME/.local/bin:$BASEPATH"
