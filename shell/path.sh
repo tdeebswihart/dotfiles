@@ -61,7 +61,7 @@ if [[ -d "$GOPATH/bin" ]]; then
 fi
 
 if [[ -s "$HOME/.cargo/bin" ]]; then
-    BASEPATH="$HOM#/.cargo/bin:$BASEPATH"
+    BASEPATH="$HOME/.cargo/bin:$BASEPATH"
 fi
 
 
