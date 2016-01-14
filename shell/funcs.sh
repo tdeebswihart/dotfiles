@@ -119,7 +119,7 @@ function serve () {
     #
     local port="${2:-8000}"
     local module="SimpleHTTPServer"
-    if python --version | grep 'Python 3' >/dev/null; then
+    if python --version | grep 'Python 3' >/dev/null 2>&1; then
         module='http.server'
     fi
     case $1 in
@@ -130,7 +130,7 @@ function serve () {
             ;;
         "stop")
             echo "stopping http server"
-            kill $(ps aux | grep "python -m $module" \
+            kill $(ps aux | grep "nohup python -m $module" \
                           | grep -v grep \
                           | awk '{print $2}') > /dev/null
             ;;
