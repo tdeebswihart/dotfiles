@@ -41,6 +41,7 @@ def main(showname, season_rgx, path, episode_name_rgx):
             ep = os.path.join(path, season.string, episode)
             en = episode
             if episode_name_rgx:
+                print('Episode: {}, rgx: {}'.format(episode, episode_name_rgx))
                 en = re.match(episode_name_rgx, episode).group(1)
             name = '{}: {}'.format(episode_pfx, en.replace('_', ' ').strip())
             call_ap(ep, showname, season_no, episode_nums[season_no], name)
