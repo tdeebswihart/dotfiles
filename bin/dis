@@ -1,0 +1,49 @@
+#!/usr/bin/env python
+import capstone
+import click
+import re
+import sys
+
+def get_matching(name):
+    valid = []
+    for o in dir(capstone):
+        m = re.match('CS_{}_(.*)'.format(name), o)
+        if m:
+            valid.append(m.group(1).lower())
+    return valid
+
+
+@click.command()
+@click.argument('code')
+@click.option('-a', '--arch', default='x86', type=click.Choice(get_matching('ARCH')))
+@click.option('-m', '--mode', default='64', type=click.Choice(get_matching('MODE')))
+@click.option('-d', '--show-addrs', is_flag=True)
+def dis(code, arch, mode, show_addrs):
+    cs_arch = None
+    cs_mode = None
+    # Check the architecture
+    archstr = 'CS_ARCH_{}'.format(arch.upper())
+    if hasattr(capstone, archstr):
+        cs_arch = getattr(capstone, archstr)
+    else:
+        click.echo("capstone: no support for arch {}".format(arch), sys.stderr)
+        return 1
+
+    # Check the mode
+    modestr = 'CS_MODE_{}'.format(mode.upper())
+    if hasattr(capstone, modestr):
+        cs_mode = getattr(capstone, modestr)
+    else:
+        click.echo("capstone: no support for mode {}".format(mode), sys.stderr)
+
+    md = capstone.Cs(cs_arch, cs_mode)
+    for (address, size, mnemonic, op_str) in md.disasm_lite(code, 0x1000):
+        ins = '\t{}\t{}'.format(mnemonic, op_str)
+        if show_addrs:
+            click.echo('0x{}x: {}'.format(address, ins))
+        else:
+            click.echo(ins)
+
+
+if __name__ == "__main__":
+    dis()
