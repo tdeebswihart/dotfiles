@@ -1,3 +1,3 @@
-alias b='bundle'
-alias bx='bundle exec'
-alias bi='bundle install'
+alias bn='bundle'
+alias bnx='bundle exec'
+alias bni='bundle install'

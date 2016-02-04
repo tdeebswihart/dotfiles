@@ -17,3 +17,5 @@ alias aplay='ansible-playbook playbook.yml -i inventory'
 which brew > /dev/null 2>&1 && alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
 which nvim >/dev/null 2>&1 && alias vim=nvim
 which thefuck >/dev/null && eval "$(thefuck --alias)"
+alias b='build'
+alias p='provision'
