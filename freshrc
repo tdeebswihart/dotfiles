@@ -13,6 +13,7 @@ fresh tarjoilija/zgen '_zgen' --file=~/.zsh/_zgen
 fresh chronoslynx/dotfiles 'bin/dis' --bin=~/.local/bin/dis
 fresh chronoslynx/dotfiles 'bin/edit' --bin=~/.local/bin/edit
 fresh chronoslynx/dotfiles 'bin/udacity-tagger' --bin=~/.local/bin/udacity-tagger
+fresh chronoslynx/dotfiles 'bin/cc_args' --bin=~/.local/bin/cc_args
 fresh wwalker/ssh-find-agent 'ssh-find-agent.sh' --bin=~/.ssh-find-agent.sh
 
 ## terminal colors

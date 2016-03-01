@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import capstone
 import click
+import os
 import re
 import sys
 
@@ -14,12 +15,16 @@ def get_matching(name):
 
 
 @click.command()
-@click.argument('code')
+@click.argument('codestr')
 @click.option('-a', '--arch', default='x86', type=click.Choice(get_matching('ARCH')))
 @click.option('-m', '--mode', default='64', type=click.Choice(get_matching('MODE')))
 @click.option('-d', '--show-addrs', is_flag=True, help='Show addresses in printout')
-def dis(code, arch, mode, show_addrs):
+def dis(codestr, arch, mode, show_addrs):
     """ Disassemble the provided code """
+    code = codestr
+    if os.path.isfile(codestr):
+        with open(codestr, 'rb') as f:
+            code = f.read()
     cs_arch = None
     cs_mode = None
     # Check the architecture
