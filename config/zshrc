@@ -13,7 +13,8 @@ if ! source "${HOME}/.zgen/init.zsh"; then
     # Save it to an init script
     zgen save
 fi
-
+BULLETTRAIN_TIME_SHOW=false
+BULLETTRAIN_RUBY_SHOW=false
 # Completions
 fpath=(~/.zsh $fpath)
 
