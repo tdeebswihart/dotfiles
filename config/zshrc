@@ -5,9 +5,10 @@ if ! source "${HOME}/.zgen/init.zsh"; then
 
     zgen oh-my-zsh
     zgen load zsh-users/zsh-syntax-highlighting
+    zgen load caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 
     # Themes
-    zgen oh-my-zsh themes/theunraveler
+    # zgen oh-my-zsh themes/theunraveler
 
     # Save it to an init script
     zgen save
