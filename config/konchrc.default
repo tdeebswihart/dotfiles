@@ -1,6 +1,7 @@
 import konch
 
 import os
+from importlib import reload
 import sys
 from pprint import pprint as pp
 
@@ -9,7 +10,8 @@ konch.config({
         'os': os,
         'sys': sys,
         'pp': pp,
-        'pjoin': os.path.join
+        'pjoin': os.path.join,
+        'modreload': reload
     },
     'shell': 'ptipython'
 })

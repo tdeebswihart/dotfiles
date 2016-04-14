@@ -19,3 +19,4 @@ which nvim >/dev/null 2>&1 && alias vim=nvim
 which thefuck >/dev/null && eval "$(thefuck --alias)"
 alias b='build'
 alias p='provision'
+which hopper > /dev/null && alias h='hopper' && alias he='hopper -e'
