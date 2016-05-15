@@ -130,7 +130,7 @@ function serve () {
             ;;
         "stop")
             echo "stopping http server"
-            kill $(ps aux | grep "nohup python -m $module" \
+            kill $(ps aux | grep "$module" \
                           | grep -v grep \
                           | awk '{print $2}') > /dev/null
             ;;
