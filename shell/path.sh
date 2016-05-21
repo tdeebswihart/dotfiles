@@ -64,9 +64,6 @@ if [[ -s "$HOME/.cargo/bin" ]]; then
     BASEPATH="$HOME/.cargo/bin:$BASEPATH"
 fi
 
-
 #Setting path -- my local prefix comes first *always*
 PATH="$HOME/.local/bin:$BASEPATH"
 export PATH
-# fzf
-test -f "${HOME}/.fzf.$(basename ${SHELL})" && source "${HOME}/.fzf.$(basename ${SHELL})"
