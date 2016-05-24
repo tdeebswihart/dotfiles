@@ -20,3 +20,4 @@ which thefuck >/dev/null && eval "$(thefuck --alias)"
 alias b='build'
 alias p='provision'
 which hopper > /dev/null && alias h='hopper' && alias he='hopper -e'
+alias f=find
