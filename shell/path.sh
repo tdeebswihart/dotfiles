@@ -60,9 +60,11 @@ if [[ -d "$GOPATH/bin" ]]; then
     BASEPATH="$GOPATH/bin:$BASEPATH"
 fi
 
-if [[ -s "$HOME/.cargo/bin" ]]; then
+if [[ -d "$HOME/.cargo/bin" ]]; then
     BASEPATH="$HOME/.cargo/bin:$BASEPATH"
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #Setting path -- my local prefix comes first *always*
 PATH="$HOME/.local/bin:$BASEPATH"
