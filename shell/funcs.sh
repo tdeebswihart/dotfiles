@@ -195,4 +195,8 @@ testit() {
     fi
 }
 
+f() {
+  find -name '$1'
+}
+
 test -f ~/.local.sh && source ~/.local.sh

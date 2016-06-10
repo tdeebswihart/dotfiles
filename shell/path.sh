@@ -33,7 +33,7 @@ case $(uname -s) in
         alias dutil="diskutil"
 
         # OPAM configuration
-        #hash opam && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+        hash opam && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
         # Haskell, since the brew installed version has issues
         # Add GHC 7.8.4 to the PATH, via https://ghcformacosx.github.io/
