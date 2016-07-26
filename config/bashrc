@@ -1,3 +1,4 @@
+test -f $(which zsh) && export SHELL=$(which zsh) && exec zsh
 # Path to the bash it configuration
 export BASH_IT=$HOME/.bash_it
 
