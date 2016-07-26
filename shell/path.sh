@@ -43,7 +43,7 @@ case $(uname -s) in
         fi
 
         # iTerm 2.9+
-        test -f "${HOME}/.iterm2_shell_integration.$(basename ${SHELL})" && source "${HOME}/.iterm2_shell_integration.$(basename ${SHELL})"
+        test -f "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 esac
 
 # Ruby via rbenv
