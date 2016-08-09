@@ -44,6 +44,18 @@ push_exec () {
     fi
 }
 
+push_try_n () {
+  local n=0
+  local m="$1"
+  shift
+  echo "Trying from $n to $m"
+  for i in `seq 1 $max`; do
+    echo "[TRIAL=$i]"
+    ("$@") && n=$[$n+1]
+  done;
+  push_notify "Command" "$n / $m trials succeeded"
+}
+
 # Highlight code for use w/ keynote, etc
 hilight () {
   if [ -z "$1" ]
@@ -58,6 +70,7 @@ hilight () {
 prettymd (){
     pandoc -t markdown --atx-headers --no-wrap $*
 }
+
 gpx2json () {
     while [ "$1" != "" ]; do
         ogr2ogr -f GeoJSON "${1}.json" "${1}" routes && shift
