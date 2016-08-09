@@ -23,6 +23,7 @@ push_notify () {
          -F "message=$*" \
          https://api.pushover.net/1/messages.json
 }
+alias pushn=push_notify
 
 # Execute the command defined by
 push_exec () {
@@ -43,6 +44,7 @@ push_exec () {
         push_notify "Command Failed" "$msg" >/dev/null
     fi
 }
+alias pushx=push_exec
 
 push_try_n () {
   local n=0
@@ -55,6 +57,7 @@ push_try_n () {
   done;
   push_notify "Command" "$n / $m trials succeeded"
 }
+alias pusht=push_try_n
 
 # Highlight code for use w/ keynote, etc
 hilight () {
