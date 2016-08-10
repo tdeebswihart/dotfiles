@@ -21,9 +21,24 @@ push_notify () {
          -F "user=$PUSHOVER_USER" \
          -F "title=$title" \
          -F "message=$*" \
-         https://api.pushover.net/1/messages.json
+         https://api.pushover.net/1/messages.json > /dev/null
 }
 alias pushn=push_notify
+
+push_status () {
+    local retcode="$?"
+    local title="Command"
+    if [ $# -gt 1 ]; then
+        local title=$1
+    fi
+    if [ "$retcode" -eq "0" ]; then
+        push_notify "$title" "Great success!"
+    else
+        push_notify "$title" "Failed! Exit status $retcode"
+    fi
+}
+
+alias pushs=push_status
 
 # Execute the command defined by
 push_exec () {
