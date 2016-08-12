@@ -28,8 +28,8 @@ alias pushn=push_notify
 push_status () {
     local retcode="$?"
     local title="Command"
-    if [ $# -gt 1 ]; then
-        local title=$1
+    if [ $# -gt 0 ]; then
+        title=$1
     fi
     if [ "$retcode" -eq "0" ]; then
         push_notify "$title" "Great success!"
