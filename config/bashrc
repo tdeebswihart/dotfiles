@@ -1,4 +1,4 @@
-if [ -n "$PSS1" ]; then
+if [ -n "$PS1" ]; then
   test -f $(which zsh) && export SHELL=$(which zsh) && exec zsh
 fi
 # Path to the bash it configuration
