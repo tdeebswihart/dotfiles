@@ -5,7 +5,7 @@ if ! source "${HOME}/.zgen/init.zsh"; then
 
     zgen oh-my-zsh
     zgen load zsh-users/zsh-syntax-highlighting
-    zgen oh-my-zsh themes/agnoster
+    #zgen oh-my-zsh themes/agnoster
     # zgen load caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 
     # Themes
