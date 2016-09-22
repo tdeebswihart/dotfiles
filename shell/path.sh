@@ -44,6 +44,11 @@ case $(uname -s) in
 
         # iTerm 2.9+
         test -f "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+        # MacPorts
+        if [[ -d "$HOME/ports/bin" ]]; then
+          BASEPATH="$HOME/ports/bin:$BASEPATH"
+        fi
 esac
 
 # Ruby via rbenv
