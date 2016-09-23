@@ -1,17 +1,21 @@
 import konch
 
 import os
-from importlib import reload
 import sys
 from pprint import pprint as pp
 
-konch.config({
+cdict = {
     'context': {
         'os': os,
         'sys': sys,
         'pp': pp,
         'pjoin': os.path.join,
-        'modreload': reload
     },
     'shell': 'ptipython'
-})
+}
+
+if sys.version_info[0] >= 3:
+  from importlib import reload
+  cdict['modreload'] = reload
+
+konch.config(cdict)
