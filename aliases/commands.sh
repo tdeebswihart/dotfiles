@@ -14,7 +14,6 @@ alias scanb='scan-build --use-analyzer=$(which clang-3.5)'
 alias latexmk='latexmk -pvc'
 alias aplay='ansible-playbook playbook.yml -i inventory'
 # Fix pyenv and homebrew *-config issues
-which brew > /dev/null 2>&1 && alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
 which nvim >/dev/null 2>&1 && alias vim=nvim
 which thefuck >/dev/null && eval "$(thefuck --alias)"
 alias b='build'
