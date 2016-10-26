@@ -67,7 +67,7 @@ push_try_n () {
   local m="$1"
   shift
   echo "Trying from $n to $m"
-  for i in `seq 1 $max`; do
+  for i in `seq 1 $m`; do
     echo "[TRIAL=$i]"
     ("$@") && n=$[$n+1]
   done;
