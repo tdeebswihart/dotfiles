@@ -1,1 +1,1 @@
-[[ -f "/usr/local/opt/autoenv/activate.sh" ]] && source "/usr/local/opt/autoenv/activate.sh"
+export VIRTUAL_ENV_DISABLE_PROMPT=1

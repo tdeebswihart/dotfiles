@@ -1,13 +1,19 @@
 case $(uname -s) in
     Linux)
         # /usr/lib/lightdm/lightdm:
-        BASEPATH="/usr/local/texlive/2014/bin/x86_64-linux:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+        BASEPATH="$PATH"
         hash keychain && eval 'keychain --eval id_rsa'
         alias md5='md5sum'
         ;;
     Darwin)
         # since /usr/local is managed by homebrew (and it complains about "unmanaged" pkgs, I use $HOME/.local
-        BASEPATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin"
+        BASEPATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:"
+        if [[ -d "/opt/X11/bin" ]]; then
+          BASEPATH="$BASEPATH:/opt/X11/bin"
+        fi
+        if [[ -d "/usr/local/MacGPG2/bin" ]]; then
+          PATH="$BASEPATH:/usr/local/MacGPG2/bin"
+        fi
         if [ -z "$JAVA_HOME" -a -d /System/Library/Frameworks/JavaVM.framework/Home ]; then
             export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
         fi
@@ -46,15 +52,10 @@ case $(uname -s) in
         test -f "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
         # MacPorts
-        if [[ -d "$HOME/ports/bin" ]]; then
-          BASEPATH="$HOME/ports/bin:$BASEPATH"
+        if [[ -d "$HOME/macports/bin" ]]; then
+          BASEPATH="$HOME/macports/bin:$BASEPATH"
         fi
 esac
-
-# Ruby via rbenv
-#if [[ -d "$HOME/.rbenv" ]]; then
-#     BASEPATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$BASEPATH"
-#fi
 
 # Cabal binfiles
 if [[ -d "$HOME/.cabal/bin" ]]; then

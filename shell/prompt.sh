@@ -49,7 +49,7 @@ CURRENT_BG='NONE'
 
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
-# rendering default background/foreground.
+
 prompt_segment() {
   local bg fg
   [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
@@ -173,7 +173,7 @@ prompt_dir() {
 prompt_virtualenv() {
   local virtualenv_path="$VIRTUAL_ENV"
   if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    prompt_segment blue black "(`basename $virtualenv_path`)"
+    prompt_segment blue black "py:`basename $virtualenv_path`"
   fi
 }
 
