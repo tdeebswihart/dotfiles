@@ -4,11 +4,34 @@ import os
 import sys
 from pprint import pprint as pp
 
+def ptab(seq, columns=2, width=16):
+    table = ''
+    col_height = len(seq) / columns
+    wchanged = False
+    for x in seq:
+        w = len(str(x))
+        if w > width:
+            width = w
+            wchanged = True
+    if wchanged:
+        width += 4
+    for x in xrange(col_height):
+        for col in xrange(columns):
+            pos = (x * columns) + col
+            num = seq[x + (col_height * col)]
+            table += '{}'.format(num).ljust(width)
+        table += '\n'
+    print(table)
+
+def ppub(o):
+    ptab([m for m in dir(o) if not m.startswith('_')])
+
 cdict = {
     'context': {
         'os': os,
         'sys': sys,
         'pp': pp,
+        'pub': pub,
         'pjoin': os.path.join,
     },
     'shell': 'ptipython'
