@@ -31,7 +31,7 @@ cdict = {
         'os': os,
         'sys': sys,
         'pp': pp,
-        'pub': pub,
+        'pub': ppub,
         'pjoin': os.path.join,
     },
     'shell': 'ptipython'
