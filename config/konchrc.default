@@ -6,7 +6,7 @@ from pprint import pprint as pp
 
 def ptab(seq, columns=2, width=16):
     table = ''
-    col_height = len(seq) / columns
+    col_height = len(seq) // columns
     wchanged = False
     for x in seq:
         w = len(str(x))
@@ -15,8 +15,8 @@ def ptab(seq, columns=2, width=16):
             wchanged = True
     if wchanged:
         width += 4
-    for x in xrange(col_height):
-        for col in xrange(columns):
+    for x in range(col_height):
+        for col in range(columns):
             pos = (x * columns) + col
             num = seq[x + (col_height * col)]
             table += '{}'.format(num).ljust(width)
