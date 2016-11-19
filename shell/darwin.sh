@@ -1,4 +1,4 @@
-if $(uname -s) = "Darwin"; then
+if [ $(uname -s) = "Darwin" ]; then
   #keep casks up to date the right way
   function witches-brew() {
     brew update && brew upgrade && brew cleanup && cask-upgrade && cask-retire && brew cask cleanup && brew doctor && brew cask doctor
