@@ -1,12 +1,10 @@
 if [ $(uname -s) = "Darwin" ]; then
   #keep casks up to date the right way
-  function witches-brew() {
-    brew update && brew upgrade && brew cleanup && cask-upgrade && cask-retire && brew cask cleanup && brew doctor && brew cask doctor
-  }
+  alias morningbrew='brew update && brew upgrade && brew cleanup && cask-retire; brew doctor'
 
   #that's some old shit
   function __clean-cask {
-    caskBasePath="/opt/homebrew-cask/Caskroom"
+    caskBasePath="/usr/local/Caskroom"
     local cask="$1"
     local caskDirectory="$caskBasePath/$cask"
     local versionsToRemove="$(ls -r $caskDirectory | sed 1,1d)"
