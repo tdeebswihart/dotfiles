@@ -6,7 +6,6 @@ if [ "" = "${ALREADY_GLIDING}" ]; then
 fi
 export GDTMPLS="$GOPATH/src/github.com/chronoslynx/godoc-tmpls"
 
-export MAKEFLAGS='-j 2'  # don't use all my cores
 # ccache settings
 export CCACHE_COMPRESS=1
 
