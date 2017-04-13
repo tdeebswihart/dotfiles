@@ -5,8 +5,8 @@ if [[ "$SHELL" == *zsh ]]; then
 fi
 
 export HISTFILE="$HOME/.zshistory"
-export HISTSIZE=10000
-export SAVEHIST=10000
+export HISTSIZE=1000
+export SAVEHIST=1000
 
 for i in `ls ~/.secret/*.sh`; do
     source $i
