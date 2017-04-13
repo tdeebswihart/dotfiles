@@ -5,6 +5,7 @@ if [[ "$SHELL" == *zsh ]]; then
 fi
 
 export HISTSIZE=1000
+unset HISTFILE
 
 for i in `ls ~/.secret/*.sh`; do
     source $i
