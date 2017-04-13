@@ -4,16 +4,15 @@ if [[ "$SHELL" == *zsh ]]; then
     setopt HIST_IGNORE_DUPS
 fi
 
-export HISTFILE="$HOME/.zshistory"
 export HISTSIZE=1000
-export SAVEHIST=1000
 
 for i in `ls ~/.secret/*.sh`; do
     source $i
 done
 
-case $(uname -s) in
-Linux)
-    export _JAVA_AWT_WM_NONREPARENTING=1
-    ;;
-esac
+# Not sure why this is here.
+# case $(uname -s) in
+# Linux)
+#     export _JAVA_AWT_WM_NONREPARENTING=1
+#     ;;
+# esac
