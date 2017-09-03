@@ -55,6 +55,9 @@ case $(uname -s) in
         if [[ -d "$HOME/macports/bin" ]]; then
           BASEPATH="$HOME/macports/bin:$BASEPATH"
         fi
+        if [[ -d "$HOME/miniconda3/bin" ]]; then
+          BASEPATH="$HOME/miniconda3/bin:$BASEPATH"
+        fi
 esac
 
 # Cabal binfiles
