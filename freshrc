@@ -6,7 +6,7 @@ fresh chronoslynx/dotfiles 'shell/*'
 fresh chronoslynx/dotfiles 'aliases/*'
 fresh chronoslynx/dotfiles 'xresources/*' --file=~/.Xresources
 fresh gdbinit/Gdbinit 'gdbinit' --file=~/.gdbinit
-fresh larkery/zsh-histdb . --file=~/.zsh-histdb
+fresh larkery/zsh-histdb . --file=~/.zsh-histdb/
 fresh tarjoilija/zgen 'zgen.zsh' --file=~/.zgen.zsh
 fresh tarjoilija/zgen '_zgen' --file=~/.zsh/_zgen
 
