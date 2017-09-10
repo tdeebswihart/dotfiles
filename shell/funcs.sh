@@ -182,7 +182,7 @@ function qcp () {
     if [ $# -lt 2 ]; then
         echo "usage: qcp [rsync flags] source dest"
     else
-        rsync -azhW $*
+        rsync -azhW --exclude-from="$HOME/.gitignore" $*
     fi
 }
 
