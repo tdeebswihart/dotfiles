@@ -35,3 +35,7 @@ Session.vim
 # ----------------------------------------------------------------------------------------------
 *.sublime-project
 *.sublime-workspace
+
+# Python
+*.pyc
+__pycache__/
