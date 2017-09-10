@@ -179,10 +179,17 @@ function serve () {
 
 #Quick CoPy
 function qcp () {
+    IGNORE_FILES=(~/.gitignore ./.gitignore ./.rsyncignore)
     if [ $# -lt 2 ]; then
         echo "usage: qcp [rsync flags] source dest"
     else
-        rsync -azhW --exclude-from="$HOME/.gitignore" $*
+        EXCLUDE_FROM=""
+        for f in ${IGNORE_FILES[@]}; do
+          if [[ -e $f ]]; then
+            EXCLUDE_FROM="$EXCLUDE_FROM --exclude-from=$f "
+          fi
+        done
+        rsync -azhW $EXCLUDE_FROM $*
     fi
 }
 
