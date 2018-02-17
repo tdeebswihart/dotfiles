@@ -240,4 +240,15 @@ f() {
   find -name '$1'
 }
 
+mkiter () {
+  echo “$*” | tr “ “ “\n”
+}
+
+quietly () {
+  eval $* >/dev/null 2>&1
+}
+
+alias iter=mkiter
+alias stfu=quietly
+
 test -f ~/.local.sh && source ~/.local.sh
