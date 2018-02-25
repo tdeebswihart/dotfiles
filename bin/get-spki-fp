@@ -1,0 +1,13 @@
+#!/bin/bash
+usage () {
+  echo "get-spki-fp IPADDR [PORT]"
+  echo 'Retrieve the current SPKI fingerprint for TLS service $IPADDR'
+  echo 'useful for DNS over TLS'
+}
+
+test -z "$1" && usage && exit 1
+IPADDR="$1"
+PORT="$2"
+PORT=${PORT:=853}
+
+echo | openssl s_client -connect "$IPADDR:$PORT" 2>/dev/null | openssl x509 -pubkey -noout | openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | openssl enc -base64
