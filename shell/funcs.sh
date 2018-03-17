@@ -241,7 +241,7 @@ f() {
 }
 
 mkiter () {
-  echo “$*” | tr “ “ “\n”
+  echo "$*" | tr " " "\n"
 }
 
 quietly () {
