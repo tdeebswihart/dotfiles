@@ -121,17 +121,17 @@ url () {
         local FN=
         case $1 in
             encode)
-                FN="quote_plus"
+                FN="${FN}quote_plus"
                 ;;
             decode)
-                FN="unquote_plus"
+                FN="${FN}unquote_plus"
                 ;;
             *)
                 echo $USAGE
                 return
                 ;;
         esac
-        python -c "import sys, urllib as ul; print(ul.$FN('$2'))"
+        python -c "import sys, urllib.parse as ul; print(ul.$FN('$2'))"
     fi
 }
 
