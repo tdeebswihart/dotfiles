@@ -1,1 +1,1 @@
-hash opam && eval $(opam config env)
+hash opam &>/dev/null && eval $(opam config env)
