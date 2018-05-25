@@ -19,3 +19,9 @@ fresh wwalker/ssh-find-agent 'ssh-find-agent.sh' --bin=~/.ssh-find-agent.sh
 
 ## terminal colors
 fresh chronoslynx/dotfiles 'colors' --file=~/.colors/
+
+## alacritty
+fresh-options --file=~/.config/alacritty/alacritty.yml
+  fresh "alacritty/$(uname -s).alacritty"
+  fresh alacritty/colors.alacritty
+fresh-options
