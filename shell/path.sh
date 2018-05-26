@@ -42,7 +42,7 @@ case $(uname -s) in
         test -f "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 esac
 
-BASEPATH=$(__maybe_append "$BASEPATH" "$HOME/.cabal/bin" "$HOME/.cargo/bin" "$HOME/miniconda3/bin" "$HOME/anaconda3/bin")
+BASEPATH=$(__maybe_append "$BASEPATH" "$HOME/.cabal/bin" "$HOME/.cargo/bin")
 if [[ ! -z "$GOPATH" ]]; then
     if [[ -d "$GOPATH/bin" ]]; then
         # Only add go it if GOPATH is nonempty
