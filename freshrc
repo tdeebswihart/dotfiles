@@ -9,7 +9,6 @@ fresh gdbinit/Gdbinit 'gdbinit' --file=~/.gdbinit
 fresh larkery/zsh-histdb . --file=~/.zsh-histdb/
 fresh tarjoilija/zgen 'zgen.zsh' --file=~/.zgen.zsh
 fresh tarjoilija/zgen '_zgen' --file=~/.zsh/_zgen
-fresh tmux-plugins/tpm . --file=~/.tmux/plugins/tpm/
 
 ## binfiles
 fresh chronoslynx/dotfiles 'bin/dis' --bin=~/.local/bin/dis
