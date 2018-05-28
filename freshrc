@@ -5,6 +5,8 @@ fresh chronoslynx/dotfiles 'config/*' --file
 fresh chronoslynx/dotfiles 'shell/*'
 fresh chronoslynx/dotfiles 'aliases/*'
 fresh chronoslynx/dotfiles 'xresources/*' --file=~/.Xresources
+fresh chronoslynx/nvim-conf . --file=~/.config/nvim/
+fresh chronoslynx/emacs-config . --file=~/.emacs/
 fresh gdbinit/Gdbinit 'gdbinit' --file=~/.gdbinit
 fresh larkery/zsh-histdb . --file=~/.zsh-histdb/
 fresh tarjoilija/zgen 'zgen.zsh' --file=~/.zgen.zsh
