@@ -131,7 +131,7 @@ url () {
                 return
                 ;;
         esac
-        python -c "import sys, urllib.parse as ul; print(ul.$FN('$2'))"
+        python3 -c "import sys, urllib.parse as ul; print(ul.$FN('$2'))"
     fi
 }
 
