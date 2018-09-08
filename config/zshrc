@@ -1,3 +1,4 @@
+ZSH_DISABLE_COMPFIX=true
 if ! source "${HOME}/.zgen/init.zsh"; then
     # Load zgen
     source "${HOME}/.zgen.zsh"
