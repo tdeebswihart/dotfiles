@@ -11,7 +11,7 @@ import subprocess
 @click.option('-e', '--extension', default='m4a')
 @click.option('-o', '--output', default=None)
 def main(path, album, artist, extension, output):
-    rgx = re.compile(r'.*?(\d+) - (.*?)-.*?.{}'.format(extension))
+    rgx = re.compile(r'.*?(\d+) - (.*?)(-.*?)?.{}'.format(extension))
     for f in os.listdir('.'):
         m = rgx.match(f)
         if m:
