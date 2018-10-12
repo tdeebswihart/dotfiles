@@ -2,7 +2,6 @@ if [ -z "$PS1" ]; then
     return;
 fi
 
-test -f $(which zsh) && export SHELL=$(which zsh) && exec zsh
 # Path to the bash it configuration
 if [ -d "$HOME/.bash_it" ]; then
   export BASH_IT=$HOME/.bash_it
