@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>local.timods.vpn</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/bin/bash</string>
+      <string>~/.local/bin/pia-control.sh</string>
+    </array>
+    <key>WatchPaths</key>
+    <array>
+      <string>/var/run/resolv.conf</string>
+      <string>/Library/Preferences/SystemConfiguration/NetworkInterfaces.plist</string>
+      <string>/Library/Preferences/SystemConfiguration/com.apple.airport.preferences.plist</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>~/Library/Logs/Local/pia-control.stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>~/Library/Logs/Local/pia-control.stderr.log</string>
+</dict>
+</plist>

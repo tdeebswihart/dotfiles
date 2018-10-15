@@ -27,3 +27,9 @@ fresh-options --file=~/.config/alacritty/alacritty.yml
   fresh git@gitlab.com:timods/dotfiles.git alacritty/$(uname -s).alacritty
   fresh git@gitlab.com:timods/dotfiles.git alacritty/colors.alacritty
 fresh-options
+
+## launchagents
+if [[ "$(uname)" == "Darwin" ]]; then
+  fresh git@gitlab.com:timods/dotfiles.git 'launchagents/local.timods.vpn.plist' --file=~/Library/LaunchAgents/local.timods.vpn.plist
+  fresh git@gitlab.com:timods/dotfiles.git 'bin/pia-control.sh' --bin=~/.local/bin/pia-control.sh
+fi
