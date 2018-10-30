@@ -1,35 +1,34 @@
 fresh freshshell/fresh bin/fresh --bin=~/.local/bin/fresh
 
 # dotfiles
-fresh git@gitlab.com:timods/dotfiles.git 'config/*' --file
-fresh git@gitlab.com:timods/dotfiles.git 'shell/*'
-fresh git@gitlab.com:timods/dotfiles.git 'aliases/*'
-fresh git@gitlab.com:timods/dotfiles.git 'xresources/*' --file=~/.Xresources
-fresh chronoslynx/nvim-conf . --file=~/.config/nvim/
-fresh git@gitlab.com:timods/emacs-config.git . --file=~/.emacs.d/
+fresh https://gitlab.com/timods/dotfiles 'config/*' --file
+fresh https://gitlab.com/timods/dotfiles 'shell/*'
+fresh https://gitlab.com/timods/dotfiles 'aliases/*'
+fresh https://gitlab.com/timods/dotfiles 'xresources/*' --file=~/.Xresources
+
 fresh gdbinit/Gdbinit 'gdbinit' --file=~/.gdbinit
 fresh larkery/zsh-histdb . --file=~/.zsh-histdb/
 fresh tarjoilija/zgen 'zgen.zsh' --file=~/.zgen.zsh
 fresh tarjoilija/zgen '_zgen' --file=~/.zsh/_zgen
 
 ## binfiles
-fresh git@gitlab.com:timods/dotfiles.git 'bin/dis' --bin=~/.local/bin/dis
-fresh git@gitlab.com:timods/dotfiles.git 'bin/edit' --bin=~/.local/bin/edit
-fresh git@gitlab.com:timods/dotfiles.git 'bin/udacity-tagger' --bin=~/.local/bin/udacity-tagger
-fresh git@gitlab.com:timods/dotfiles.git 'bin/cc_args' --bin=~/.local/bin/cc_args
+fresh https://gitlab.com/timods/dotfiles 'bin/dis' --bin=~/.local/bin/dis
+fresh https://gitlab.com/timods/dotfiles 'bin/edit' --bin=~/.local/bin/edit
+fresh https://gitlab.com/timods/dotfiles 'bin/udacity-tagger' --bin=~/.local/bin/udacity-tagger
+fresh https://gitlab.com/timods/dotfiles 'bin/cc_args' --bin=~/.local/bin/cc_args
 fresh wwalker/ssh-find-agent 'ssh-find-agent.sh' --bin=~/.ssh-find-agent.sh
 
 ## terminal colors
-fresh git@gitlab.com:timods/dotfiles.git 'colors' --file=~/.colors/
+fresh https://gitlab.com/timods/dotfiles 'colors' --file=~/.colors/
 
 ## alacritty
 fresh-options --file=~/.config/alacritty/alacritty.yml
-  fresh git@gitlab.com:timods/dotfiles.git alacritty/$(uname -s).alacritty
-  fresh git@gitlab.com:timods/dotfiles.git alacritty/colors.alacritty
+  fresh https://gitlab.com/timods/dotfiles alacritty/$(uname -s).alacritty
+  fresh https://gitlab.com/timods/dotfiles alacritty/colors.alacritty
 fresh-options
 
 ## launchagents
 if [[ "$(uname)" == "Darwin" ]]; then
-  fresh git@gitlab.com:timods/dotfiles.git 'launchagents/local.timods.vpn.plist' --file=~/Library/LaunchAgents/local.timods.vpn.plist
-  fresh git@gitlab.com:timods/dotfiles.git 'bin/pia-control.sh' --bin=~/.local/bin/pia-control.sh
+  fresh https://gitlab.com/timods/dotfiles 'launchagents/local.timods.vpn.plist' --file=~/Library/LaunchAgents/local.timods.vpn.plist
+  fresh https://gitlab.com/timods/dotfiles 'bin/pia-control.sh' --bin=~/.local/bin/pia-control.sh
 fi
