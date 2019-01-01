@@ -1,0 +1,21 @@
+#!/bin/bash
+
+TAGF="$HOME/.config/keep_it/tags.json"
+
+echo "Updating tag file..."
+TMPF=$(mktemp)
+/usr/bin/osascript -l JavaScript <<EOF > "$TMPF" && mv "$TMPF" "$TAGF"
+  function run(argv) {
+    var query = argv[0];
+    console.log(argv)
+      var keepIt = Application("Keep It")
+      let items = [];
+
+    keepIt.tags().forEach(function(tag) {
+        let name = tag.name()
+        items.push({'title': name, 'uid': tag.id(), 'autocomplete': name + ',', 'arg': name})
+        })
+    let output = {"items": items}
+    return JSON.stringify(output)
+  }
+EOF

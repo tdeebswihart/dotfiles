@@ -1,0 +1,14 @@
+#!/bin/bash
+#test -z "$1" && echo "usage: $0 INDEXPATH" && exit 1
+index="$HOME/Library/Mobile Documents/iCloud~com~omz-software~Pythonista3/Documents/keepit/index.csv"
+osascript -l JavaScript <<EOF > "$index"
+var keepit = Application("Keep It")
+var lines = ["name,id,tags"]
+keepit.keepItItems().forEach(function(item) {
+        let itemName = item.name()
+        let itemId = item.id()
+        let tags = item.tagNames().join('|')
+        lines.push('"' + itemName + '","' + itemId + '","' + tags + '"')
+})
+lines.join('\n')
+EOF
