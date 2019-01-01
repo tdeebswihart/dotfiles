@@ -1,4 +1,12 @@
 if [ $(uname -s) = "Darwin" ]; then
+  alias battery="pmset -g batt"
+  function plugged_in () {
+    return battery | grep 'AC Power' &>/dev/null
+  }
+
+  function unplugged () {
+    return battery | grep 'Battery Power' &>/dev/null
+  }
   #keep casks up to date the right way
   alias morningbrew='brew update && brew upgrade && brew cu && brew cleanup && cask-retire; brew doctor'
 
