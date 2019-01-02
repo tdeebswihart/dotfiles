@@ -13,5 +13,6 @@ export CCACHE_COMPRESS=1
 export PREFIX="$HOME/.local"
 export XTARGET="i686-elf"
 export CARGO_HOME="$HOME/.cargo"
-
+export CHOOSENIM_NO_ANALYTICS=1
+export DESTDIR="$HOME/.local"
 which direnv >/dev/null && eval "$(direnv hook zsh)"
