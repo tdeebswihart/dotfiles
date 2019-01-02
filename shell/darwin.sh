@@ -7,6 +7,7 @@ if [ $(uname -s) = "Darwin" ]; then
   function unplugged () {
     return battery | grep 'Battery Power' &>/dev/null
   }
+
   #keep casks up to date the right way
   alias morningbrew='brew update && brew upgrade && brew cu && brew cleanup && cask-retire; brew doctor'
 

@@ -1,0 +1,60 @@
+#!/bin/bash
+
+MARKER="---------------"
+todayfile="$KEEPIT_FILES/Life/$(date +%Y)/$(date +%Y-%m-%d) Log.md"
+
+mklink () {
+  if [ "$1" ] && [ "$2" ]; then
+    local filename="$1"
+    local foldername="$2"
+    # Sure, there's SQL injection here but who cares?
+    local query="select ZIDENTIFIER from ZITEM where ZFILENAME = '${filename}' and ZFOLDER = (select Z_PK from ZGROUP where ZNAME = '${foldername}');"
+    local uuid=$(sqlite3 "${KEEPIT_DB}" "${query}")
+    test ! -z "${uuid}" && echo -n "keepit://link?item=${uuid}"
+  else
+    return 1
+  fi
+}
+
+mdlink () {
+  test -z "$1" && return -1
+  if [ "$2" ]; then
+    echo "- [$2]($1)"
+  else
+    echo "- [$1]($1)"
+  fi
+}
+
+orglink () {
+  test -z "$1" && return -1
+  if [ "$2" ]; then
+    echo "- [[$1][$2]]"
+  else
+    echo "- [[$1][$1]]"
+  fi
+}
+
+createdtoday () {
+  while read -r f; do
+    if [[ "$f" != "${todayfile}" ]]; then
+      fname=$(basename "$f")
+      dname=$(basename "$(dirname "$f")")
+      displayname="${fname%.*}"
+      link=$(mklink "${fname}" "${dname}")
+      if [ "${link}" ]; then
+        echo "- [${displayname}](${link})"
+      fi
+    fi
+  done < <(mdfind -onlyin "${KEEPIT_FILES}" 'kMDItemContentCreationDate >= $time.today')
+}
+
+mkdir -p "$(dirname "${todayfile}")"
+test ! -f "${todayfile}" && echo -e "# $(date +%Y-%m-%d) Log\n" > "${todayfile}"
+TMPF=$(mktemp)
+echo -e "with open('${todayfile}', 'r') as f:\n\tprint(f.read().split('$MARKER')[0])" | python >  "$TMPF"
+echo "$MARKER"  >> "$TMPF"
+echo "### Today's Events" >> "$TMPF"
+icalBuddy -b '- ' eventsToday >> "$TMPF"
+echo -e "\n### Files created on this date"  >> "$TMPF"
+createdtoday  >> "$TMPF"
+mv "$TMPF" "${todayfile}"

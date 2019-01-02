@@ -1,4 +1,4 @@
-
+#!/bin/bash
 loginfo () {
     local prog="$1"
     shift 1
@@ -76,7 +76,7 @@ push_try_n () {
 alias pusht=push_try_n
 
 # Highlight code for use w/ keynote, etc
-hilight () {
+hl () {
   if [ -z "$1" ]
     then src="pbpaste"
   else
@@ -185,7 +185,7 @@ function qcp () {
         IGNORE_FILES=($HOME/.gitignore ./.gitignore ./.rsyncignore)
         EXCLUDE_FROM=""
         ARGS=$*
-        for f in ${IGNORE_FILES[@]}; do
+        for f in "${IGNORE_FILES[@]}"; do
           if [[ -e $f ]]; then
             EXCLUDE_FROM="$EXCLUDE_FROM --exclude-from=\"$f\" "
           fi
@@ -237,7 +237,7 @@ testit() {
 }
 
 f() {
-  find -name '$1'
+  fd "$1"
 }
 
 mkiter () {
@@ -250,5 +250,42 @@ quietly () {
 
 alias iter=mkiter
 alias stfu=quietly
+export iso8601="%Y-%m-%d"
+
+atime () {
+  if [[ -f "$1" ]]; then
+    local uts=$(stat -f '%a' "$1" 2>&1)
+    gdate -d @"$uts" +"$iso8601"
+  else
+    return 1
+  fi
+}
+
+mtime () {
+  if [[ -f "$1" ]]; then
+    local uts=$(stat -f '%m' "$1" 2>&1)
+    gdate -d @"$uts" +"$iso8601"
+  else
+    return 1
+  fi
+}
+
+ctime () {
+  if [[ -f "$1" ]]; then
+    local uts=$(stat -f '%B' "$1" 2>&1)
+    gdate -d @"$uts" +"$iso8601"
+  else
+    return 1
+  fi
+}
+
+today () {
+  date +"$iso8601"
+}
+
+datename () {
+  # By default this uses the modification time of the file
+  test -f "$1" && echo "$(ctime "$1")_$1"
+}
 
 test -f ~/.local.sh && source ~/.local.sh
