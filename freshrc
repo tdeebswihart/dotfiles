@@ -16,10 +16,6 @@ fresh tarjoilija/zgen 'zgen.zsh' --file=~/.zgen.zsh
 fresh tarjoilija/zgen '_zgen' --file=~/.zsh/_zgen
 
 ## binfiles
-fresh https://gitlab.com/timods/dotfiles 'bin/dis' --bin=~/.local/bin/dis
-fresh https://gitlab.com/timods/dotfiles 'bin/edit' --bin=~/.local/bin/edit
-fresh https://gitlab.com/timods/dotfiles 'bin/udacity-tagger' --bin=~/.local/bin/udacity-tagger
-fresh https://gitlab.com/timods/dotfiles 'bin/cc_args' --bin=~/.local/bin/cc_args
 fresh wwalker/ssh-find-agent 'ssh-find-agent.sh' --bin=~/.ssh-find-agent.sh
 
 ## terminal colors
@@ -31,11 +27,25 @@ fresh-options --file=~/.config/alacritty/alacritty.yml
   fresh https://gitlab.com/timods/dotfiles alacritty/colors.alacritty
 fresh-options
 
-## launchagents
-if [[ "$(uname)" == "Darwin" ]]; then
-  # Grab all my keepit helpers
-  for binf in ~/.fresh/source/gitlab.com/timods-dotfiles/bin/*-keepit-*; do
+SRCD=~/.fresh/source/timods/dotfiles
+for binf in "$SRCD/bin"/*; do
+  if [ -f "$binf" ]; then
+    binf=$(basename "${binf}")
+    fresh https://gitlab.com/timods/dotfiles "bin/$binf" --bin="$HOME/.local/bin/$binf"
+  fi
+done
+
+## platform-specific setup
+if [ -d "${SRCD}/bin/$(uname -s)" ]; then
+  for binf in "${SRCD}"/bin/$(uname -s)/*; do
+    binf=$(basename "${binf}")
     fresh https://gitlab.com/timods/dotfiles "bin/${binf}" --bin="$HOME/.local/bin/${binf}"
   done
-  fresh https://gitlab.com/timods/dotfiles 'launchagents/local.timods.vpn.plist' --file=~/Library/LaunchAgents/local.timods.vpn.plist
+fi
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  # Grab all my launchagents
+  for la in "${SRCD}"/launchagents/*.plist; do
+    fresh https://gitlab.com/timods/dotfiles "launchagents/$la" --file="~/Library/LaunchAgents/$la"
+  done
 fi
