@@ -1,0 +1,4 @@
+#!/bin/bash
+export KEEPIT_HOME="$HOME/Library/Group Containers/D75L7R8266.com.reinvented.KeepIt/Keep It"
+export KEEPIT_FILES="$KEEPIT_HOME/Files"
+export KEEPIT_DB="$KEEPIT_HOME/Keep It Library.kptlib/KeepIt.sqlite"

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Get my common vars
+source "$(dirname "$0")/setup-keepit-common"
 MARKER="---------------"
 todayfile="$KEEPIT_FILES/Life/$(date +%Y)/$(date +%Y-%m-%d) Log.md"
 

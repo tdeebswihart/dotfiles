@@ -1,3 +1,7 @@
+iter () {
+	echo "$*" | tr " " "\n"
+}
+
 fresh freshshell/fresh bin/fresh --bin=~/.local/bin/fresh
 
 # dotfiles
@@ -29,9 +33,9 @@ fresh-options
 
 ## launchagents
 if [[ "$(uname)" == "Darwin" ]]; then
+  # Grab all my keepit helpers
+  for binf in ~/.fresh/source/gitlab.com/timods-dotfiles/bin/*-keepit-*; do
+    fresh https://gitlab.com/timods/dotfiles "bin/${binf}" --bin="$HOME/.local/bin/${binf}"
+  done
   fresh https://gitlab.com/timods/dotfiles 'launchagents/local.timods.vpn.plist' --file=~/Library/LaunchAgents/local.timods.vpn.plist
-  fresh https://gitlab.com/timods/dotfiles 'bin/pia-control.sh' --bin=~/.local/bin/pia-control.sh
-  fresh https://gitlab.com/timods/dotfiles 'bin/create-keepit-dailylog' --bin=~/.local/bin/create-keepit-dailylog
-  fresh https://gitlab.com/timods/dotfiles 'bin/update-keepit-tags' --bin=~/.local/bin/update-keepit-tags
-  fresh https://gitlab.com/timods/dotfiles 'bin/make-keepit-index' --bin=~/.local/bin/make-keepit-index
 fi
