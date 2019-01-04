@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>local.timods.keepit.dailylog</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>bash</string>
+      <string>/Users/timods/.local/bin/create-keepit-dailylog</string>
+    </array>
+    <key>StartInterval</key>
+    <integer>3600</integer>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardErrorPath</key>
+    <string>/Users/timods/Library/Logs/Local/keepit-dailylog.stderr.log</string>
+    <key>StandardOutPath</key>
+    <string>/Users/timods/Library/Logs/Local/keepit-dailylog.stdout.log</string>
+  </dict>
+</plist>
