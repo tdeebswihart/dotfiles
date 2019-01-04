@@ -53,8 +53,8 @@ createdtoday () {
 mkdir -p "$(dirname "${todayfile}")"
 test ! -f "${todayfile}" && echo -e "# $(date +%Y-%m-%d) Log\n" > "${todayfile}"
 TMPF=$(mktemp)
-echo -e "with open('${todayfile}', 'r') as f:\n\tprint(f.read().split('$MARKER')[0])" | python >  "$TMPF"
-echo "$MARKER"  >> "$TMPF"
+python -c "with open('${todayfile}', 'r') as f: print(f.read().split('$MARKER')[0].rstrip())" >  "$TMPF"
+echo -e "\n$MARKER"  >> "$TMPF"
 echo "### Today's Events" >> "$TMPF"
 icalBuddy -b '- ' eventsToday >> "$TMPF"
 echo -e "\n### Files created on this date"  >> "$TMPF"

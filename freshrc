@@ -27,7 +27,7 @@ fresh-options --file=~/.config/alacritty/alacritty.yml
   fresh https://gitlab.com/timods/dotfiles alacritty/colors.alacritty
 fresh-options
 
-SRCD=~/.fresh/source/timods/dotfiles
+SRCD=~/.fresh/source/gitlab.com/timods-dotfiles
 for binf in "$SRCD/bin"/*; do
   if [ -f "$binf" ]; then
     binf=$(basename "${binf}")
@@ -39,13 +39,14 @@ done
 if [ -d "${SRCD}/bin/$(uname -s)" ]; then
   for binf in "${SRCD}"/bin/$(uname -s)/*; do
     binf=$(basename "${binf}")
-    fresh https://gitlab.com/timods/dotfiles "bin/${binf}" --bin="$HOME/.local/bin/${binf}"
+    fresh https://gitlab.com/timods/dotfiles "bin/$(uname -s)/${binf}" --bin="$HOME/.local/bin/${binf}"
   done
 fi
 
 if [[ "$(uname)" == "Darwin" ]]; then
   # Grab all my launchagents
   for la in "${SRCD}"/launchagents/*.plist; do
+    la=$(basename "${la}")
     fresh https://gitlab.com/timods/dotfiles "launchagents/$la" --file="~/Library/LaunchAgents/$la"
   done
 fi
