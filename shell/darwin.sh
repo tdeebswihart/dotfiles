@@ -35,4 +35,23 @@ if [ $(uname -s) = "Darwin" ]; then
       clean-cask "$1"
     fi
   }
+
+  function watch_this () {
+    if [[ -z "$1" ]]; then
+      echo "usage: watch_this WATCHER_NAME"
+      return 1
+    fi
+    if ! which watchman-process-files.py >/dev/null; then
+      echo "error! watchman-process-files.py cannot be found!"
+      return 1
+    fi
+    local name="$1"
+    if [[ ! -z "$2" ]]; then
+      local target="$2"
+    else
+      local target=$(pwd)
+    fi
+    watchman -- trigger \"${target}\" \"${name}\" -- python3 $(which watchman-process-files.py)
+  }
+
 fi
