@@ -5,7 +5,7 @@ if [ ! -d /usr/local/Cellar ]; then
 fi
 
 # Install homebrew packages
-if [ -d "$(pwd)/extra/brew-leaves"]; then
+if [ -d "$(pwd)/extra/brew-leaves" ]; then
   echo "Installing homebrew packages"
   <"$(pwd)/extra/brew-leaves" xargs brew install
 fi

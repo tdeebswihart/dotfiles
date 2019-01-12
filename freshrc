@@ -36,7 +36,7 @@ for binf in "$SRCD/bin"/*; do
 done
 
 ## platform-specific setup
-un-$(uname -s)
+un=$(uname -s)
 if [ -d "${SRCD}/bin/${un}" ]; then
   for binf in "${SRCD}"/bin/${un}/*; do
     binf=$(basename "${binf}")
