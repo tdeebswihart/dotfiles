@@ -5,6 +5,7 @@ TODO: allow multiple rules to interact per file (but only one that renames it).
 import os
 import re
 import sys
+from subprocess import check_output
 
 def remove_dotdot(path):
     # Not allowed
@@ -54,26 +55,34 @@ def expand_variables(variables, text):
 
 def process_file(rules, variables, path: str):
     basename = os.path.basename(path)
+    tags = []
+    new_path = path
     for (pattern, folder_tmpl, tag_tmpl) in rules:
         m = pattern.match(path)
         if not m:
             continue
         groups = m.groups()
-        full_path = folder_tmpl.replace('{basename}', basename)
+        if folder_tmpl:
+            new_path = folder_tmpl.replace('{basename}', basename)
         group_vars = {f'{idx + 1}': group for idx, group in enumerate(m.groups())}
         local_vars = {**group_vars, **variables}
-        new_path = os.path.expanduser(expand_variables(local_vars, full_path))
-        new_tags = expand_variables(local_vars, tag_tmpl)
-        dirn = os.path.dirname(new_path)
-        if not os.path.exists(dirn):
-            os.mkdir(dirn)
-        # print(f'{pattern} produced {new_path} from {path}')
-        # TODO: don't rename until after we've applied all rules (to accumulate tag updates)
-        # TODO: add tags here
-        try:
-            os.rename(path, new_path)
-        except OSError as e:
-            print(e)
+        new_path = os.path.expanduser(expand_variables(local_vars, new_path))
+        tags.extend(expand_variables(local_vars, tag_tmpl).split(','))
+    if tags:
+        print(tags)
+        if not os.path.exists('/usr/local/bin/tag'):
+            raise RuntimeError("Please run `brew install tag'")
+        check_output(['/usr/local/bin/tag', '--add', ','.join(tags), str(path)])
+    dirn = os.path.dirname(new_path)
+    if not os.path.exists(dirn):
+        os.mkdir(dirn)
+    # print(f'{pattern} produced {new_path} from {path}')
+    # TODO: don't rename until after we've applied all rules (to accumulate tag updates)
+    # TODO: add tags here
+    try:
+        os.rename(path, new_path)
+    except OSError as e:
+        print(e)
 
 if __name__ == '__main__':
     confdir = os.path.expanduser('~/.config/watchman/')
