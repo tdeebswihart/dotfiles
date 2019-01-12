@@ -36,14 +36,18 @@ for binf in "$SRCD/bin"/*; do
 done
 
 ## platform-specific setup
-if [ -d "${SRCD}/bin/$(uname -s)" ]; then
-  for binf in "${SRCD}"/bin/$(uname -s)/*; do
+un-$(uname -s)
+if [ -d "${SRCD}/bin/${un}" ]; then
+  for binf in "${SRCD}"/bin/${un}/*; do
     binf=$(basename "${binf}")
-    fresh https://gitlab.com/timods/dotfiles "bin/$(uname -s)/${binf}" --bin="$HOME/.local/bin/${binf}"
+    fresh https://gitlab.com/timods/dotfiles "bin/${un}/${binf}" --bin="$HOME/.local/bin/${binf}"
   done
 fi
 
-if [[ "$(uname)" == "Darwin" ]]; then
+# Install platform-specific deps
+test -f "${SRCD}/deps/${un}.sh" && source "${SRCD}/deps/${un}.sh"
+
+if [[ "${un}" == "Darwin" ]]; then
   # Grab all my launchagents
   for la in "${SRCD}"/launchagents/*.plist; do
     la=$(basename "${la}")
