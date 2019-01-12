@@ -71,7 +71,7 @@ def expand_variables(variables, text):
 
 def process_file(rules, variables, path: str):
     basename = os.path.basename(path)
-    dirname = os.path.dirname(path)
+    dirname = os.path.dirname(path) or '.'
     tags = []
     name = basename
     fldr = "inbox"
@@ -92,17 +92,18 @@ def process_file(rules, variables, path: str):
     if folder:
         fldr = " of ".join(f"folder \"{fl}\"" for fl in reversed(folder.split('/'))) + " of top level folder"
         fldr = f"({fldr})"
-    if tags:
-        if not os.path.exists('/usr/local/bin/tag'):
-            raise RuntimeError("Please run `brew install tag'")
-        check_output(['/usr/local/bin/tag', '--add', ','.join(tags), str(path)])
+    new_name = f'{dirname}/{name}'
     if name != path:
         try:
-            os.rename(path, f'{dirname}/{name}')
+            os.rename(path, new_name)
         except OSError as e:
             print(e)
             return None
-    return add_tmpl.format(name=f'{dirname}/{name}', fldr=fldr, tags=', '.join(f'"{t}"' for t in tags))
+    if tags:
+        if not os.path.exists('/usr/local/bin/tag'):
+            raise RuntimeError("Please run `brew install tag'")
+        check_output(['/usr/local/bin/tag', '--add', ','.join(tags), new_name])
+    return add_tmpl.format(name=new_name, fldr=fldr, tags=', '.join(f'"{t}"' for t in tags))
 
 if __name__ == '__main__':
     confdir = os.path.expanduser('~/.config/watchman/')
