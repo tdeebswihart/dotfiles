@@ -5,14 +5,30 @@ TODO: allow multiple rules to interact per file (but only one that renames it).
 import os
 import re
 import sys
-from subprocess import check_output
+from subprocess import check_output, STDOUT
+from tempfile import NamedTemporaryFile
+
+add_tmpl = '  add files {{POSIX file "{name}"}} by moving to {fldr} with tags {{{tags}}}'
+
+script = """
+use AppleScript version "2.4" -- Yosemite (10.10) or later
+use scripting additions
+
+tell application "Keep It"
+  repeat until top level folder is not missing value
+    delay 1
+  end repeat
+  set inbox to get folder id "A13B9FE9-7094-475F-8E9B-2452B3DEDCF0"
+  {items}
+end tell
+"""
 
 def remove_dotdot(path):
     # Not allowed
-    new_path = path.replace('..', '')
-    while new_path != path:
-        path = new_path
-        new_path = path.replace('..', '')
+    new_name = path.replace('..', '')
+    while new_name != path:
+        path = new_name
+        new_name = path.replace('..', '')
     return path
 
 
@@ -37,52 +53,56 @@ def parse_config(f):
 
 def parse_rule(line: str):
     components = line.split(':')
-    if len(components) != 3:
+    if len(components) != 4:
         raise ValueError(f"Invalid rule: '{line}'")
     return (re.compile(components[0]),
             remove_dotdot(components[1]),
-            components[2])
+            remove_dotdot(components[2]),
+            components[3])
 
 
 def expand_variables(variables, text):
     for variable, value in variables.items():
         key = f'{{{variable}}}'
         if key in text:
-            # print(f'Replacing {key} with {value} in {text}')
             text = text.replace(key, value)
     return text
 
 
 def process_file(rules, variables, path: str):
     basename = os.path.basename(path)
+    dirname = os.path.dirname(path)
     tags = []
-    new_path = path
-    for (pattern, folder_tmpl, tag_tmpl) in rules:
-        m = pattern.match(path)
+    name = basename
+    fldr = "inbox"
+    folder = None
+    for (pattern, name_tmpl, folder_tmpl, tag_tmpl) in rules:
+        m = pattern.match(name)
         if not m:
             continue
         groups = m.groups()
-        if folder_tmpl:
-            new_path = folder_tmpl.replace('{basename}', basename)
         group_vars = {f'{idx + 1}': group for idx, group in enumerate(m.groups())}
-        local_vars = {**group_vars, **variables}
-        new_path = os.path.expanduser(expand_variables(local_vars, new_path))
-        tags.extend(expand_variables(local_vars, tag_tmpl).split(','))
+        local_vars = {'{basename}': name, **group_vars, **variables}
+        if name_tmpl:
+            name = expand_variables(local_vars, name_tmpl)
+        if folder_tmpl:
+            folder = os.path.expanduser(expand_variables(local_vars, folder_tmpl))
+        if tag_tmpl:
+            tags.extend(expand_variables(local_vars, tag_tmpl).split(','))
+    if folder:
+        fldr = " of ".join(f"folder \"{fl}\"" for fl in reversed(folder.split('/'))) + " of top level folder"
+        fldr = f"({fldr})"
     if tags:
-        print(tags)
         if not os.path.exists('/usr/local/bin/tag'):
             raise RuntimeError("Please run `brew install tag'")
         check_output(['/usr/local/bin/tag', '--add', ','.join(tags), str(path)])
-    dirn = os.path.dirname(new_path)
-    if not os.path.exists(dirn):
-        os.mkdir(dirn)
-    # print(f'{pattern} produced {new_path} from {path}')
-    # TODO: don't rename until after we've applied all rules (to accumulate tag updates)
-    # TODO: add tags here
-    try:
-        os.rename(path, new_path)
-    except OSError as e:
-        print(e)
+    if name != path:
+        try:
+            os.rename(path, f'{dirname}/{name}')
+        except OSError as e:
+            print(e)
+            return None
+    return add_tmpl.format(name=f'{dirname}/{name}', fldr=fldr, tags=', '.join(f'"{t}"' for t in tags))
 
 if __name__ == '__main__':
     confdir = os.path.expanduser('~/.config/watchman/')
@@ -92,7 +112,14 @@ if __name__ == '__main__':
     with open(os.path.join(confdir, 'rules.conf'), 'r') as f:
         variables, rules = parse_config(f)
     if len(sys.argv) > 0:
-        for infile in sys.argv[1:]:
-            process_file(rules, variables, infile)
+        items = [process_file(rules, variables, infile) for infile in sys.argv[1:]]
+        with NamedTemporaryFile(mode='w', delete=True) as tempf:
+            scpt = script.format(items='\n'.join(i for i in items if i))
+            tempf.write(scpt)
+            tempf.flush()
+            out = check_output(['/usr/bin/osascript', tempf.name], stderr=STDOUT)
+            if out and out.strip() != b'true':
+                print(out.decode())
+
     else:
         sys.exit(1)
