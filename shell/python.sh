@@ -12,3 +12,4 @@ for pfx in $(iter "$HOME" "/usr/local"); do
     fi
   done
 done
+alias pytcov='py.test --cov-report html --cov'

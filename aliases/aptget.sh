@@ -1,7 +1,0 @@
-alias agi='sudo apt-get install'
-alias agr='sudo apt-get remove'
-alias agp='sudo apt-get purge'
-alias acs='sudo apt-cache search'
-alias agd='sudo apt-get update'
-alias agu='sudo apt-get upgrade'
-alias agdu='sudo apt-get dist-upgrade'

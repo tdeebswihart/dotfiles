@@ -1,7 +1,0 @@
-#!/bin/zsh
-# simple volume control script
-if [ $# > 1 ]; then
-  amixer -c 0 -- sset Master playback $1
-else
-  echo "Must provide volume delta"
-fi

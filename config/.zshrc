@@ -21,4 +21,4 @@ fi
 fpath=(~/.zsh $fpath)
 
 # load fresh-built files
-source ~/.fresh/build/shell.sh
+source ~/.config/zsh/config.sh

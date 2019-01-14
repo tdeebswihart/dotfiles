@@ -15,10 +15,6 @@ fresh larkery/zsh-histdb . --file=~/.zsh-histdb/
 fresh tarjoilija/zgen 'zgen.zsh' --file=~/.zgen.zsh
 fresh tarjoilija/zgen '_zgen' --file=~/.zsh/_zgen
 
-## binfiles
-fresh wwalker/ssh-find-agent 'ssh-find-agent.sh' --bin=~/.ssh-find-agent.sh
-
-## terminal colors
 fresh https://gitlab.com/timods/dotfiles 'colors' --file=~/.colors/
 
 ## alacritty
@@ -31,7 +27,7 @@ SRCD=~/.fresh/source/gitlab.com/timods-dotfiles
 for binf in "$SRCD/bin"/*; do
   if [ -f "$binf" ]; then
     binf=$(basename "${binf}")
-    fresh https://gitlab.com/timods/dotfiles "bin/$binf" --bin="$HOME/.local/bin/$binf"
+    fresh https://gitlab.com/timods/dotfiles
   fi
 done
 

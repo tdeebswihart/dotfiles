@@ -9,7 +9,7 @@ if [ $(uname -s) = "Darwin" ]; then
   }
 
   #keep casks up to date the right way
-  alias morningbrew='brew update && brew upgrade && brew cu && brew cleanup && cask-retire; brew doctor'
+  alias morningbrew='brew update && brew upgrade && brew cask upgrade && brew cleanup && cask-retire; brew doctor'
 
   #that's some old shit
   function __clean-cask {

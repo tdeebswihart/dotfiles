@@ -1,0 +1,185 @@
+import collections
+from contextlib import contextmanager
+from glob import glob
+import json
+from subprocess import check_output, STDOUT
+from tempfile import NamedTemporaryFile
+import sys
+import os
+
+
+def is_str(s):
+    return isinstance(s, (str, unicode))
+
+@contextmanager
+def chdir(path):
+    current = os.getcwd()
+    os.chdir(path)
+    yield
+    os.chdir(current)
+
+def mkdir(path):
+    try:
+        os.makedirs(path)
+    except OSError as err:
+        if err.errno == 17:
+            # ERREXISTS
+            pass
+        else:
+            raise
+
+
+def runcmd(cmd):
+    out = check_output(cmd, shell=True, stderr=STDOUT)
+    return out.strip().decode(errors='ignore')
+
+
+def install_sources(sources):
+    # TODO: install from git if necessary under ~/.config/shell/SOURCE/NAME/repo
+    # TODO: handle the rest as normal
+    mkdir(os.path.expanduser('~/.config/zsh/repos'))
+    for source, config in sources.items():
+        print("Cloning {}".format(source))
+        if isinstance(config, (str, unicode)):
+            # TODO: clone directly here
+            config = os.path.expanduser(config)
+            if not os.path.isdir(config):
+                runcmd("git clone {} {}".format(source, config))
+            else:
+                with chdir(config):
+                    runcmd("git pull")
+        else:
+            chunks = source.split(':')[-1].split('/')
+            user = chunks[0]
+            repo = chunks[-1].replace('.git', '')
+            repo_dir = os.path.expanduser("~/.config/zsh/repos/{}-{}".format(user, repo))
+            mkdir(repo_dir)
+            if not os.path.isdir(repo_dir):
+                runcmd("git clone {} {}".format(source, repo_dir))
+            else:
+                with chdir(repo_dir):
+                    runcmd("git pull")
+            # Add the repo dir
+            symlinks = {'{}/{}'.format(repo_dir, k): v for k, v in config.get('symlinks', {}).items()}
+            install_symlinks(symlinks)
+
+
+def install_symlinks(config):
+    for src, dst in config.items():
+        # TODO: install
+        sources = [src]
+        if src.endswith('*'):
+            if not (src.startswith('/') or src.startswith('~')):
+                # relative paths
+                src = os.path.join(os.getcwd(), src)
+            sources = sorted(glob(os.path.expanduser(src)))
+
+        if dst.endswith('/'):
+            # Its a directory. each file should be copied
+            for path in sources:
+                # print('Linking {} -> {}{}'.format(path, dst, os.path.basename(path)))
+                mkdir(dst)
+                ldst = os.path.expanduser('{}{}'.format(dst, os.path.basename(path)))
+                if os.path.islink(ldst):
+                    os.unlink(ldst)
+                elif os.path.exists(ldst):
+                    raise RuntimeError('{} already exists and is not controlled by us!'.format(ldst))
+                assert not os.path.islink(ldst)
+                os.symlink(os.path.expanduser(path), ldst)
+        else:
+            # Combine/link into file
+            # print('Combining {} into {}'.format(sources, dst))
+            dst = os.path.expanduser(dst)
+            mkdir(os.path.dirname(dst))
+            with open(dst, 'w') as outf:
+                outf.write('# AUTOMATICALLY GENERATED DO NOT EDIT! \n')
+                for path in sources:
+                    with open(path, 'r') as f:
+                        outf.write('## {}\n'.format(path))
+                        outf.write(f.read())
+                        outf.write('\n')
+
+def install_taps(taps):
+    for tap in taps:
+        runcmd('brew tap {}'.format(tap))
+
+
+def install_brew(pkgs, tags):
+    already_installed = set(runcmd('brew list').strip().split('\n'))
+    to_install = set(pkgs) - already_installed
+    if to_install:
+        print('Installing {} homebrew formulae'.format(len(to_install)))
+        with NamedTemporaryFile() as tf:
+            tf.write('\n'.join(to_install))
+            tf.flush()
+            runcmd('xargs <{} brew install'.format(tf.name))
+
+
+def install_casks(pkgs, tags):
+    # These need to be installed in a usable command line as some casks
+    # ask for a password
+    already_installed = set(runcmd('brew cask list').strip().split('\n'))
+    casks = []
+    for cask in pkgs:
+        if is_str(cask):
+            casks.append(cask)
+        elif isinstance(cask, dict):
+            if 'name' in cask and 'when' in cask and cask['when'] in tags:
+                casks.append(cask['name'])
+
+    to_install = set(casks) - already_installed
+    if to_install:
+        with open('/tmp/casks', 'w') as f:
+            f.write('\n'.join(to_install))
+
+
+def install_mas(apps, tags):
+    appids = [runcmd(['mas search "{}"'.format(app)]).split(' ')[0] for app in apps]
+    already_installed = set(c.split()[0] for c in runcmd('mas list').strip().split('\n'))
+    to_install = set(appids) - already_installed
+    if to_install:
+        print('Installing {} apps from the Mac App Store'.format(len(to_install)))
+        with NamedTemporaryFile() as tf:
+            tf.write('\n'.join(to_install))
+            tf.flush()
+            runcmd('xargs <{} mas install'.format(tf.name))
+
+
+def check_install_deps():
+    if not os.path.isdir("/usr/local/Cellar"):
+        print('Installing homebrew')
+        runcmd('/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"', stderr=STDOUT, shell=True)
+    if not os.path.isfile('/usr/local/bin/mas'):
+        print('Installing mas')
+        runcmd('brew install mas')
+
+
+def install_from_config(config_file, tags):
+    with open(config_file, 'r') as f:
+        config = json.loads(f.read(), object_pairs_hook=collections.OrderedDict)
+
+    check_install_deps()
+    try:
+        os.mkdir(os.path.expanduser("~/.config/zsh"))
+    except OSError:
+        pass
+    install_taps(config.get('brew-taps', []))
+    install_brew(config.get('brew', []), tags)
+    install_casks(config.get('casks', []), tags)
+    install_mas(config.get('mas', []), tags)
+    install_sources(config.get('sources', {}))
+    install_symlinks(config.get('symlinks', {}))
+
+    for script in config.get('after-scripts', []):
+        runcmd(script)
+
+
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        print("{}: CONFIG [TAGS]")
+        sys.exit(1)
+    tags = []
+    if len(sys.argv) > 2:
+        tags = sys.argv[2:]
+
+    install_from_config(sys.argv[1], tags)

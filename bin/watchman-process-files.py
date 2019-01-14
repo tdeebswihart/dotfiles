@@ -71,7 +71,7 @@ def expand_variables(variables, text):
 
 def process_file(rules, variables, path: str):
     basename = os.path.basename(path)
-    dirname = os.path.dirname(path) or os.getcwd()
+    dirname = os.path.dirname(path)
     tags = []
     name = basename
     fldr = "inbox"
@@ -100,7 +100,7 @@ def process_file(rules, variables, path: str):
             os.rename(path, new_name)
         except OSError as e:
             print(e)
-            raise
+            return None
     if tags:
         if not os.path.exists('/usr/local/bin/tag'):
             raise RuntimeError("Please run `brew install tag'")
@@ -116,8 +116,6 @@ if __name__ == '__main__':
         variables, rules = parse_config(f)
     if len(sys.argv) > 0:
         items = [process_file(rules, variables, infile) for infile in sys.argv[1:]]
-        if not items:
-            sys.exit(0)
         with NamedTemporaryFile(mode='w', delete=True) as tempf:
             scpt = script.format(items='\n'.join(i for i in items if i))
             tempf.write(scpt)
