@@ -105,7 +105,7 @@ def process_file(rules, variables, path: str):
         if not os.path.exists('/usr/local/bin/tag'):
             raise RuntimeError("Please run `brew install tag'")
         check_output(['/usr/local/bin/tag', '--add', ','.join(tags), new_name])
-    return add_tmpl.format(name=new_name, fldr=fldr, tags=', '.join(f'"{t}"' for t in tags))
+    return add_tmpl.format(name=os.path.abspath(new_name), fldr=fldr, tags=', '.join(f'"{t}"' for t in tags))
 
 if __name__ == '__main__':
     confdir = os.path.expanduser('~/.config/watchman/')
@@ -116,13 +116,15 @@ if __name__ == '__main__':
         variables, rules = parse_config(f)
     if len(sys.argv) > 0:
         items = [process_file(rules, variables, infile) for infile in sys.argv[1:]]
-        with NamedTemporaryFile(mode='w', delete=True) as tempf:
-            scpt = script.format(items='\n'.join(i for i in items if i))
-            tempf.write(scpt)
-            tempf.flush()
-            out = check_output(['/usr/bin/osascript', tempf.name], stderr=STDOUT)
-            if out and out.strip() != b'true':
-                print(out.decode())
+        items = [i for i in items if i]
+        if items:
+            with NamedTemporaryFile(mode='w', delete=True) as tempf:
+                scpt = script.format(items='\n'.join(items))
+                tempf.write(scpt)
+                tempf.flush()
+                out = check_output(['/usr/bin/osascript', tempf.name], stderr=STDOUT)
+                if out and out.strip() != b'true':
+                    print(out.decode())
 
     else:
         sys.exit(1)

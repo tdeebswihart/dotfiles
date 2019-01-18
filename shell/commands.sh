@@ -1,5 +1,5 @@
 hash trash 2>/dev/null && alias rm=trash
-alias wifi="networksetup -setairportpower en0"
+which networksetup &>/dev/null && alias wifi="networksetup -setairportpower en0"
 alias timestamp='gawk "{now=strftime(\"%F %T \"); print now \$0; fflush(); }"'
 alias jsonpy='python -m json.tool'
 alias mounted='mount | column -t '
@@ -10,13 +10,10 @@ which ptpython >/dev/null 2>&1 && alias py='ptpython' && alias ipy='iptpython'
 alias rb='ruby'
 alias lockme="xscreensaver-command -lock"
 alias disas='objdump -d -M intel'
-alias scanb='scan-build --use-analyzer=$(which clang-3.5)'
 alias latexmk='latexmk -pvc'
 alias aplay='ansible-playbook playbook.yml -i inventory'
 # Fix pyenv and homebrew *-config issues
-which nvim >/dev/null 2>&1 && alias vim=nvim
-which thefuck >/dev/null && eval "$(thefuck --alias)"
+which nvim &>/dev/null && alias vim=nvim
 alias b='build'
 alias p='provision'
-which hopper > /dev/null && alias h='hopper' && alias he='hopper -e'
 alias dk=docker
