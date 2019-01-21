@@ -2,13 +2,14 @@
 """
 TODO: allow multiple rules to interact per file (but only one that renames it).
 """
+from collections import defaultdict
 import os
 import re
 import sys
 from subprocess import check_output, STDOUT
 from tempfile import NamedTemporaryFile
 
-add_tmpl = '  add files {{POSIX file "{name}"}} by moving to {fldr} with tags {{{tags}}}'
+add_tmpl = '  add files {{POSIX file "{name}"}} by moving to ({fldr}) with tags {{{tags}}}'
 
 script = """
 use AppleScript version "2.4" -- Yosemite (10.10) or later
@@ -67,7 +68,7 @@ def expand_variables(variables, text):
     return text
 
 
-def process_file(rules, variables, path: str):
+def process_file(rules, variables, path: str, state: dict):
     basename = os.path.basename(path)
     dirname = os.path.dirname(path)
     tags = []
@@ -87,9 +88,6 @@ def process_file(rules, variables, path: str):
             folder = os.path.expanduser(expand_variables(local_vars, folder_tmpl))
         if tag_tmpl:
             tags.extend(expand_variables(local_vars, tag_tmpl).split(','))
-    if folder:
-        folder = " of ".join(f"folder \"{fl}\"" for fl in reversed(folder.split('/'))) + " of top level folder"
-        folder = f"({fldr})"
     new_name = name
     if dirname:
         new_name = f'{dirname}/{name}'
@@ -98,17 +96,32 @@ def process_file(rules, variables, path: str):
             os.rename(path, new_name)
         except OSError as e:
             print(e)
-            return None
+            return state
     if tags:
         if not os.path.exists('/usr/local/bin/tag'):
             raise RuntimeError("Please run `brew install tag'")
         check_output(['/usr/local/bin/tag', '--add', ','.join(tags), new_name])
     # TODO: find a better way to specify this...
-    if folder.startswith('!keepit'):
-        folder = folder.replace('!keepit', '').strip('/') or "inbox"
-        return add_tmpl.format(name=os.path.abspath(new_name), fldr=folder, tags=', '.join(f'"{t}"' for t in tags))
-    else:
-        return None
+    if folder is not None:
+        if folder.startswith('!keepit'):
+            folder = folder.replace('!keepit', '').strip('/')
+            if folder:
+                folder = (" of ".join(f"folder \"{fl}\"" for fl in reversed(folder.split('/')))
+                        + " of top level folder")
+            else:
+                folder = "inbox"
+            state['keepit'].append(add_tmpl.format(
+                name=os.path.abspath(new_name),
+                fldr=folder,
+                tags=', '.join(f'"{t}"' for t in tags)))
+        else:
+            # TODO: move it!
+            try:
+                os.rename(os.path.abspath(new_name),
+                          os.path.join(folder, new_name))
+            except OSError as e:
+                print(e)
+    return state
 
 if __name__ == '__main__':
     confdir = os.path.expanduser('~/.config/watchman/')
@@ -119,8 +132,11 @@ if __name__ == '__main__':
         variables, rules = parse_config(f)
     if len(sys.argv) > 0:
         exclusions = re.compile(variables.get('exclusions', '^$'))
-        items = [process_file(rules, variables, infile) for infile in sys.argv[1:] if not exclusions.match(infile)]
-        items = [i for i in items if i]
+        state = defaultdict(list)
+        for infile in sys.argv[1:]:
+            if not exclusions.match(infile):
+                state = process_file(rules, variables, infile, state)
+        items = state.get('keepit', [])
         if items:
             with NamedTemporaryFile(mode='w', delete=True) as tempf:
                 scpt = script.format(items='\n'.join(items))
