@@ -288,4 +288,9 @@ datename () {
   test -f "$1" && echo "$(ctime "$1")_$1"
 }
 
+makesearchable () {
+  local fname="$1"
+  test -f "$1" && tesseract "${fname}" "${fname}.ocr" PDF
+}
+
 test -f ~/.local.sh && source ~/.local.sh

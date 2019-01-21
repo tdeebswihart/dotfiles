@@ -1,0 +1,3 @@
+[submodule "hammerspoon/git/Lunette"]
+	path = hammerspoon/git/Lunette
+	url = https://github.com/scottwhudson/Lunette.git

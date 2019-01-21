@@ -9,7 +9,20 @@ import os
 
 
 def is_str(s):
-    return isinstance(s, (str, unicode))
+    return isinstance(s, str)
+
+def getpath(source):
+    if '@' in source:
+        # SSH
+        chunks = source.split(':')[-1].split('/')
+        site = source.split('@')[-1].split(':')[0]
+        user = chunks[0]
+        repo = chunks[-1].replace('.git', '')
+    else:
+        url = source.split('://')[-1]
+        chunks = url.split('/')
+        site, user, repo = chunks[:3]
+    return site, user, repo
 
 @contextmanager
 def chdir(path):
@@ -40,7 +53,7 @@ def install_sources(sources):
     mkdir(os.path.expanduser('~/.config/zsh/repos'))
     for source, config in sources.items():
         print("Cloning {}".format(source))
-        if isinstance(config, (str, unicode)):
+        if isinstance(config, str):
             # TODO: clone directly here
             config = os.path.expanduser(config)
             if not os.path.isdir(config):
@@ -49,11 +62,8 @@ def install_sources(sources):
                 with chdir(config):
                     runcmd("git pull")
         else:
-            chunks = source.split(':')[-1].split('/')
-            user = chunks[0]
-            repo = chunks[-1].replace('.git', '')
-            repo_dir = os.path.expanduser("~/.config/zsh/repos/{}-{}".format(user, repo))
-            mkdir(repo_dir)
+            site, user, repo = getpath(source)
+            repo_dir = os.path.expanduser("~/.config/zsh/repos/{}/{}-{}".format(site, user, repo))
             if not os.path.isdir(repo_dir):
                 runcmd("git clone {} {}".format(source, repo_dir))
             else:
@@ -73,20 +83,22 @@ def install_symlinks(config):
                 # relative paths
                 src = os.path.join(os.getcwd(), src)
             sources = sorted(glob(os.path.expanduser(src)))
-
+        if not sources:
+            continue
         if dst.endswith('/'):
             # Its a directory. each file should be copied
             for path in sources:
                 # print('Linking {} -> {}{}'.format(path, dst, os.path.basename(path)))
-                mkdir(dst)
+                mkdir(os.path.expanduser(dst))
                 ldst = os.path.expanduser('{}{}'.format(dst, os.path.basename(path)))
                 if os.path.islink(ldst):
                     os.unlink(ldst)
                 elif os.path.exists(ldst):
                     raise RuntimeError('{} already exists and is not controlled by us!'.format(ldst))
                 assert not os.path.islink(ldst)
-                os.symlink(os.path.expanduser(path), ldst)
-        else:
+                path = os.path.expanduser(path)
+                os.symlink(path, ldst, target_is_directory=os.path.isdir(path))
+        elif os.path.isfile(sources[0]):
             # Combine/link into file
             # print('Combining {} into {}'.format(sources, dst))
             dst = os.path.expanduser(dst)
@@ -98,6 +110,14 @@ def install_symlinks(config):
                         outf.write('## {}\n'.format(path))
                         outf.write(f.read())
                         outf.write('\n')
+        elif os.path.isdir(sources[0]):
+            ldst = os.path.expanduser(dst)
+            if os.path.islink(ldst):
+                os.unlink(ldst)
+            elif os.path.exists(ldst):
+                raise RuntimeError('{} already exists and is not controlled by us!'.format(ldst))
+            assert not os.path.islink(ldst)
+            os.symlink(os.path.expanduser(path), ldst, target_is_directory=True)
 
 def install_taps(taps):
     for tap in taps:

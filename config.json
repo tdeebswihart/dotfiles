@@ -60,6 +60,7 @@
         "tag",
         "tailor",
         "terminal-notifier",
+        "tesseract",
         "texinfo",
         "the_silver_searcher",
         "tmux",
@@ -117,11 +118,16 @@
         "1Password 7"
     ],
     "sources": {
-        "git@github.com:larkery/zsh-histdb.git": "~/.zsh-histdb/",
-        "git@github.com:tarjoilija/zgen": {
+        "https://github.com/larkery/zsh-histdb.git": "~/.zsh-histdb/",
+        "https://github.com/tarjoilija/zgen": {
             "symlinks": {
                 "zgen.zsh": "~/.zgen.zsh",
                 "_zgen": "~/.zsh/_zgen"
+            }
+        },
+        "https://github.com/scottwhudson/Lunette.git": {
+            "symlinks": {
+                "Lunette.spoon": "~/.hammerspoon/Spoons/"
             }
         }
     },
@@ -129,7 +135,8 @@
         "config/.*": "~/",
         "shell/*": "~/.config/zsh/config.sh",
         "bin/*": "~/.local/bin/",
-        "launchagents/*":"~/Library/LaunchAgents/"
+        "launchagents/*":"~/Library/LaunchAgents/",
+        "hammerspoon/*": "~/.hammerspoon/"
     },
     "after-scripts": [
         "brew cleanup"

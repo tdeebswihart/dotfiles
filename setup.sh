@@ -1,5 +1,5 @@
 #!/bin/bash
 
-python install.py config.json $*
+python3 install.py config.json $*
 # cask requires passwords sometimes
-xargs </tmp/casks brew cask install
+test -f /tmp/casks && xargs </tmp/casks brew cask install

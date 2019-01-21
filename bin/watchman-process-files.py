@@ -63,9 +63,7 @@ def parse_rule(line: str):
 
 def expand_variables(variables, text):
     for variable, value in variables.items():
-        key = f'{{{variable}}}'
-        if key in text:
-            text = text.replace(key, value)
+        text = text.replace(f'{{{variable}}}', value)
     return text
 
 
@@ -74,15 +72,15 @@ def process_file(rules, variables, path: str):
     dirname = os.path.dirname(path)
     tags = []
     name = basename
-    fldr = "inbox"
     folder = None
     for (pattern, name_tmpl, folder_tmpl, tag_tmpl) in rules:
         m = pattern.match(name)
         if not m:
             continue
         groups = m.groups()
-        group_vars = {f'{idx + 1}': group for idx, group in enumerate(m.groups())}
-        local_vars = {'{basename}': name, **group_vars, **variables}
+        numbered_groups = {f'{idx + 1}': group for idx, group in enumerate(m.groups())}  # Numbered groups
+        named_groups = {f'{k}': v for k, v in m.groupdict().items()}  # Named groups
+        local_vars = {'{basename}': name, **named_groups, **numbered_groups, **variables}
         if name_tmpl:
             name = expand_variables(local_vars, name_tmpl)
         if folder_tmpl:
@@ -90,8 +88,8 @@ def process_file(rules, variables, path: str):
         if tag_tmpl:
             tags.extend(expand_variables(local_vars, tag_tmpl).split(','))
     if folder:
-        fldr = " of ".join(f"folder \"{fl}\"" for fl in reversed(folder.split('/'))) + " of top level folder"
-        fldr = f"({fldr})"
+        folder = " of ".join(f"folder \"{fl}\"" for fl in reversed(folder.split('/'))) + " of top level folder"
+        folder = f"({fldr})"
     new_name = name
     if dirname:
         new_name = f'{dirname}/{name}'
@@ -105,7 +103,12 @@ def process_file(rules, variables, path: str):
         if not os.path.exists('/usr/local/bin/tag'):
             raise RuntimeError("Please run `brew install tag'")
         check_output(['/usr/local/bin/tag', '--add', ','.join(tags), new_name])
-    return add_tmpl.format(name=os.path.abspath(new_name), fldr=fldr, tags=', '.join(f'"{t}"' for t in tags))
+    # TODO: find a better way to specify this...
+    if folder.startswith('!keepit'):
+        folder = folder.replace('!keepit', '').strip('/') or "inbox"
+        return add_tmpl.format(name=os.path.abspath(new_name), fldr=folder, tags=', '.join(f'"{t}"' for t in tags))
+    else:
+        return None
 
 if __name__ == '__main__':
     confdir = os.path.expanduser('~/.config/watchman/')
@@ -115,7 +118,8 @@ if __name__ == '__main__':
     with open(os.path.join(confdir, 'rules.conf'), 'r') as f:
         variables, rules = parse_config(f)
     if len(sys.argv) > 0:
-        items = [process_file(rules, variables, infile) for infile in sys.argv[1:]]
+        exclusions = re.compile(variables.get('exclusions', '^$'))
+        items = [process_file(rules, variables, infile) for infile in sys.argv[1:] if not exclusions.match(infile)]
         items = [i for i in items if i]
         if items:
             with NamedTemporaryFile(mode='w', delete=True) as tempf:
