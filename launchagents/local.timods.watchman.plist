@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.github.facebook.watchman</string>
+    <key>Disabled</key>
+    <false/>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/Cellar/watchman/4.9.0_2/libexec/bin/watchman</string>
+        <string>--foreground</string>
+        <string>--logfile=/usr/local/var/run/watchman/timods-state/log</string>
+        <string>--log-level=1</string>
+        <string>--sockname=/usr/local/var/run/watchman/timods-state/sock</string>
+        <string>--statefile=/usr/local/var/run/watchman/timods-state/state</string>
+        <string>--pidfile=/usr/local/var/run/watchman/timods-state/pid</string>
+    </array>
+    <key>KeepAlive</key>
+    <dict>
+        <key>Crashed</key>
+        <true/>
+    </dict>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string><![CDATA[/Users/timods/.local/bin:/Users/timods/.cargo/bin:/opt/X11/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:]]></string>
+    </dict>
+    <key>ProcessType</key>
+    <string>Interactive</string>
+    <key>Nice</key>
+    <integer>-5</integer>
+</dict>
+</plist>

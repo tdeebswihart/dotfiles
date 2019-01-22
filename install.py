@@ -77,18 +77,15 @@ def install_sources(sources):
 def install_symlinks(config):
     for src, dst in config.items():
         # TODO: install
-        sources = [src]
-        if src.endswith('*'):
-            if not (src.startswith('/') or src.startswith('~')):
-                # relative paths
-                src = os.path.join(os.getcwd(), src)
-            sources = sorted(glob(os.path.expanduser(src)))
+        if not (src.startswith('/') or src.startswith('~')):
+            # relative paths are made absolute here
+            src = os.path.join(os.getcwd(), src)
+        sources = sorted(glob(os.path.expanduser(src)))
         if not sources:
             continue
         if dst.endswith('/'):
             # Its a directory. each file should be copied
             for path in sources:
-                # print('Linking {} -> {}{}'.format(path, dst, os.path.basename(path)))
                 mkdir(os.path.expanduser(dst))
                 ldst = os.path.expanduser('{}{}'.format(dst, os.path.basename(path)))
                 if os.path.islink(ldst):
@@ -100,7 +97,6 @@ def install_symlinks(config):
                 os.symlink(path, ldst, target_is_directory=os.path.isdir(path))
         elif os.path.isfile(sources[0]):
             # Combine/link into file
-            # print('Combining {} into {}'.format(sources, dst))
             dst = os.path.expanduser(dst)
             mkdir(os.path.dirname(dst))
             with open(dst, 'w') as outf:

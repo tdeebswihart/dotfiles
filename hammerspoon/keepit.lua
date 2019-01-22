@@ -17,7 +17,7 @@ end
 module.window_filter = hs.window.filter.new{'Keep It'}
 module.keybinds = {
    hs.hotkey.bind({"ctrl", "cmd"}, "r", function ()
-         hs.osascript.javascriptFromFile("~/.hammerspoon/scripts/keepit-refile.js")
+         hs.osascript.javascriptFromFile(os.getenv("HOME") .. "/.hammerspoon/scripts/keepit-refile.js")
    end),
    hs.hotkey.bind({"ctrl", "cmd"}, "l", function ()
          -- insert Link

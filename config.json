@@ -81,6 +81,7 @@
         "dash",
         {"name": "epic-games", "when": "home"},
         "fantastical",
+        "firefox",
         "font-fira-code",
         "font-fira-mono",
         "franz",
@@ -132,13 +133,15 @@
         }
     },
     "symlinks": {
-        "config/.*": "~/",
-        "shell/*": "~/.config/zsh/config.sh",
+        "dots/.*": "~/",
+        "zsh/*": "~/.config/zsh/config.sh",
         "bin/*": "~/.local/bin/",
-        "launchagents/*":"~/Library/LaunchAgents/",
+        "config/*": "~/.config/",
+        "launchagents/*.plist":"~/Library/LaunchAgents/",
         "hammerspoon/*": "~/.hammerspoon/"
     },
     "after-scripts": [
-        "brew cleanup"
+        "brew cleanup",
+        "find ~/Library/LaunchAgents -name '*.plist' | xargs launchctl load"
     ]
 }
