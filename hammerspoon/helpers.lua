@@ -9,9 +9,9 @@ end
 
 module.currentApp = function()
     local wf = hs.window.filter
-    local lastFocused = wf.defaultCurrentSpace:getWindows(wf.sortByFocusedLast)
+    local lastFocused = wf.default:getWindows(wf.sortByFocusedLast)
     if #lastFocused > 0 then
-       return lastFocused[1]
+       return lastFocused[1]:application()
     else
        return nil
     end

@@ -31,21 +31,36 @@ function switchApp()
    chooser:show()
 end
 
-function collectIntoKeepit()
+function collectFromFrontmostApp()
    local app = helpers.currentApp()
-   if not app then return end
+   if app == nil then return end
    local bundleID = app:bundleID()
-   local scpt = "~/.hammerspoon/collection-scripts/" .. bundleID .. ".scpt"
-   local js = "~/.hammerspoon/collection-scripts/" .. bundleID .. ".js"
+   local scpt = os.getenv("HOME") .. "/.hammerspoon/collection-scripts/" .. bundleID .. ".scpt"
+   local js = os.getenv("HOME") .. "/.hammerspoon/collection-scripts/" .. bundleID .. ".js"
    if helpers.fexists(scpt) then
       hs.osascript.applescriptFromFile(scpt)
    elseif helpers.fexists(js) then
-      -- Sometimes the JS is easier to write (or already provided)
       hs.osascript.javascriptFromFile(js)
    else
       print("No collection script exists for " .. bundleID)
    end
+end
 
+function collectFromFrontmostApp()
+   local app = helpers.currentApp()
+   if app == nil then return end
+   local bundleID = app:bundleID()
+   local scpt = os.getenv("HOME") .. "/.hammerspoon/todo-scripts/" .. bundleID .. ".scpt"
+   local js = os.getenv("HOME") .. "/.hammerspoon/todo-scripts/" .. bundleID .. ".js"
+   if helpers.fexists(scpt) then
+      hs.osascript.applescriptFromFile(scpt)
+   elseif helpers.fexists(js) then
+      hs.osascript.javascriptFromFile(js)
+   else
+      print("No collection script exists for " .. bundleID)
+   end
 end
 
 hs.hotkey.bind(module.hyperkey, "a", switchApp)
+hs.hotkey.bind(module.hyperkey, "k", collectFromFrontmostApp)
+hs.hotkey.bind(module.hyperkey, "t", todoFromFrontmostApp)
