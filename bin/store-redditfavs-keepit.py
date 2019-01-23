@@ -79,7 +79,7 @@ def main():
             favs = me.saved(params={'before': last_processed})
             # Save our progress
             f.seek(0)
-            f.write(str(latest_fav) + '\n')
+            f.write(str(last_processed) + '\n')
             f.flush()
     if processed:
         favs = SEP.join(processed)

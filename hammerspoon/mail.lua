@@ -4,7 +4,7 @@
 local module = {}
 module.keybinds = {
    hs.hotkey.bind({"ctrl", "cmd"}, "a", function ()
-         hs.osascript.javascriptFromFile("~/.hammerspoon/scripts/mail-archive.js")
+         hs.osascript.applescriptFromFile("~/.hammerspoon/collection-scripts/keepit-com.apple.Mail.scpt")
 end)}
 
 for k, binding in pairs(module.keybinds) do

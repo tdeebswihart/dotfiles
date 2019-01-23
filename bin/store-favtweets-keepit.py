@@ -11,7 +11,7 @@ try:
 except FileExistsError:
     pass
 
-SEP = '\n\n---\n\n'
+SEP = '---\n\n'
 
 @click.command()
 def main():
