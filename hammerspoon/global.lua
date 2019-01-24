@@ -46,7 +46,7 @@ function collectFromFrontmostApp()
    end
 end
 
-function collectFromFrontmostApp()
+function todoFromFrontmostApp()
    local app = helpers.currentApp()
    if app == nil then return end
    local bundleID = app:bundleID()
