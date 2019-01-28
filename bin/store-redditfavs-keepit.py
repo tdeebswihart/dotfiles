@@ -49,7 +49,9 @@ def main():
             parts = line.strip().split('=')
             evars[parts[0].lower()] = parts[1]
 
+    print("Building api")
     api = praw.Reddit(**evars)
+    print("api object built")
     conf = confdir / "last_processed"
     last_processed = None
     if conf.exists():
@@ -62,8 +64,10 @@ def main():
     processed = set()
     favs = me.saved(params={'before': last_processed})
     with conf.open('w') as f:
-        while favs:
+        old_last_processed = -1
+        while last_processed != old_last_processed:
             # TODO: Ensure that this is correct
+            old_last_processed = last_processed
             fst = True
             for item in favs:
                 if fst:
@@ -77,6 +81,7 @@ def main():
                 except KeyError as kerr:
                     print(f'Unexpected item type {typename}!')
             favs = me.saved(params={'before': last_processed})
+            print("Saving iteration")
             # Save our progress
             f.seek(0)
             f.write(str(last_processed) + '\n')
@@ -85,7 +90,7 @@ def main():
         favs = SEP.join(processed)
         now = dt.now()
         date = now.strftime("%Y-%m-%d")
-        target =  (Path(evars['KEEPIT_FILES']) / "Life" / str(now.year) / f"{date} Saved Reddit Content.md")
+        target =  (Path(evars['keepit_files']) / "Life" / str(now.year) / f"{date} Saved Reddit Content.md")
 
         mode = 'w'
         hdr = f'# {date} Saved Reddit Content\n'

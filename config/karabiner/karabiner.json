@@ -36,7 +36,8 @@
                   {
                     "type": "frontmost_application_unless",
                     "bundle_identifiers": [
-                      "^org\\.gnu\\.Emacs$"
+                      "^org\\.gnu\\.Emacs$",
+                      "^com.culturedcode.ThingsMac$"
                     ]
                   }
                 ]

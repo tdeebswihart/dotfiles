@@ -61,6 +61,23 @@ function todoFromFrontmostApp()
    end
 end
 
-hs.hotkey.bind(module.hyperkey, "a", switchApp)
-hs.hotkey.bind(module.hyperkey, "k", collectFromFrontmostApp)
-hs.hotkey.bind(module.hyperkey, "t", todoFromFrontmostApp)
+
+function launcher(bundleID)
+   return function() hs.application.launchOrFocusByBundleID(bundleID) end
+end
+
+--hs.hotkey.bind(module.hyperkey, "a", switchApp)
+hs.hotkey.bind(module.hyperkey, "e", function()
+                  local out = helpers.runcmd("/usr/local/bin/fd .app\\$ /usr/local/Cellar/emacs-mac/")
+                  local emacs_path = string.match(out, "(.-)[\r\n]")
+                  if emacs_path ~= nil then hs.application.launchOrFocus(emacs_path) end
+end)
+hs.hotkey.bind(module.hyperkey, "f", launcher("org.mozilla.firefox"))
+hs.hotkey.bind(module.hyperkey, "t", launcher("com.culturedcode.ThingsMac"))
+hs.hotkey.bind(module.hyperkey, "k", launcher("com.reinvented.KeepIt"))
+hs.hotkey.bind(module.hyperkey, "m", launcher("com.apple.iChat"))
+hs.hotkey.bind(module.hyperkey, "s", launcher("org.whispersystems.signal-desktop"))
+hs.hotkey.bind(module.hyperkey, "c", launcher("com.flexibits.fantastical2.mac"))
+hs.hotkey.bind(module.hyperkey, "i", launcher("com.googlecode.iterm2"))
+hs.hotkey.bind(module.hyperkey, "a", collectFromFrontmostApp) -- a for Archive
+hs.hotkey.bind(module.hyperkey, "r", todoFromFrontmostApp) -- r for Remember
