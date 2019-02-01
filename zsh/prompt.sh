@@ -78,55 +78,13 @@ prompt_end() {
 # Each component will draw itself, and hide itself if no information needs to be shown
 
 # Context: user@hostname (who am I and where am I)
-prompt_context() {
+prompt_whoami() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+    prompt_segment black white "%(!.%{%F{yellow}%}.)$USER"
   fi
 }
 
 # Git: branch/detached head, dirty status
-prompt_git() {
-
-  local PL_BRANCH_CHAR
-  () {
-    local LC_ALL="" LC_CTYPE="en_US.UTF-8"
-    PL_BRANCH_CHAR=$'\ue0a0'         # 
-  }
-  local ref dirty mode repo_path
-  repo_path=$(git rev-parse --git-dir 2>/dev/null)
-
-  if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-    dirty=$(parse_git_dirty)
-    ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git rev-parse --short HEAD 2> /dev/null)"
-    if [[ -n $dirty ]]; then
-      prompt_segment yellow black
-    else
-      prompt_segment green black
-    fi
-
-    if [[ -e "${repo_path}/BISECT_LOG" ]]; then
-      mode=" <B>"
-    elif [[ -e "${repo_path}/MERGE_HEAD" ]]; then
-      mode=" >M<"
-    elif [[ -e "${repo_path}/rebase" || -e "${repo_path}/rebase-apply" || -e "${repo_path}/rebase-merge" || -e "${repo_path}/../.dotest" ]]; then
-      mode=" >R>"
-    fi
-
-    setopt promptsubst
-    autoload -Uz vcs_info
-
-    zstyle ':vcs_info:*' enable git
-    zstyle ':vcs_info:*' get-revision true
-    zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:*' stagedstr '✚'
-    zstyle ':vcs_info:*' unstagedstr '●'
-    zstyle ':vcs_info:*' formats ' %u%c'
-    zstyle ':vcs_info:*' actionformats ' %u%c'
-    vcs_info
-    echo -n "${ref/refs\/heads\//$PL_BRANCH_CHAR }${vcs_info_msg_0_%% }${mode}"
-  fi
-}
-
 prompt_hg() {
   (( $+commands[hg] )) || return
   local rev status
@@ -166,7 +124,7 @@ prompt_hg() {
 # Dir: current working directory
 prompt_dir() {
   # prompt_segment blue black '%~'
-  prompt_segment blue black '%4(~:...:)%2~'
+  prompt_segment black white '%4(~:...:)%2~'
 }
 
 # Virtualenv: current working virtualenv
@@ -175,6 +133,22 @@ prompt_virtualenv() {
   if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
     prompt_segment blue black "py:`basename $virtualenv_path`"
   fi
+}
+
+RUST_DEFAULT=$(grep default_toolchain ~/.rustup/settings.toml | cut -d '=' -f2 | tr -d ' "\n')
+
+prompt_rustenv() {
+  if test -f ~/.rustup/settings.toml; then
+    local override=$(grep "$(pwd)" ~/.rustup/settings.toml | cut -d '=' -f2 | tr -d ' "\n' | cut -d '-' -f1)
+    if [[ ! -z "$override" -a "$RUST_DEFAULT" != "$override"  ]]; then
+      prompt_segment blue black "rs:$override"
+    fi
+  fi
+}
+
+prompt_codenv() {
+  prompt_rustenv
+  prompt_virtualenv
 }
 
 # Status:
@@ -195,8 +169,9 @@ prompt_status() {
 build_prompt() {
   RETVAL=$?
   prompt_status
-  prompt_virtualenv
-  prompt_context
+  #prompt_virtualenv
+  prompt_whoami
+  prompt_codenv
   prompt_dir
   prompt_end
 }

@@ -12,4 +12,5 @@ if test -d "$HOME/.zsh-histdb"; then
   export HISTDB_FILE="$HOME/.zsh-history.db"
   autoload -Uz add-zsh-hook
   add-zsh-hook precmd  histdb-update-outcome
+  alias h=histdb
 fi
