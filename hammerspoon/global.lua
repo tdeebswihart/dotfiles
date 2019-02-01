@@ -66,7 +66,7 @@ function launcher(bundleID)
    return function() hs.application.launchOrFocusByBundleID(bundleID) end
 end
 
---hs.hotkey.bind(module.hyperkey, "a", switchApp)
+-- LAUNCHERS
 hs.hotkey.bind(module.hyperkey, "e", function()
                   local out = helpers.runcmd("/usr/local/bin/fd .app\\$ /usr/local/Cellar/emacs-mac/")
                   local emacs_path = string.match(out, "(.-)[\r\n]")
@@ -79,5 +79,11 @@ hs.hotkey.bind(module.hyperkey, "m", launcher("com.apple.iChat"))
 hs.hotkey.bind(module.hyperkey, "s", launcher("org.whispersystems.signal-desktop"))
 hs.hotkey.bind(module.hyperkey, "c", launcher("com.flexibits.fantastical2.mac"))
 hs.hotkey.bind(module.hyperkey, "i", launcher("com.googlecode.iterm2"))
+hs.hotkey.bind(module.hyperkey, "p", function()  -- P for Post. It's stupid, I know, but M and E were taken
+                  hs.application.launchOrFocusByBundleID('com.apple.mail')
+                  hs.osascript.applescript('tell application "Mail" to check for new mail')
+end)
+
+-- ACTIONS
 hs.hotkey.bind(module.hyperkey, "a", collectFromFrontmostApp) -- a for Archive
 hs.hotkey.bind(module.hyperkey, "r", todoFromFrontmostApp) -- r for Remember
