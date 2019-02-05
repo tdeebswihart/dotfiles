@@ -140,7 +140,7 @@ RUST_DEFAULT=$(grep default_toolchain ~/.rustup/settings.toml | cut -d '=' -f2 |
 prompt_rustenv() {
   if test -f ~/.rustup/settings.toml; then
     local override=$(grep "$(pwd)" ~/.rustup/settings.toml | cut -d '=' -f2 | tr -d ' "\n' | cut -d '-' -f1)
-    if [[ ! -z "$override" -a "$RUST_DEFAULT" != "$override"  ]]; then
+    if [[ ! -z "$override" ]] && [[  "$RUST_DEFAULT" != "$override"  ]]; then
       prompt_segment blue black "rs:$override"
     fi
   fi
