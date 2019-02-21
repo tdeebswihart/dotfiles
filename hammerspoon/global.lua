@@ -72,7 +72,7 @@ hs.hotkey.bind(module.hyperkey, "e", function()
                   local emacs_path = string.match(out, "(.-)[\r\n]")
                   if emacs_path ~= nil then hs.application.launchOrFocus(emacs_path) end
 end)
-hs.hotkey.bind(module.hyperkey, "f", launcher("org.mozilla.firefox"))
+hs.hotkey.bind(module.hyperkey, "f", function() hs.applications.launchOrFocus("/Applications/Firefox.app") end)
 hs.hotkey.bind(module.hyperkey, "t", launcher("com.culturedcode.ThingsMac"))
 hs.hotkey.bind(module.hyperkey, "k", launcher("com.reinvented.KeepIt"))
 hs.hotkey.bind(module.hyperkey, "m", launcher("com.apple.iChat"))

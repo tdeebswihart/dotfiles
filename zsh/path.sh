@@ -40,6 +40,10 @@ case $(uname -s) in
 
         # iTerm 2.9+
         test -f "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+        # racket bins
+        for rkt in $(find -E $HOME/Library/Racket -type d -depth 1 -regex ".*/[0-9]+\.[0-9]+" | sort); do
+          test -d "${rkt}/bin" && BASEPATH="${rkt}/bin:${BASEPATH}"
+        done
 esac
 
 BASEPATH=$(__maybe_append "$BASEPATH" "$HOME/.cabal/bin" "$HOME/.cargo/bin" "$HOME/.nimble/bin")
