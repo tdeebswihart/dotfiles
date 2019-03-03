@@ -1,5 +1,5 @@
 [ui]
-username = Tim Swihart <chronoslynx@gmail.com>
+username = Tim Deeb-Swihart <tim@deebswih.art>
 
 [defaults]
 qnew = -Ue
@@ -10,4 +10,4 @@ mq =
 [diff]
 git = 1
 showfunc = 1
-unified = 8 
+unified = 8
