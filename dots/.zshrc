@@ -12,7 +12,7 @@ fi
 # Completions
 fpath=(~/.zsh $fpath)
 
-# load fresh-built files
+# load built files
 source ~/.config/zsh/config.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

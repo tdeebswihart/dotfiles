@@ -52,26 +52,24 @@ def install_sources(sources):
     # TODO: handle the rest as normal
     mkdir(os.path.expanduser('~/.config/zsh/repos'))
     for source, config in sources.items():
-        print("Cloning {}".format(source))
         if isinstance(config, str):
-            # TODO: clone directly here
-            config = os.path.expanduser(config)
-            if not os.path.isdir(config):
-                runcmd("git clone {} {}".format(source, config))
-            else:
-                with chdir(config):
-                    runcmd("git pull")
-        else:
+            config = {"destination": config}
+        if isinstance(config, dict):
             site, user, repo = getpath(source)
-            repo_dir = os.path.expanduser("~/.config/zsh/repos/{}/{}-{}".format(site, user, repo))
+            repo_dir = os.path.expanduser(config.get('destination', "~/.config/zsh/repos/{}/{}-{}".format(site, user, repo)))
             if not os.path.isdir(repo_dir):
+                print("Cloning {}".format(source))
                 runcmd("git clone {} {}".format(source, repo_dir))
             else:
+                print("Updating {}".format(source))
                 with chdir(repo_dir):
-                    runcmd("git pull")
+                    runcmd("git pull origin master")
             # Add the repo dir
             symlinks = {'{}/{}'.format(repo_dir, k): v for k, v in config.get('symlinks', {}).items()}
             install_symlinks(symlinks)
+            post_install(config)
+        else:
+            raise TypeError("Invalid source block of type '{}'".format(type(config)))
 
 
 def install_symlinks(config):
@@ -125,7 +123,7 @@ def install_brew(pkgs, tags):
     to_install = set(pkgs) - already_installed
     if to_install:
         print('Installing {} homebrew formulae'.format(len(to_install)))
-        with NamedTemporaryFile() as tf:
+        with NamedTemporaryFile('w') as tf:
             tf.write('\n'.join(to_install))
             tf.flush()
             runcmd('xargs <{} brew install'.format(tf.name))
@@ -170,6 +168,14 @@ def check_install_deps():
         runcmd('brew install mas')
 
 
+def post_install(config):
+    scripts = config.get('post-install', [])
+    if isinstance(scripts, str):
+        scripts = [scripts]
+    for script in scripts:
+        runcmd(script)
+
+
 def install_from_config(config_file, tags):
     with open(config_file, 'r') as f:
         config = json.loads(f.read(), object_pairs_hook=collections.OrderedDict)
@@ -185,10 +191,7 @@ def install_from_config(config_file, tags):
     install_mas(config.get('mas', []), tags)
     install_sources(config.get('sources', {}))
     install_symlinks(config.get('symlinks', {}))
-
-    for script in config.get('after-scripts', []):
-        runcmd(script)
-
+    post_install(config)
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:

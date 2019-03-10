@@ -55,6 +55,9 @@ if [[ ! -z "$GOPATH" ]]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+test -f ~/.asdf/asdf.sh && source ~/.asdf/asdf.sh
+test -f ~/.asdf/completions/asdf.bash && source ~/.asdf/completions/asdf.bash
+
 
 #Setting path -- my local prefix comes first *always*
 PATH="$HOME/.local/bin:$BASEPATH"
