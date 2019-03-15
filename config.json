@@ -56,6 +56,7 @@
         "shellcheck",
         "smpeg",
         "socat",
+        "stubby",
         "swiftlint",
         "tag",
         "tailor",
@@ -64,6 +65,7 @@
         "texinfo",
         "the_silver_searcher",
         "tmux",
+        "unbound",
         "unison",
         "vim",
         "watchman",
@@ -145,7 +147,9 @@
         "bin/*": "~/.local/bin/",
         "config/*": "~/.config/",
         "launchagents/*.plist":"~/Library/LaunchAgents/",
-        "hammerspoon/*": "~/.hammerspoon/"
+        "hammerspoon/*": "~/.hammerspoon/",
+        "etc/unbound/*": "/usr/local/opt/unbound/etc/unbound/",
+        "etc/stubby/*": "/usr/local/etc/stubby/"
     },
     "post-install": [
         "brew cleanup",

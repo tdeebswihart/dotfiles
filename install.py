@@ -2,6 +2,7 @@ import collections
 from contextlib import contextmanager
 from glob import glob
 import json
+import platform
 from subprocess import check_output, STDOUT
 from tempfile import NamedTemporaryFile
 import sys
@@ -159,7 +160,7 @@ def install_mas(apps, tags):
             runcmd('xargs <{} mas install'.format(tf.name))
 
 
-def check_install_deps():
+def check_install_deps_macos():
     if not os.path.isdir("/usr/local/Cellar"):
         print('Installing homebrew')
         runcmd('/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"', stderr=STDOUT, shell=True)
@@ -180,15 +181,17 @@ def install_from_config(config_file, tags):
     with open(config_file, 'r') as f:
         config = json.loads(f.read(), object_pairs_hook=collections.OrderedDict)
 
-    check_install_deps()
     try:
         os.mkdir(os.path.expanduser("~/.config/zsh"))
     except OSError:
         pass
-    install_taps(config.get('brew-taps', []))
-    install_brew(config.get('brew', []), tags)
-    install_casks(config.get('casks', []), tags)
-    install_mas(config.get('mas', []), tags)
+    # FIXME: only do the following four on macos hosts
+    if platform.system() == 'Darwin':
+        check_install_deps_macos()
+        install_taps(config.get('brew-taps', []))
+        install_brew(config.get('brew', []), tags)
+        install_casks(config.get('casks', []), tags)
+        install_mas(config.get('mas', []), tags)
     install_sources(config.get('sources', {}))
     install_symlinks(config.get('symlinks', {}))
     post_install(config)
