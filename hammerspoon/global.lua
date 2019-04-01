@@ -34,7 +34,7 @@ end
 function collectFromFrontmostApp()
    local app = helpers.currentApp()
    if app == nil then return end
-   local bundleID = app:bundleID()
+   local bundleID = string.lower(app:bundleID())
    local scpt = os.getenv("HOME") .. "/.hammerspoon/collection-scripts/" .. bundleID .. ".scpt"
    local js = os.getenv("HOME") .. "/.hammerspoon/collection-scripts/" .. bundleID .. ".js"
    if helpers.fexists(scpt) then

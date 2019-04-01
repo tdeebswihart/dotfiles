@@ -6,7 +6,7 @@ from collections import defaultdict
 import os
 import re
 import sys
-from subprocess import check_output, STDOUT
+from subprocess import check_output, STDOUT, CalledProcessError
 from tempfile import NamedTemporaryFile
 
 add_tmpl = '  add files {{POSIX file "{name}"}} by moving to ({fldr}) with tags {{{tags}}}'
@@ -19,7 +19,7 @@ tell application "Keep It"
   repeat until top level folder is not missing value
     delay 1
   end repeat
-  set inbox to get folder id "A13B9FE9-7094-475F-8E9B-2452B3DEDCF0"
+  set inbox to default import destination
   {items}
 end tell
 """
@@ -142,7 +142,11 @@ if __name__ == '__main__':
                 scpt = script.format(items='\n'.join(items))
                 tempf.write(scpt)
                 tempf.flush()
-                out = check_output(['/usr/bin/osascript', tempf.name], stderr=STDOUT)
+                try:
+                    out = check_output(['/usr/bin/osascript', tempf.name], stderr=STDOUT)
+                except CalledProcessError as e:
+                    print(e)
+                    raise
                 if out and out.strip() != b'true':
                     print(out.decode())
 
