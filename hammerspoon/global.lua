@@ -76,6 +76,7 @@ hs.hotkey.bind(module.hyperkey, "f", function() hs.applications.launchOrFocus("/
 hs.hotkey.bind(module.hyperkey, "t", launcher("com.culturedcode.ThingsMac"))
 hs.hotkey.bind(module.hyperkey, "k", launcher("com.reinvented.KeepIt"))
 hs.hotkey.bind(module.hyperkey, "m", launcher("com.apple.iChat"))
+hs.hotkey.bind(module.hyperkey, "n", launcher("notion.id"))
 hs.hotkey.bind(module.hyperkey, "s", launcher("org.whispersystems.signal-desktop"))
 hs.hotkey.bind(module.hyperkey, "c", launcher("com.flexibits.fantastical2.mac"))
 hs.hotkey.bind(module.hyperkey, "i", launcher("com.googlecode.iterm2"))
