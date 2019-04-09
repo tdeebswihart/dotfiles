@@ -161,9 +161,9 @@ def install_mas(apps, tags):
 
 
 def check_install_deps_macos():
-    if not os.path.isdir("/usr/local/Cellar"):
-        print('Installing homebrew')
-        runcmd('/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"', stderr=STDOUT, shell=True)
+    if not os.path.isdir(os.path.expanduser("~/homebrew/Cellar")):
+        print('installing homebrew for the current user')
+        runcmd('mkdir ~/homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/homebrew')
     if not os.path.isfile('/usr/local/bin/mas'):
         print('Installing mas')
         runcmd('brew install mas')
@@ -188,7 +188,7 @@ def install_from_config(config_file, tags):
     # FIXME: only do the following four on macos hosts
     if platform.system() == 'Darwin':
         check_install_deps_macos()
-        install_taps(config.get('brew-taps', []))
+        install_taps(config.get('taps', []))
         install_brew(config.get('brew', []), tags)
         install_casks(config.get('casks', []), tags)
         install_mas(config.get('mas', []), tags)
