@@ -135,7 +135,7 @@ prompt_virtualenv() {
   fi
 }
 
-RUST_DEFAULT=$(grep default_toolchain ~/.rustup/settings.toml | cut -d '=' -f2 | tr -d ' "\n')
+RUST_DEFAULT=$(test -f ~/.rustup/settings.toml && (grep default_toolchain ~/.rustup/settings.toml | cut -d '=' -f2 | tr -d ' "\n'))
 
 prompt_rustenv() {
   if test -f ~/.rustup/settings.toml; then
@@ -176,4 +176,4 @@ build_prompt() {
   prompt_end
 }
 
-PROMPT='%{%f%b%k%}$(build_prompt) '
+PROMPT="%{%f%b%k%}$(build_prompt) "
