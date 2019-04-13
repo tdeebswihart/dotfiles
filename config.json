@@ -5,13 +5,9 @@
         "railwaycat/emacsmacport"
     ],
     "brew": [
-        "ansible",
         "automake",
         "awscli",
         "bash",
-        "binwalk",
-        "cask",
-        "chezscheme",
         "clojure",
         "cmake",
         "coreutils",
@@ -19,7 +15,6 @@
         "dep",
         "direnv",
         "emacs-mac",
-        "entr",
         "fd",
         "fzf",
         "gawk",
