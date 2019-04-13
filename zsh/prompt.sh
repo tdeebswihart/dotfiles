@@ -135,7 +135,14 @@ prompt_virtualenv() {
   fi
 }
 
-RUST_DEFAULT=$(grep default_toolchain ~/.rustup/settings.toml | cut -d '=' -f2 | tr -d ' "\n')
+prompt_git() {
+  local branch=$(g branch -q --color=never 2>/dev/null| grep '^\*' | cut -d ' ' -f2)
+  if [[ ! -z "$branch" ]]; then
+    prompt_segment blue white "git:$branch"
+  fi
+}
+
+RUST_DEFAULT=$(test -f ~/.rustup/settings.toml && (grep default_toolchain ~/.rustup/settings.toml | cut -d '=' -f2 | tr -d ' "\n'))
 
 prompt_rustenv() {
   if test -f ~/.rustup/settings.toml; then
@@ -169,11 +176,13 @@ prompt_status() {
 build_prompt() {
   RETVAL=$?
   prompt_status
-  #prompt_virtualenv
-  prompt_whoami
-  prompt_codenv
   prompt_dir
+  #prompt_virtualenv
+  #prompt_whoami
+  prompt_codenv
+  prompt_git
   prompt_end
 }
 
+setopt PROMPT_SUBST
 PROMPT='%{%f%b%k%}$(build_prompt) '

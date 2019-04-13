@@ -293,4 +293,15 @@ makesearchable () {
   test -f "$1" && tesseract "${fname}" "${fname}.ocr" PDF
 }
 
+defalias () {
+  if [[ ! -z "$1" ]] && [[ ! -z "$2" ]]; then
+    local name="$1"
+    shift
+    echo "alias ${name}=\"$@\"" >> ~/.secret/aliases.sh
+    source ~/.secret/aliases.sh
+  else
+    echo "defalias NAME command args etc">&2
+  fi
+}
+
 test -f ~/.local.sh && source ~/.local.sh
