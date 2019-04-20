@@ -1,20 +1,22 @@
 #!/bin/bash
 set -eo pipefail
 
-BEORG="$HOME/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/"
-BACKUP="$HOME/Documents/org"
-if ! test -d "$BEORG"; then
+SRC="${1-$ORGHOME}"
+DST="${2-$HOME/Documents/org}"
+if test -z "$SRC" -o ! -d "$SRC"; then
+  echo "usage: $0 [src] [dst]"
+  echo "SRC ($SRC) is either unset or not a directory"
   exit 0
 fi
 
-rsync -a --exclude-from="$HOME/.gitignore" "$BEORG" "$BACKUP"
-cd "$BACKUP" && (
+rsync -a --exclude-from="$HOME/.gitignore" "$SRC" "$DST"
+cd "$DST" && (
 if ! test -d .git; then
   git init
 fi
 
 if git status | grep 'not staged' &>/dev/null; then
   find -X . -name '*.org*' -and -not -name '.*' | xargs git add
-  git commit -m "Org archive from $(date)"
+  git commit -m "Org archive from $(date)" && git push
 fi
 )
