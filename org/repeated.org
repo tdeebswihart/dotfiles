@@ -1,0 +1,52 @@
+* Regularly
+** TODO Exercise
+SCHEDULED: <2019-04-20 Sat .+1d>
+:PROPERTIES:
+:STYLE:    habit
+:END:
+** TODO Morning routine [0/4]
+SCHEDULED: <2019-04-20 Sat 07:30 .+1d>
+:PROPERTIES:
+:STYLE:    habit
+:END:
+- [ ] Coffee
+- [ ] Felix
+- [ ] Meditate
+- [ ] Plan
+** TODO Take morning medicine
+SCHEDULED: <2019-04-21 Sun 08:03 .+1d>
+:PROPERTIES:
+:STYLE:    habit
+:END:
+** TODO Take evening medicine
+SCHEDULED: <2019-04-20 Sat 19:00 .+1d>
+:PROPERTIES:
+:STYLE:    habit
+:END:
+** TODO Plan the week
+SCHEDULED: <2019-04-21 Sun .+1w>
+:PROPERTIES:
+:STYLE:    habit
+:END:
+:habit:
+** TODO Transcribe notebooks to org
+SCHEDULED: <2019-04-20 Sat 17:00 .+1w>
+:PROPERTIES:
+:STYLE:    habit
+:END:
+:habit:
+** DONE Dust the apartment
+[2019-01-02 Wed 02:35]
+** TODO Pay off credit cards                                                    :@urgent:
+SCHEDULED: <2019-04-20 Sat>
+<2019-04-20 Sat>
+SCHEDULED: <2019-04-30 Tue .+2w>
+[2019-01-02 Wed 02:35]
+- [ ] Citi
+- [ ] Amex
+- [ ] Venture
+** TODO Get allergy shot                                                        :@important:
+SCHEDULED: <2019-05-04 Sat>
+SCHEDULED: <2019-01-04 Fri+1m>
+[2019-01-02 Wed 02:27]
+* Occasionally

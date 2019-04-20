@@ -1,0 +1,20 @@
+* Inbox
+* Hobby
+* Home
+** TODO Check out oraemacs' keybindings
+SCHEDULED: <2019-04-26 Fri>
+[[https:github.com/abo-abo/oremacs/blob/github/keys.el][keys.el]]
+
+[2019-04-19 Fri 21:38]
+** SOMEDAY Fix Julia's car                                                      :@home:
+[2019-04-19 Fri 22:32]
+** TODO Refill the tires on Julia's car                                         :@important:@home:
+SCHEDULED: <2019-04-27 Sat>
+** TODO Roll Mass Mutual plan over to Fidelity Gatech plan
+SCHEDULED: <2019-05-10 Fri>
+** TODO LP60 record player
+SCHEDULED: <2019-05-01 Wed>
+** TODO Look at the Gatech retirement plan investments
+SCHEDULED: <2019-05-01 Wed>
+* Career
+* Notes

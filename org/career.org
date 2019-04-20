@@ -1,0 +1,23 @@
+* Professional Development
+** SOMEDAY Look at CS 242: Programming Languages and break it down
+http://cs242.stanford.edu/f18/
+** SOMEDAY Read The Mythical Man Month overview
+https://en.wikipedia.org/wiki/The_Mythical_Man-Month
+** SOMEDAY Estimating work
+https://az3.apms5.com/anywhere/m?s=az3&m=s_7fd74129-6ff6-431f-8aec-1cfa9a787c51&u=e1jq4wvfdtfk6gtq70wm4gtk5n0m8ga45mu3chj55n13ehhg5mvmcd9n6123gchq8gt32&r2=d1u78w3k78qjyu35dhr2wyk5dtm7arhecdqpubvkenr70vvjegqq6vvcenu6jvveecqp2wkmd5hprtbk5wu36c1g60r36d1j70t0&n=1
+** SOMEDAY XANADU - Infiltrate
+https://vimeo.com/322257258
+** SOMEDAY Rise of the Demiurge - Infiltrate (2 of 2)
+https://vimeo.com/329589102
+** SOMEDAY Diversity & Inclusion Guidebook
+https://bakkenbaeck.com/diversity-inclusion/
+** SOMEDAY CQRS
+https://www.martinfowler.com/bliki/CQRS.html
+** SOMEDAY Manual vs Automated Analysis
+https://www.youtube.com/watch?v=ffPu4Bl2Mh4&feature=youtu.be
+** SOMEDAY Beyond Unit Tests (TLA+)
+https://www.youtube.com/watch?v=MYucYon2-lk
+** SOMEDAY Compiling Knowledge into Probabilistic Models | Will Crichton
+** SOMEDAY Integration tests are a scam
+** SOMEDAY Get a subscription to ACM Queue
+** SOMEDAY Subscribe to usenix login;

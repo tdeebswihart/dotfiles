@@ -1,0 +1,20 @@
+#!/bin/bash
+set -eo pipefail
+
+BEORG="$HOME/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/"
+BACKUP="$HOME/Documents/org"
+if ! test -d "$BEORG"; then
+  exit 0
+fi
+
+rsync -a --exclude-from="$HOME/.gitignore" "$BEORG" "$BACKUP"
+cd "$BACKUP" && (
+if ! test -d .git; then
+  git init
+fi
+
+if git status | grep 'not staged' &>/dev/null; then
+  find -X . -name '*.org*' -and -not -name '.*' | xargs git add
+  git commit -m "Org archive from $(date)"
+fi
+)

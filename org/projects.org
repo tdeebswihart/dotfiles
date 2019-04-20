@@ -1,0 +1,46 @@
+* Smart Cities
+** TODO [#A] Build artifact (first iteration)                                   :@urgent:@important:
+SCHEDULED: <2019-04-20 Sat 09:00>
+** TODO [#A] Refine artifact                                                    :@urgent:@important:
+SCHEDULED: <2019-04-21 Sun 09:00>
+** TODO [#A] Finalize                                                           :@urgent:@important:
+SCHEDULED: <2019-04-22 Mon>
+* Exomind
+** TODO Save current notion state to a pickle for faster iteration
+SCHEDULED: <2019-05-04 Sat>
+** SOMEDAY Design wiki data format
+Prolly org which can export to HTML honestly. So long as I can get org to use [[https:tachyons.io][tachyons]]
+** SOMEDAY Design notion -> wiki data transformers
+** SOMEDAY Record websites for archival purposes
+https://github.com/webrecorder/webrecorder
+could also extract text from them, etc.
+
+I'm a bit of a digital packrat...
+* Crochet
+** TODO Crochet the little bugger
+** TODO pick up goblin yarn
+SCHEDULED: <2019-04-20 Sat 16:00>
+* Espresso
+** SOMEDAY DIY Extraction Tasting
+https://baristahustle.com/blog/diy-extraction-tasting/
+* Baking [0/17]
+- [ ] Meringues
+- [ ] Make eclairs
+- [ ] Make Kouign Amann
+- [ ] Babka
+- [ ] Orange and lemon boozy drizzle cake
+- [ ] Yeasted donuts
+- [ ] Madeira Cake
+- [ ] Jaffa cakes
+- [ ] Arlettes
+- [ ] Earl grey tea UK biscuits
+- [ ] Biscuit box full of biscuits
+- [ ] Plaited bread with goat cheese prosciutto basil oregano pesto?
+- [ ] Baguettes
+- [ ] Make mustard
+- [ ] Bread sculpture
+- [ ] Spanish Windtorte
+- [ ] Cream horn
+* TODO [#A] Compile process book                                                :@important:@urgent:
+SCHEDULED: <2019-04-27 Sat 09:00>
+[2019-04-19 Fri 23:48]
