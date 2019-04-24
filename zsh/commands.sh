@@ -17,3 +17,4 @@ which nvim &>/dev/null && alias vim=nvim
 alias b='build'
 alias p='provision'
 alias dk=docker
+which kitty &>/dev/null && alias d="kitty +kitten diff"

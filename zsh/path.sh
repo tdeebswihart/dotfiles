@@ -24,7 +24,7 @@ case $(uname -s) in
     Darwin)
         # since /usr/local is managed by homebrew (and it complains about "unmanaged" pkgs, I use $HOME/.local
         BASEPATH="$HOME/homebrew/sbin:$HOME/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:"
-        BASEPATH=$(__maybe_append "$BASEPATH" "/opt/X11/bin" "/Library/TeX/texbin" "$HOME/macports/bin" "$HOME/Library/Python/3.7/bin")
+        BASEPATH=$(__maybe_append "$BASEPATH" "/opt/X11/bin" "/Library/TeX/texbin" "$HOME/macports/bin" "$HOME/Library/Python/3.7/bin" "/Applications/kitty.app/Contents/MacOS")
 
         if [ -z "$JAVA_HOME" -a -d /System/Library/Frameworks/JavaVM.framework/Home ]; then
             export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
