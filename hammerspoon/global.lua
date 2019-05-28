@@ -67,22 +67,14 @@ function launcher(bundleID)
 end
 
 -- LAUNCHERS
-hs.hotkey.bind(module.hyperkey, "e", function()
-                  local out = helpers.runcmd("/usr/local/bin/fd .app\\$ /usr/local/Cellar/emacs-mac/")
-                  local emacs_path = string.match(out, "(.-)[\r\n]")
-                  if emacs_path ~= nil then hs.application.launchOrFocus(emacs_path) end
-end)
-hs.hotkey.bind(module.hyperkey, "f", function() hs.applications.launchOrFocus("/Applications/Firefox.app") end)
-hs.hotkey.bind(module.hyperkey, "t", launcher("com.culturedcode.ThingsMac"))
-hs.hotkey.bind(module.hyperkey, "k", launcher("com.reinvented.KeepIt"))
-hs.hotkey.bind(module.hyperkey, "m", launcher("com.apple.iChat"))
+hs.hotkey.bind(module.hyperkey, "e", launcher("org.gnu.Emacs"))
+hs.hotkey.bind(module.hyperkey, "f", launcher("org.mozilla.firefox")) -- function() hs.applications.launchOrFocus("/Applications/Firefox.app") end)
+hs.hotkey.bind(module.hyperkey, "m", launcher("com.microsoft.teams"))
 hs.hotkey.bind(module.hyperkey, "n", launcher("notion.id"))
-hs.hotkey.bind(module.hyperkey, "s", launcher("org.whispersystems.signal-desktop"))
-hs.hotkey.bind(module.hyperkey, "c", launcher("com.flexibits.fantastical2.mac"))
-hs.hotkey.bind(module.hyperkey, "i", launcher("com.googlecode.iterm2"))
+hs.hotkey.bind(module.hyperkey, "c", launcher("com.microsoft.Outlook"))
+hs.hotkey.bind(module.hyperkey, "i", launcher("io.alacritty"))
 hs.hotkey.bind(module.hyperkey, "p", function()  -- P for Post. It's stupid, I know, but M and E were taken
-                  hs.application.launchOrFocusByBundleID('com.apple.mail')
-                  hs.osascript.applescript('tell application "Mail" to check for new mail')
+                  hs.application.launchOrFocusByBundleID('com.microsoft.Outlook')
 end)
 
 -- ACTIONS

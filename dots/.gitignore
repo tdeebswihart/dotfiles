@@ -39,3 +39,4 @@ Session.vim
 # Python
 *.pyc
 __pycache__/
+.envrc

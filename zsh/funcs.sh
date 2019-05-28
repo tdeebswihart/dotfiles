@@ -240,15 +240,14 @@ f() {
   fd "$1"
 }
 
-mkiter () {
-  echo "$*" | tr " " "\n"
+iter () {
+  printf "%s\n" $@
 }
 
 quietly () {
   eval $* >/dev/null 2>&1
 }
 
-alias iter=mkiter
 alias stfu=quietly
 export iso8601="%Y-%m-%d"
 
