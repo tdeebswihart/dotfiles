@@ -39,4 +39,8 @@ Session.vim
 # Python
 *.pyc
 __pycache__/
+<<<<<<< Updated upstream
 .envrc
+=======
+.\#*
+>>>>>>> Stashed changes

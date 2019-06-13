@@ -13,4 +13,4 @@ if [ -d "$HOME/.bash_it" ]; then
   # Load Bash It
   source $BASH_IT/bash_it.sh
 fi
-source ~/.fresh/build/shell.sh
+export ORGHOME='/Users/timods/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org'
