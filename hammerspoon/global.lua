@@ -89,6 +89,7 @@ else
                      hs.application.launchOrFocusByBundleID('com.apple.mail')
                      hs.osascript.applescript('tell application "Mail" to check for new mail')
    end  )
-   hs.hotkey.bind(module.prefix, "a", collectFromFrontmostApp) -- a for Archive
+   hs.hotkey.bind(module.prefix, "t", launcher("com.culturedcode.ThingsMac"))
+   --hs.hotkey.bind(module.prefix, "a", collectFromFrontmostApp) -- a for Archive
    hs.hotkey.bind(module.prefix, "r", todoFromFrontmostApp) -- r for Remember
 end

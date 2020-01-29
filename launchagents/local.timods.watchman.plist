@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.github.facebook.watchman</string>
+    <string>local.timods.watchman</string>
     <key>Disabled</key>
     <false/>
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/local/bin/watchman</string>
+      <string>/Users/timods/.local/bin/watchman</string>
         <string>--foreground</string>
         <string>--logfile=/usr/local/var/run/watchman/timods-state/log</string>
         <string>--log-level=1</string>

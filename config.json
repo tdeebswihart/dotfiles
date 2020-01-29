@@ -48,77 +48,72 @@
         "zsh"
     ],
     "casks": [
-        "alfred",
-	{"name": "arq", "when": "home"},
-        "bettertouchtool",
-	"brave-browser",
-        "dash",
-        {"name": "epic-games", "when": "home"},
-        "fantastical",
-        "firefox",
-        "font-fira-code",
-        "font-fira-mono",
-	{"name": "franz", "when": "home"},
-        {"name": "gog-galaxy", "when": "home"},
-        "hammerspoon",
-        "iina",
-	{"name": "iridient-developer", "when": "home"},
-	{"name": "java8", "when": "home"},
-        "keka",
-	{"name": "keybase", "when": "home"},
-        "lunchy",
-        {"name": "openemu", "when": "home"},
-        "osxfuse",
-        "racket",
-	{"name": "signal", "when": "home"},
-        "skim",
-        {"name": "steam", "when": "home"},
-        "tla-plus-toolbox",
-	{"name": "transmission", "when": "home"},
-        "virtualbox",
-	{"name": "vmware-fusion", "when": "home"},
-        "xquartz"
+      "alfred",
+      {"name": "arq", "when": "home"},
+      "bettertouchtool",
+      "brave-browser",
+      "dash",
+      {"name": "epic-games", "when": "home"},
+      "fantastical",
+      "firefox",
+      "font-fira-code",
+      "font-fira-mono",
+      {"name": "franz", "when": "home"},
+      {"name": "gog-galaxy", "when": "home"},
+      "hammerspoon",
+      "iina",
+      {"name": "iridient-developer", "when": "home"},
+      {"name": "java8", "when": "home"},
+      "keka",
+      {"name": "keybase", "when": "home"},
+      "lunchy",
+      {"name": "openemu", "when": "home"},
+      "osxfuse",
+      "racket",
+      {"name": "signal", "when": "home"},
+      "skim",
+      {"name": "steam", "when": "home"},
+      {"name": "transmission", "when": "home"},
+      "virtualbox",
+      {"name": "vmware-fusion", "when": "home"},
+      "xquartz"
     ],
     "mas": [
-        "Things3",
-        "Xcode",
-        "Paprika Recipe Manager 3",
-        "Keep It",
-        "Pixelmator",
-        "Kindle",
-        "Time Out",
-        "1Password 7"
+      "Xcode",
+      "Paprika Recipe Manager 3",
+      "Pixelmator",
+      "Kindle",
+      "Time Out",
+      "1Password 7"
     ],
     "sources": {
-        "https://github.com/larkery/zsh-histdb.git": "~/.zsh-histdb/",
-        "https://github.com/asdf-vm/asdf.git": {
-          "destination": "~/.asdf",
-          "post-install": "cd ~/.asdf && git checkout \"$(git describe --abbrev=0 --tags)\""
-        },
-        "https://github.com/tarjoilija/zgen": {
-            "symlinks": {
-                "zgen.zsh": "~/.zgen.zsh",
-                "_zgen": "~/.zsh/_zgen"
-            }
-        },
-        "https://github.com/scottwhudson/Lunette.git": {
-            "symlinks": {
-                "Lunette.spoon": "~/.hammerspoon/Spoons/"
-            }
+      "https://github.com/larkery/zsh-histdb.git": "~/.zsh-histdb/",
+      "https://github.com/asdf-vm/asdf.git": {
+        "destination": "~/.asdf",
+        "post-install": "cd ~/.asdf && git checkout \"$(git describe --abbrev=0 --tags)\""
+      },
+      "https://github.com/tarjoilija/zgen": {
+        "symlinks": {
+          "zgen.zsh": "~/.zgen.zsh",
+          "_zgen": "~/.zsh/_zgen"
         }
+      },
+      "https://github.com/scottwhudson/Lunette.git": {
+        "symlinks": {
+          "Lunette.spoon": "~/.hammerspoon/Spoons/"
+        }
+      }
     },
     "symlinks": {
-        "dots/.*": "~/",
-        "zsh/*": "~/.config/zsh/config.sh",
-        "bin/*": "~/.local/bin/",
-        "config/*": "~/.config/",
-        "launchagents/*.plist":"~/Library/LaunchAgents/",
-        "hammerspoon/*": "~/.hammerspoon/",
-        "etc/unbound/*": "~/homebrew/opt/unbound/etc/unbound/",
-        "etc/stubby/*": "~/homebrew/etc/stubby/"
+      "dots/.*": "~/",
+      "zsh/*": "~/.config/zsh/config.sh",
+      "bin/*": "~/.local/bin/",
+      "config/*": "~/.config/",
+      "launchagents/*.plist":"~/Library/LaunchAgents/",
+      "hammerspoon/*": "~/.hammerspoon/"
     },
     "post-install": [
-        "brew cleanup",
-        "find ~/Library/LaunchAgents -name '*.plist' | xargs launchctl load"
+      "brew cleanup",
+      "find ~/Library/LaunchAgents -name '*.plist' | xargs launchctl load"
     ]
 }

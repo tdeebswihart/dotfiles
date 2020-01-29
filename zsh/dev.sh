@@ -10,7 +10,7 @@ export GDTMPLS="$GOPATH/src/github.com/chronoslynx/godoc-tmpls"
 export CCACHE_COMPRESS=1
 
 # personal installation prefix
-export PREFIX="$HOME/.local"
+export INSTALL_PREFIX="$HOME/.local"
 export XTARGET="i686-elf"
 export CARGO_HOME="$HOME/.cargo"
 export CHOOSENIM_NO_ANALYTICS=1
