@@ -70,10 +70,26 @@ hs.hotkey.bind(module.prefix, "b", launcher("org.mozilla.firefox"))
 hs.hotkey.bind(module.prefix, "i", launcher("com.googlecode.iterm2"))
 hs.hotkey.bind(module.prefix, "e", launcher("org.gnu.Emacs"))
 
-hs.hotkey.bind(module.prefix, "m", launcher("com.microsoft.teams"))
-hs.hotkey.bind(module.prefix, "n", launcher("com.microsoft.OneNote"))
-hs.hotkey.bind(module.prefix, "c", launcher("com.microsoft.Outlook"))
-hs.hotkey.bind(module.prefix, "p",
-function()  -- P for Post. It's stupid, I know, but M and E were taken
-  hs.application.launchOrFocusByBundleID('com.microsoft.Outlook')
-end)
+if os.getenv("AT_WORK") == 1 then
+   hs.hotkey.bind(module.prefix, "m", launcher("com.microsoft.teams"))
+   hs.hotkey.bind(module.prefix, "n", launcher("com.microsoft.OneNote"))
+   hs.hotkey.bind(module.prefix, "c", launcher("com.microsoft.Outlook"))
+   hs.hotkey.bind(module.prefix, "p",
+                  function()  -- P for Post. It's stupid, I know, but M and E were taken
+                     hs.application.launchOrFocusByBundleID('com.microsoft.Outlook')
+   end)
+else
+   hs.hotkey.bind(module.prefix, "k", launcher("com.reinvented.KeepIt"))
+   hs.hotkey.bind(module.prefix, "d", launcher("com.devon-technologies.think3"))
+   hs.hotkey.bind(module.prefix, "m", launcher("com.apple.iChat"))
+   hs.hotkey.bind(module.prefix, "s", launcher("org.whispersystems.signal-desktop"))
+   hs.hotkey.bind(module.prefix, "c", launcher("com.flexibits.fantastical2.mac"))
+   hs.hotkey.bind(module.prefix, "p",
+                  function()  -- P for Post. It's stupid, I know, but M and E were taken
+                     hs.application.launchOrFocusByBundleID('com.apple.mail')
+                     hs.osascript.applescript('tell application "Mail" to check for new mail')
+   end  )
+   hs.hotkey.bind(module.prefix, "t", launcher("com.culturedcode.ThingsMac"))
+   --hs.hotkey.bind(module.prefix, "a", collectFromFrontmostApp) -- a for Archive
+   hs.hotkey.bind(module.prefix, "r", todoFromFrontmostApp) -- r for Remember
+end

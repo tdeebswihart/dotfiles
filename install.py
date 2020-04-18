@@ -127,7 +127,6 @@ def install_brew(pkgs, tags):
         with NamedTemporaryFile('w') as tf:
             tf.write('\n'.join(to_install))
             tf.flush()
-            import pdb; pdb.set_trace()
             runcmd('xargs <{} brew install'.format(tf.name))
 
 
@@ -182,12 +181,6 @@ def install_from_config(config_file, tags):
     except OSError:
         pass
     # FIXME: only do the following four on macos hosts
-    if platform.system() == 'Darwin':
-        # check_install_deps_macos()
-        install_taps(config.get('brew-taps', []))
-        install_casks(config.get('casks', []), tags)
-        install_brew(config.get('brew', []), tags)
-        # install_mas(config.get('mas', []), tags)
     install_sources(config.get('sources', {}))
     install_symlinks(config.get('symlinks', {}))
     post_install(config)
