@@ -1,28 +1,32 @@
+-- ~/.hammerspoon/usb.lua
 local module = {}
 
 local evtAdd = "added"
 local evtRemove = "removed"
-local fiion = "FiiO USB DAC-E17"
 local bluen = "Blue Snowball "
+local smodi = "Schiit Modi 3"
+module.watcher = nil
 
 function usbDeviceCallback(data)
-   -- TODO set audio output to the FiiO DAC
-   -- TODO set audio input to the blue snowball
    pn = data["productName"]
    evt = data["eventType"]
-   if pn == blue then
-     if evt == evtAdd then
-       hs.findDeviceByName(blue):setDefaultInputDevice()
-     end
-   elseif pn == fiio then
-     if evt == evtAdd then
-       hs.findDeviceByName(fiio):setDefaultOutputDevice()
-     end
+   if (pn == smodi) then
+      if evt == evtAdd then
+         dac = hs.audiodevice.findOutputByName(pn)
+         if dac ~= nil then
+            dac:setDefaultOutputDevice()
+         end
+      end
+   elseif (pn == bluen) then
+      if evt == evtAdd then
+         mic = hs.audiodevice.findAudioDeviceByName(pn)
+         if mic ~= nil then
+            mic:setDefaultInputDevice()
+         end
+      end
    end
-
 end
 
 module.watcher = hs.usb.watcher.new(usbDeviceCallback)
 module.watcher:start()
-
 return module

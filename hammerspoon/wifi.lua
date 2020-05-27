@@ -19,5 +19,4 @@ end
 
 module.watcher = hs.wifi.watcher.new(ssidChangedCallback)
 module.watcher:start()
-
 return module

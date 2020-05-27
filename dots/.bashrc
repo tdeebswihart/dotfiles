@@ -14,3 +14,5 @@ if [ -d "$HOME/.bash_it" ]; then
   source $BASH_IT/bash_it.sh
 fi
 export ORGHOME='/Users/timods/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org'
+
+complete -C /usr/local/bin/nomad nomad
