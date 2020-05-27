@@ -8,8 +8,6 @@ local global = require 'global'
 local keepit = require 'keepit'
 local mail = require 'mail'
 
-local sleepwake = require 'sleepwake'
-local wifi = require 'wifi'
 local usb = require 'usb'
 local wifi = require 'wifi'
 
