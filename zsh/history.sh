@@ -11,16 +11,8 @@ if test -d "$HOME/.zsh/zsh-autosuggestions"; then
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-source ~/.zsh-histdb/histdb-interactive.zsh
-bindkey '^r' _histdb-isearch
- 
-if test -d "$HOME/.zsh/zsh-autosuggestions"; then
-    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
- 
-    export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-fi
- 
 if test -d "$HOME/.zsh-histdb"; then
+  export HISTDB_FILE="$HOME/.zsh-history.db"
   source "$HOME/.zsh-histdb/sqlite-history.zsh"
   export HISTDB_FILE="$HOME/.zsh-history.db"
   autoload -Uz add-zsh-hook
@@ -38,4 +30,13 @@ group by commands.argv order by count(*) desc limit 1"
 }
  
   export ZSH_AUTOSUGGEST_STRATEGY=(histdb_top_here)
+  source ~/.zsh-histdb/histdb-interactive.zsh
+  bindkey '^r' _histdb-isearch
+
+  if test -d "$HOME/.zsh/zsh-autosuggestions"; then
+	  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+	  export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+  fi
+
 fi
