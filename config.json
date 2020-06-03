@@ -6,7 +6,6 @@
     ],
     "brew": [
         "bash",
-        "clojure",
         "cmake",
         "coreutils",
         "curl",
@@ -20,7 +19,6 @@
         "gnu-sed",
         "httpie",
         "jq",
-        "leiningen",
         "libnotify",
         "neovim",
         "osquery",
@@ -50,7 +48,6 @@
       "firefox",
       "font-fira-code",
       "font-fira-mono",
-      {"name": "franz", "when": "home"},
       {"name": "gog-galaxy", "when": "home"},
       "hammerspoon",
       "iina",
@@ -76,7 +73,8 @@
       "Pixelmator",
       "Kindle",
       "Time Out",
-      "1Password 7"
+      "1Password 7",
+      "Things"
     ],
     "sources": {
       "https://github.com/larkery/zsh-histdb.git": "~/.zsh-histdb/",

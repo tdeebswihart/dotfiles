@@ -1,6 +1,4 @@
 -- ~/.hammerspoon/init.lua
-hs.loadSpoon("Lunette")
-spoon.Lunette:bindHotkeys()
 
 hs.dockicon.hide()
 
