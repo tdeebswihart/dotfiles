@@ -1,0 +1,7 @@
+# name: named src block
+# key: <nsrc
+# --
+#+NAME: $1
+#+BEGIN_SRC $2
+    $3
+#+END_SRC

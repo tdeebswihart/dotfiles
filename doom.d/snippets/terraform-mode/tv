@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: new terraform var
+# key: tv
+# --
+
+variable "$1" {
+  description = "$2"
+  type        = $3
+  default     = $4
+}$0

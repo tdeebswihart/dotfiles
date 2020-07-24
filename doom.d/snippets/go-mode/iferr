@@ -1,0 +1,8 @@
+# name: run a function and check for an error
+# key: iferr
+# --
+if ${1:err} = $2; err != nil {
+   $3
+} else {
+  $4
+}

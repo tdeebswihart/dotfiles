@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: wrap a gomega matcher for use with gomock
+# key: megamock
+# --
+
+func WrapGomega(m types.GomegaMatcher) interface{} {
+	return mock.MatchedBy(func(actual interface{}) bool {
+		return Expect(actual).To(m)
+	})
+}

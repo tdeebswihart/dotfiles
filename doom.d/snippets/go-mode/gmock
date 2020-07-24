@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: new go mock
+# key: gmock
+# --
+
+//go:generate mockgen -self_package github.com/BishopFox/`(directory-file-name (file-relative-name (file-name-directory (buffer-file-name)) "/Users/tdeeb-swihart/Documents/Projects/mss"))` -package `(file-name-nondirectory (directory-file-name (file-name-directory (buffer-file-name)) ))` -destination `(file-name-base (buffer-file-name))`_mock.go github.com/BishopFox/`(directory-file-name (file-relative-name (file-name-directory (buffer-file-name)) "/Users/tdeeb-swihart/Documents/Projects/mss/") )` $1

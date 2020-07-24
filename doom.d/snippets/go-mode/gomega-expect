@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: gomega expect
+# key: gexp
+# --
+Expect($1).Should($0)

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ginkgo after
+# key: gaft
+# --
+AfterEach(func(){
+        $0
+})

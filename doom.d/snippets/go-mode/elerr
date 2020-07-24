@@ -1,0 +1,9 @@
+# name: log an error using logrus
+# key: elerr
+# group: logrus
+# --
+if err != nil {
+	${1:log}.WithFields(log.Fields{
+		"err": err,
+	}).Error("$2")
+}

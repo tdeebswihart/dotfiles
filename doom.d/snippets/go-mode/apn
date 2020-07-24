@@ -1,0 +1,4 @@
+# name: append
+# key: apn
+# --
+$1 = append($1, $2)

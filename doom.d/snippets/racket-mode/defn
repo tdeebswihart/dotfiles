@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: define function
+# key: defn
+# --
+(define ($1 $2)
+        $0)

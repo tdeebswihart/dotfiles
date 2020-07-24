@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: racket lang br/quicklang
+# key: qlang
+# --
+#lang br/quicklang

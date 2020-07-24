@@ -1,0 +1,4 @@
+# name: inline src block
+# key: isrc
+# --
+src_<$1>($2)

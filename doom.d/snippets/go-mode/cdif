@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: cmp.Diff
+# key: cdif
+# --
+if diff := cmp.Diff($1, $2); diff != "" {
+	t.Errorf("$3() mismatch (-want +got):\n%s", diff)
+}

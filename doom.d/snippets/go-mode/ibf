@@ -1,0 +1,4 @@
+# name: import bishopfox pkg
+# key: ibf
+# --
+"github.com/BishopFox/$1/$2"

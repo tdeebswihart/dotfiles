@@ -1,0 +1,7 @@
+# name: log(rus) with fields
+# key: lwf
+# group: logrus
+# --
+${1:log}.WithFields(log.Fields{
+        "$2": $3,
+}).${4:Info}($5)

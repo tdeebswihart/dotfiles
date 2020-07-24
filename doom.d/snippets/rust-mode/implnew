@@ -1,0 +1,8 @@
+# name: implnew
+# key: implnew
+# --
+impl $1 {
+    fn new($2) -> Self {
+        $1 { $0 }
+    }
+}

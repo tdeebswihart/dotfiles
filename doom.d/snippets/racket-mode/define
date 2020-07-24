@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: defi
+# key: defi
+# --
+(define $1 $2)

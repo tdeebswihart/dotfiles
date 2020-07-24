@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: goblin describe
+# key: gdesc
+# --
+
+Describe("$1", func() {
+    $0
+})

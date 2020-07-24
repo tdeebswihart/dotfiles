@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: new test
+# key: ntest
+# --
+func Test_$1_$2(t *testing.T) {
+     t.Errorf("FIXME")
+     $0
+}

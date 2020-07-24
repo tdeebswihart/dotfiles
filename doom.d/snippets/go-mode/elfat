@@ -1,0 +1,6 @@
+# name: log a fatal error using logrus
+# key: elfat
+# --
+if $1 != nil {
+	${2:log}.WithError($1).Fatal("$3")
+}

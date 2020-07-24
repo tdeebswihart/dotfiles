@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: goblin It
+# key: gi
+# --
+
+It("should $1", func() {
+    $0
+})

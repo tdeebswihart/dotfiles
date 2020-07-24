@@ -1,0 +1,7 @@
+# name: test
+# key: tst
+# --
+#[test]
+fn test_$1() {
+    $2
+}

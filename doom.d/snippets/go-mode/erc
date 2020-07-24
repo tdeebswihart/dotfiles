@@ -1,0 +1,6 @@
+# name: check for an error
+# key: erc
+# --
+if err != nil {
+        $0
+}

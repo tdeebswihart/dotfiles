@@ -2,7 +2,7 @@
     "taps": [
         "buo/cask-upgrade",
         "homebrew/cask-fonts",
-        "railwaycat/emacsmacport"
+	"d12frosted/emacs-plus"
     ],
     "brew": [
         "bash",
@@ -10,7 +10,7 @@
         "coreutils",
         "curl",
         "direnv",
-        "emacs-mac",
+        "emacs-plus@27",
         "fd",
         "gawk",
         "git",
@@ -21,16 +21,12 @@
         "jq",
         "libnotify",
         "neovim",
-        "osquery",
         "parallel",
         "pkg-config",
         "ripgrep",
-        "terminal-notifier",
-        "texinfo",
         "the_silver_searcher",
         "tmux",
         "vim",
-        "watchman",
         "wget",
         "xsv",
         "yarn",
@@ -41,69 +37,65 @@
       "alfred",
       {"name": "arq", "when": "home"},
       "bettertouchtool",
-      "brave-browser",
       "dash",
       {"name": "epic-games", "when": "home"},
-      "fantastical",
       "firefox",
       "font-fira-code",
       "font-fira-mono",
       {"name": "gog-galaxy", "when": "home"},
       "hammerspoon",
-      "iina",
-      {"name": "iridient-developer", "when": "home"},
-      {"name": "java8", "when": "home"},
-      "keka",
-      {"name": "keybase", "when": "home"},
       "lunchy",
-      {"name": "openemu", "when": "home"},
       "osxfuse",
       "racket",
       {"name": "signal", "when": "home"},
       "skim",
       {"name": "steam", "when": "home"},
-      {"name": "transmission", "when": "home"},
       "virtualbox",
-      {"name": "vmware-fusion", "when": "home"},
       "xquartz"
     ],
     "mas": [
       "Xcode",
       "Paprika Recipe Manager 3",
       "Pixelmator",
-      "Kindle",
-      "Time Out",
       "1Password 7",
       "Things"
     ],
     "sources": {
-      "https://github.com/larkery/zsh-histdb.git": "~/.zsh-histdb/",
-      "https://github.com/asdf-vm/asdf.git": {
-        "destination": "~/.asdf",
-        "post-install": "cd ~/.asdf && git checkout \"$(git describe --abbrev=0 --tags)\""
-      },
-      "https://github.com/tarjoilija/zgen": {
-        "symlinks": {
-          "zgen.zsh": "~/.zgen.zsh",
-          "_zgen": "~/.zsh/_zgen"
-        }
-      },
-      "https://github.com/scottwhudson/Lunette.git": {
-        "symlinks": {
-          "Lunette.spoon": "~/.hammerspoon/Spoons/"
-        }
-      }
+	    "https://github.com/plexus/chemacs.git": {
+		"destination": "~/Documents/Projects/chemacs",
+		"post-install": "cd ~/Documents/Projects/chemacs && ./install.sh"
+	    },
+	    "https://github.com/hlissner/doom-emacs.git": {
+		    "destination": "~/Documents/Projects/doom-emacs"
+	    },
+	    "https://github.com/larkery/zsh-histdb.git": "~/.zsh-histdb/",
+	    "https://github.com/asdf-vm/asdf.git": {
+		    "destination": "~/.asdf",
+		    "post-install": "cd ~/.asdf && git checkout \"$(git describe --abbrev=0 --tags)\""
+	    },
+	    "https://github.com/tarjoilija/zgen": {
+		    "symlinks": {
+			    "zgen.zsh": "~/.zgen.zsh",
+			    "_zgen": "~/.zsh/_zgen"
+		    }
+	    },
+	    "https://github.com/scottwhudson/Lunette.git": {
+		    "symlinks": {
+			    "Lunette.spoon": "~/.hammerspoon/Spoons/"
+		    }
+	    }
     },
     "symlinks": {
-      "dots/.*": "~/",
-      "zsh/*": "~/.config/zsh/config.sh",
-      "bin/*": "~/.local/bin/",
-      "config/*": "~/.config/",
-      "launchagents/*.plist":"~/Library/LaunchAgents/",
-      "hammerspoon/*": "~/.hammerspoon/"
+	    "dots/.*": "~/",
+	    "doom.d/*": "~/.doom.d/",
+	    "zsh/*": "~/.config/zsh/config.sh",
+	    "bin/*": "~/.local/bin/",
+	    "config/*": "~/.config/",
+	    "launchagents/*.plist":"~/Library/LaunchAgents/",
+	    "hammerspoon/*": "~/.hammerspoon/"
     },
     "post-install": [
-      "brew cleanup",
-      "find ~/Library/LaunchAgents -name '*.plist' | xargs launchctl load"
+	    "brew cleanup",
+	    "find ~/Library/LaunchAgents -name '*.plist' | xargs launchctl load"
     ]
 }

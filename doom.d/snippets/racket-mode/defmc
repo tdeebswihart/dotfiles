@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: define macro cases
+# key: defmc
+# --
+(define-macro-cases $1
+    [($1 $2) $3]
+    [($1 $4) $5]
+    $0)

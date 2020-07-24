@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: rspec When
+# key: rwhen
+# --
+
+
+When(/$1/) do
+  $0
+end

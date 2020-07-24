@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: subendpoint
+# key: sep
+# --
+
+	$1.Subendpoint(res, req, func($2) {
+                $0
+        })

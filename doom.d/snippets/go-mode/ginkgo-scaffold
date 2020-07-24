@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# name: ginkgo scaffolding
+# key: gscaf
+# --
+
+var _ = Describe("$1", func() {
+	var (
+		ctrl      *gomock.Controller
+                $2
+	)
+	BeforeEach(func() {
+		ctrl = gomock.NewController(GinkgoT())
+                $3
+	})
+
+	AfterEach(func() {
+		ctrl.Finish()
+	})
+        $0
+})

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ginkgo before
+# key: gb4
+# --
+BeforeEach(func(){
+        $0
+})

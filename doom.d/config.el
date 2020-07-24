@@ -53,41 +53,44 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(setq lsp-file-watch-ignored
-      '(
-        "[/\\\\]\\.direnv$"
-        "[/\\\\]\\.gems$"
+(after! lsp
+  (setq lsp-file-watch-ignored
+        '(
+          "[/\\\\]\\.direnv$"
+          "[/\\\\]\\.gems$"
                                         ; SCM tools
-        "[/\\\\]\\.git$"
-        "[/\\\\]\\.hg$"
-        "[/\\\\]\\.bzr$"
-        "[/\\\\]_darcs$"
-        "[/\\\\]\\.svn$"
-        "[/\\\\]_FOSSIL_$"
+          "[/\\\\]\\.git$"
+          "[/\\\\]\\.hg$"
+          "[/\\\\]\\.bzr$"
+          "[/\\\\]_darcs$"
+          "[/\\\\]\\.svn$"
+          "[/\\\\]_FOSSIL_$"
                                         ; IDE tools
-        "[/\\\\]\\.idea$"
-        "[/\\\\]\\.vscode$"
-        "[/\\\\]\\.ensime_cache$"
-        "[/\\\\]\\.eunit$"
-        "[/\\\\]node_modules$"
-        "[/\\\\]\\.fslckout$"
-        "[/\\\\]\\.tox$"
-        "[/\\\\]\\.stack-work$"
-        "[/\\\\]\\.bloop$"
-        "[/\\\\]\\.metals$"
-        "[/\\\\]target$"
-        "[/\\\\]dist$"
+          "[/\\\\]\\.idea$"
+          "[/\\\\]\\.vscode$"
+          "[/\\\\]\\.ensime_cache$"
+          "[/\\\\]\\.eunit$"
+          "[/\\\\]node_modules$"
+          "[/\\\\]\\.fslckout$"
+          "[/\\\\]\\.tox$"
+          "[/\\\\]\\.stack-work$"
+          "[/\\\\]\\.bloop$"
+          "[/\\\\]\\.metals$"
+          "[/\\\\]target$"
+          "[/\\\\]dist$"
                                         ; Autotools output
-        "[/\\\\]\\.deps$"
-        "[/\\\\]build-aux$"
-        "[/\\\\]autom4te.cache$"
-        "[/\\\\]\\.reference$"
+          "[/\\\\]\\.deps$"
+          "[/\\\\]build-aux$"
+          "[/\\\\]autom4te.cache$"
+          "[/\\\\]\\.reference$"
 
                                         ; Assorted state dirs
-        "[/\\\\]\\.terraform$"
-        "[/\\\\]\\.vagrant$"
-        "[/\\\\]vendor$"
-        ))
+          "[/\\\\]\\.terraform$"
+          "[/\\\\]\\.vagrant$"
+          "[/\\\\]vendor$"
+          ))
+  )
+
 
 ;; Yank-pop
 (after! hydra
@@ -257,4 +260,15 @@ _s-k_: Kill all buffers                                                  _p_: sw
 (after! envrc
   (envrc-global-mode))
 
-(map!)
+(setq avy-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n ?s))
+
+; Some handy leader bindings from my old custom config
+(map! :leader
+      :desc "Switch to buffer" "d" #'switch-to-buffer
+      :desc "Find file"        "e" #'counsel-find-file
+      :desc "Window controls"  "t" #'hydra-windows/body
+      :desc "Resume last ivy search" "r" #'ivy-resume
+      )
+
+(provide 'config.el)
+;;; config.el ends here
