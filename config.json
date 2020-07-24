@@ -69,10 +69,6 @@
 		    "destination": "~/Documents/Projects/doom-emacs"
 	    },
 	    "https://github.com/larkery/zsh-histdb.git": "~/.zsh-histdb/",
-	    "https://github.com/asdf-vm/asdf.git": {
-		    "destination": "~/.asdf",
-		    "post-install": "cd ~/.asdf && git checkout \"$(git describe --abbrev=0 --tags)\""
-	    },
 	    "https://github.com/tarjoilija/zgen": {
 		    "symlinks": {
 			    "zgen.zsh": "~/.zgen.zsh",
