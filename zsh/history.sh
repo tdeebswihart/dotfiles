@@ -12,11 +12,11 @@ if test -d "$HOME/.zsh/zsh-autosuggestions"; then
 fi
 
 if test -d "$HOME/.zsh-histdb"; then
+  export HISTDB_TABULATE_CMD=(sed -e $'s/\x1f/\t/g')
   export HISTDB_FILE="$HOME/.zsh-history.db"
   source "$HOME/.zsh-histdb/sqlite-history.zsh"
   export HISTDB_FILE="$HOME/.zsh-history.db"
   autoload -Uz add-zsh-hook
-  add-zsh-hook precmd  histdb-update-outcome
   alias h=histdb
  
   _zsh_autosuggest_strategy_histdb_top_here() {
