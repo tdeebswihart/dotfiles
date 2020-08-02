@@ -29,7 +29,11 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(defvar beorg-path "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org")
+
+(if (file-exists-p beorg-path)
+    (setq org-directory beorg-path)
+    (setq org-directory "~/notes"))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -262,7 +266,7 @@ _s-k_: Kill all buffers                                                  _p_: sw
 
 (setq avy-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n ?s))
 
-; Some handy leader bindings from my old custom config
+                                        ; Some handy leader bindings from my old custom config
 (map! :leader
       :desc "Switch to buffer" "d" #'switch-to-buffer
       :desc "Find file"        "e" #'counsel-find-file

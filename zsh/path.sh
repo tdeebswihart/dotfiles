@@ -1,4 +1,4 @@
-__maybe_append () {
+__maybe_prepend () {
   # Add each argument to basepath (our first argument) if it exists
     test -z "$1" && echo ""
     local basepath="$1"
@@ -24,7 +24,7 @@ case $(uname -s) in
     Darwin)
         # since /usr/local is managed by homebrew (and it complains about "unmanaged" pkgs, I use $HOME/.local
         BASEPATH="$HOME/homebrew/sbin:$HOME/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:"
-        BASEPATH=$(__maybe_append "$BASEPATH" "/opt/X11/bin" "/Library/TeX/texbin" "$HOME/macports/bin" "$HOME/Library/Python/3.7/bin" "/Applications/kitty.app/Contents/MacOS")
+        BASEPATH=$(__maybe_prepend "$BASEPATH" "/opt/X11/bin" "/Library/TeX/texbin" "$HOME/macports/bin" "$HOME/Library/Python/3.7/bin" "/Applications/kitty.app/Contents/MacOS")
 
         if [ -z "$JAVA_HOME" -a -d /System/Library/Frameworks/JavaVM.framework/Home ]; then
             export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
@@ -48,17 +48,13 @@ case $(uname -s) in
 	fi
 esac
 
-BASEPATH=$(__maybe_append "$BASEPATH" "$HOME/.cabal/bin" "$HOME/.cargo/bin" "$HOME/.nimble/bin")
+BASEPATH=$(__maybe_prepend "$BASEPATH" "$HOME/.cabal/bin" "$HOME/.cargo/bin" "$HOME/.nimble/bin" "$HOME/.cargo/bin")
 if [[ ! -z "$GOPATH" ]]; then
     if [[ -d "$GOPATH/bin" ]]; then
         # Only add go it if GOPATH is nonempty
         BASEPATH="$GOPATH/bin:$BASEPATH"
     fi
 fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-test -f ~/.asdf/asdf.sh && source ~/.asdf/asdf.sh
-test -f ~/.asdf/completions/asdf.bash && source ~/.asdf/completions/asdf.bash
 
 
 #Setting path -- my local prefix comes first *always*

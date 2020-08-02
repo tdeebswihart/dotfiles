@@ -54,4 +54,7 @@ if [ $(uname -s) = "Darwin" ]; then
     watchman -- trigger \"${target}\" \"${name}\" -- python3 $(which watchman-process-files.py)
   }
 
+  test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
 fi
