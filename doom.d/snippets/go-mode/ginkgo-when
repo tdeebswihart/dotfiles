@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: ginkgo When
+# key: gw
+# --
+
+When("$1", func() {
+    $0
+})
