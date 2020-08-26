@@ -2,7 +2,7 @@ import collections
 from contextlib import contextmanager
 from glob import glob
 import json
-from subprocess import check_output, STDOUT
+from subprocess import check_output, STDOUT, CalledProcessError
 from tempfile import NamedTemporaryFile
 import sys
 import os
@@ -46,7 +46,17 @@ def mkdir(path):
 
 
 def runcmd(cmd):
-    out = check_output(cmd, shell=True, stderr=STDOUT)
+    try:
+        out = check_output(cmd, shell=True, stderr=STDOUT)
+    except CalledProcessError as e:
+        out = e.stdout
+        err = e.stderr
+        if out is not None:
+            print(out.strip().decode(errors="ignore"))
+        if err is not None:
+            print(err.strip().decode(errors="ignore"))
+        raise
+
     return out.strip().decode(errors="ignore")
 
 

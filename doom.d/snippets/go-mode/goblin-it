@@ -1,8 +1,8 @@
 # -*- mode: snippet -*-
-# name: goblin It
+# name: ginkgo It
 # key: gi
 # --
 
 It("should $1", func() {
-    $0
+    ${0:Fail("FIXME")}
 })
