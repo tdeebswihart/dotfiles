@@ -16,3 +16,4 @@ fi
 export ORGHOME='/Users/timods/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org'
 
 complete -C /usr/local/bin/nomad nomad
+source "$HOME/.cargo/env"

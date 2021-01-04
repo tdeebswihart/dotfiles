@@ -1,13 +1,4 @@
 if [ $(uname -s) = "Darwin" ]; then
-  alias battery="pmset -g batt"
-  function plugged_in () {
-    return battery | grep 'AC Power' &>/dev/null
-  }
-
-  function unplugged () {
-    return battery | grep 'Battery Power' &>/dev/null
-  }
-
   #keep casks up to date the right way
   alias morningbrew='brew update && brew upgrade && brew cask upgrade && brew cleanup && cask-retire; brew doctor'
 
@@ -36,25 +27,5 @@ if [ $(uname -s) = "Darwin" ]; then
     fi
   }
 
-  function watch_this () {
-    if [[ -z "$1" ]]; then
-      echo "usage: watch_this WATCHER_NAME"
-      return 1
-    fi
-    if ! which watchman-process-files.py >/dev/null; then
-      echo "error! watchman-process-files.py cannot be found!"
-      return 1
-    fi
-    local name="$1"
-    if [[ ! -z "$2" ]]; then
-      local target="$2"
-    else
-      local target=$(pwd)
-    fi
-    watchman -- trigger \"${target}\" \"${name}\" -- python3 $(which watchman-process-files.py)
-  }
-
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-
 fi
